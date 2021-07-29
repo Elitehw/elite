@@ -1,0 +1,673 @@
+<div class="tempalert" [ngClass]="{'hide': showalrt }">
+  <div class="covrg">
+    <h3>Expanding Coverage!</h3>
+    <p>We are currently not accepting new orders in your area. </p>
+    <p> We are working hard to expand our network of licensed technicians and contractors in your region. </p>
+    <p> Contact us to inquire about covering your home.</p>
+
+
+    <button (click)="removealrt()"><img src="assets/images/continuebtn.png" alt="" class="img-fluid" class="desk" />
+      <img src="assets/images/continuebtnmob.png" alt="" class="img-fluid" class="mob" /> </button>
+
+  </div>
+  <button class="close" (click)="removealrt()"> X</button>
+</div>
+
+<div class="tempalert" style="background-image: none;" [ngClass]="{'hide': showpasswordalrt }">
+  <div class="covrg covrg-mob ">
+    <p>Enter password</p>
+    <div class="form-fld text-center">
+      <div class="formControl">
+        <input type="password" matInput [formControl]="passwordFormControl" placeholder="" style="width: 300px;">
+      </div>
+      <mat-error *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
+        This field is required.
+      </mat-error>
+    </div>
+    <button style="margin-top: 4%;" (click)="proceed()"><img src="assets/images/continuebtn.png" alt=""
+        class="img-fluid" class="desk" />
+      <img src="assets/images/continuebtnmob.png" alt="" class="img-fluid" class="mob" /> </button>
+  </div>
+</div>
+
+<header class="landing-header" [class]="dynamicClass" [ngClass]="{'active': show }">
+  <div class="container-fluid pd-40">
+    <div class="landing-header-in">
+      <div class="header-menu">
+        <div class="logo-im">
+          <a [routerLink]="['/landing']">
+            <!-- <img src="./assets/images/newlogo.png" alt="" class="logo greenlogo"> -->
+            <img src="./assets/images/greenfull.svg" alt="" class=" logo greenlogo" height="46">
+          </a>
+          <a [routerLink]="['/landing']"><img src="./assets/images/logoE.png" alt="" class="scrollLogo greenlogo"></a>
+          <a [routerLink]="['/landing']"><img src="./assets/images/rosefull.svg" alt="" class=" logo roselogo"
+              height="45"></a>
+          <a [routerLink]="['/landing']"><img src="./assets/images/e.svg" alt="" class=" scrollLogo roselogo"
+              style="height: 27px;"></a>
+          <!-- <p>Home warranty</p> -->
+        </div>
+
+        <span class="btnbordered">
+          <a class="green"> <span> MEMBER LOGIN </span></a>
+
+          <a class="red"><span> FILE A CLAIM </span></a>
+
+          <a class="rose" [routerLink]="['/buy-home-warranties']"> <span>Get a Plan </span></a>
+          <a class="homecartbtn-tab position-relative" [routerLink]="['/home-warranty-quotes']"><img
+              src="./assets/images/rosehomeicon.svg" alt="" class="goldhradcart" height="40" style="height: 46px;" />
+            <img src="../../../assets/images/ee.svg" alt="" class="greenhradcart" height="40" style="height: 46px;" />
+            <span class="cartitems">0</span>
+          </a>
+
+        </span>
+        <a class="call" [routerLink]="['/file-a-claim']"><button class="linebtnget"><img
+              src="assets/images/getaplan.png" alt="" height="25"></button> </a>
+
+        <div class="menu-im">
+          <a class="toggle1 scrollLogo toggleBTN" (click)="toggle()" [class.activeTogglebtn]="show">
+            <img src="./assets/images/menugreen.svg" alt="" class="green-menu">
+            <!-- <img src="./assets/images/menurose.svg" alt="" class="green-menu"> -->
+            <img src="./assets/images/menurose.svg" alt="" class="rose-menu">
+            <span></span>
+          </a>
+
+
+
+          <a class="toggle1 logo toggleBTN" (click)="toggle()" [class.activeTogglebtn]="show">
+            <img src="./assets/images/menugreen.svg" alt="" class="green-menu">
+            <!-- <img src="./assets/images/menurose.svg" alt="" class="green-menu"> -->
+            <img src="./assets/images/menurose.svg" alt="" class="rose-menu">
+            <span></span>
+          </a>
+
+        </div>
+      </div>
+      <div class="landing-header-nav ml-auto mobileView" [ngClass]="{'active': show }">
+
+        <div class="header-desktop header-big" [ngClass]="{'active': selectedItem === 'item1','active2': selectedItem === 'item2',
+        'active3': selectedItem === 'item3','active4': selectedItem === 'item4','': selectedItem === ''}">
+          <ul>
+            <li>
+              <button mat-button (click)="selectedItem = 'item1'">HOME WARRANTY</button>
+              <div class="menudown">
+                <button [routerLink]="['/home-warranty-guide']" routerLinkActive="active"> Home Warranty Guide </button>
+                <button [routerLink]="['/homeowners-warranty']" routerLinkActive="active">Homeowners Warranty</button>
+
+                <button [routerLink]="['/maintenance-and-repairs']" routerLinkActive="active"> Maintenance and Repairs
+                </button>
+                <button [routerLink]="['/home-warranties-questions-and-answers']" routerLinkActive="active"> Questions
+                  and Answers </button>
+                <button [routerLink]="['/home-warranty-coverage-map']" routerLinkActive="active">Home Warranty Coverage
+                  Map </button>
+
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+
+            <li>
+              <button mat-button (click)="selectedItem = 'item2'">PLANS AND PRICING</button>
+              <div class="menudown">
+                <button [routerLink]="['/elite-appliances']" routerLinkActive="active">Elite Appliances </button>
+                <button [routerLink]="['/elite-systems']" routerLinkActive="active">Elite Systems </button>
+                <button [routerLink]="['/elite-complete']" routerLinkActive="active">Elite Complete </button>
+                <button [routerLink]="['/elite-electronics']" routerLinkActive="active">Elite Electronics</button>
+                <button>Elite Service Line</button>
+                <button [routerLink]="['/customize-your-own']" routerLinkActive="active">Customize Your Own </button>
+                <button [routerLink]="['/compare-home-warranty-plans']" routerLinkActive="active">Compare Plans
+                </button>
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+
+            <li>
+              <button mat-button (click)="selectedItem = 'item3'">PARTNER WITH US </button>
+              <div class="menudown">
+                <button [routerLink]="['/partners-login']" routerLinkActive="active">Partners Login </button>
+                <button [routerLink]="['/service-providers']" routerLinkActive="active">Certified Service Providers
+                </button>
+                <button [routerLink]="['/real-estate-professionals']" routerLinkActive="active">Real Estate
+                  Professionals </button>
+                <button [routerLink]="['/title-agencies']" routerLinkActive="active">Title Agencies </button>
+                <button [routerLink]="['/suppliers']" routerLinkActive="active">Suppliers </button>
+                <button [routerLink]="['/affiliates']" routerLinkActive="active">Affiliates </button>
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+
+            <li>
+              <button mat-button (click)="selectedItem = 'item4'">SERVICES </button>
+
+              <div class="menudown">
+                <button [routerLink]="['/homeowner-hub']" routerLinkActive="active">Homeowner Hub </button>
+                <button [routerLink]="['/member-login']" routerLinkActive="active">Member Login</button>
+                <button [routerLink]="['/file-a-claim']" routerLinkActive="active">File a Claim </button>
+                <button>Get a Plan </button>
+                <button [routerLink]="['/agreement']" routerLinkActive="active">Sample Contract </button>
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+
+            </li>
+
+            <li>
+              <a class="green"> <span>MEMBER LOGIN </span></a>
+            </li>
+            <li>
+              <a class="red"> <span>FILE A CLAIM </span></a>
+            </li>
+            <li>
+              <a class="rose" [routerLink]="['/buy-home-warranties']"> <span>Get a Plan </span></a>
+            </li>
+
+          </ul>
+          <a class="homecart" [routerLink]="['/home-warranty-quotes']"><img src="assets/images/rosehomeicon.svg" alt=""
+              class="goldhradcart" /> <img src="assets/images/ee.svg" alt="" class="greenhradcart" /> <span
+              class="cartitems">{{cartnumber ? cartnumber : 0}}</span></a>
+        </div>
+
+        <div class="header-desktop" [ngClass]="{'active': selectedItem === 'item1','active2': selectedItem === 'item2',
+                'active3': selectedItem === 'item3','active4': selectedItem === 'item4','': selectedItem === ''}">
+          <ul>
+            <li>
+              <button mat-button (click)="selectedItem = 'item1'">HOME WARRANTY</button>
+              <div class="menudown ">
+                <button [routerLink]="['/home-warranty-guide']" routerLinkActive="active"> Home Warranty Guide </button>
+                <button [routerLink]="['/homeowners-warranty']" routerLinkActive="active">Homeowners Warranty</button>
+                <button [routerLink]="['/maintenance-and-repairs']" routerLinkActive="active"> Maintenance and Repairs
+                </button>
+                <button [routerLink]="['/home-warranties-questions-and-answers']" routerLinkActive="active"> Questions
+                  and Answers </button>
+                <button [routerLink]="['/home-warranty-coverage-map']" routerLinkActive="active">Home Warranty Coverage
+                  Map </button>
+
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+
+            <li>
+              <button mat-button (click)="selectedItem = 'item2'">PLANS AND PRICING</button>
+              <div class="menudown">
+                <button [routerLink]="['/elite-appliances']" routerLinkActive="active">Elite Appliances </button>
+                <button [routerLink]="['/elite-systems']" routerLinkActive="active">Elite Systems </button>
+                <button [routerLink]="['/elite-complete']" routerLinkActive="active">Elite Complete </button>
+                <button [routerLink]="['/elite-electronics']" routerLinkActive="active">Elite Electronics</button>
+                <button>Elite Service Line</button>
+                <button [routerLink]="['/customize-your-own']" routerLinkActive="active">Customize Your Own </button>
+                <button [routerLink]="['/compare-home-warranty-plans']" routerLinkActive="active">Compare Plans
+                </button>
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+
+            <li>
+              <button mat-button (click)="selectedItem = 'item3'">PARTNER WITH US </button>
+              <div class="menudown">
+                <button [routerLink]="['/partners-login']" routerLinkActive="active">Partners Login </button>
+                <button [routerLink]="['/service-providers']" routerLinkActive="active">Certified Service Providers
+                </button>
+                <button [routerLink]="['/real-estate-professionals']" routerLinkActive="active">Real Estate
+                  Professionals </button>
+                <button [routerLink]="['/title-agencies']" routerLinkActive="active">Title Agencies </button>
+                <button [routerLink]="['/suppliers']" routerLinkActive="active">Suppliers </button>
+                <button [routerLink]="['/affiliates']" routerLinkActive="active">Affiliates </button>
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+
+            <li>
+              <button mat-button (click)="selectedItem = 'item4'">SERVICES </button>
+
+              <div class="menudown">
+                <button [routerLink]="['/homeowner-hub']" routerLinkActive="active">Homeowner Hub </button>
+                <button [routerLink]="['/member-login']" routerLinkActive="active">Member Login</button>
+                <button [routerLink]="['/file-a-claim']" routerLinkActive="active">File a Claim </button>
+                <button>Get a Plan </button>
+                <button [routerLink]="['/agreement']" routerLinkActive="active">Sample Contract </button>
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+
+            </li>
+
+            <li>
+              <a class="green"> <span>MEMBER LOGIN </span></a>
+            </li>
+            <li>
+              <a class="red"> <span>FILE A CLAIM </span></a>
+            </li>
+            <li>
+              <a class="rose" [routerLink]="['/buy-home-warranties']"> <span>Get a Plan </span></a>
+            </li>
+
+          </ul>
+          <a class="homecart" [routerLink]="['/home-warranty-quotes']"><img src="assets/images/rosehomeicon.svg" alt=""
+              class="goldhradcart" /> <img src="assets/images/ee.svg" alt="" class="greenhradcart" /> <span
+              class="cartitems">{{cartnumber ? cartnumber : 0}}</span></a>
+        </div>
+
+        <div class="header-tab" [ngClass]="{'active': selectedItem === 'item1',
+        'active2': selectedItem === 'item2',
+        'active3': selectedItem === 'item3',
+        'active4': selectedItem === 'item4',
+        '': selectedItem === ''}
+        ">
+          <a class="showMobile mobileCloseBtn" (click)="toggle()" (mouseup)="selectedItem = ''">
+            <img alt="" src="assets/images/greencross.png" class="toggcross">
+            <img src="assets/images/cross.png" alt="" class="toggcrossrose">
+
+          </a>
+          <ul>
+            <li>
+              <button mat-button (click)="selectedItem = 'item1'">HOME WARRANTY</button>
+              <div class="menudown ">
+                <button [routerLink]="['/home-warranty-guide']" routerLinkActive="active"> Home Warranty Guide </button>
+                <button [routerLink]="['/homeowners-warranty']" routerLinkActive="active">Homeowners Warranty</button>
+
+                <button [routerLink]="['/maintenance-and-repairs']" routerLinkActive="active"> Maintenance and Repairs
+                </button>
+                <button [routerLink]="['/home-warranties-questions-and-answers']" routerLinkActive="active"> Questions
+                  and Answers </button>
+                <button [routerLink]="['/home-warranty-coverage-map']" routerLinkActive="active">Home Warranty Coverage
+                  Map </button>
+                <button [routerLink]="['/agreement']" routerLinkActive="active">Sample Contract </button>
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+
+            <li>
+              <button mat-button (click)="selectedItem = 'item2'">PLANS AND PRICING</button>
+              <div class="menudown">
+                <button [routerLink]="['/elite-appliances']" routerLinkActive="active">Elite Appliances </button>
+                <button [routerLink]="['/elite-systems']" routerLinkActive="active">Elite Systems </button>
+                <button [routerLink]="['/elite-complete']" routerLinkActive="active">Elite Complete </button>
+                <button [routerLink]="['/elite-electronics']" routerLinkActive="active">Elite Electronics</button>
+                <button>Elite Service Line</button>
+                <button [routerLink]="['/customize-your-own']" routerLinkActive="active">Customize Your Own </button>
+                <button [routerLink]="['/compare-home-warranty-plans']" routerLinkActive="active">Compare Plans
+                </button>
+
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+
+            <li>
+              <button mat-button (click)="selectedItem = 'item3'">PARTNER WITH US </button>
+              <div class="menudown">
+                <button [routerLink]="['/partners-login']" routerLinkActive="active">Partners Login </button>
+                <button [routerLink]="['/service-providers']" routerLinkActive="active">Certified Service Providers
+                </button>
+                <button [routerLink]="['/real-estate-professionals']" routerLinkActive="active">Real Estate
+                  Professionals </button>
+                <button [routerLink]="['/title-agencies']" routerLinkActive="active">Title Agencies </button>
+                <button [routerLink]="['/suppliers']" routerLinkActive="active">Suppliers </button>
+                <button [routerLink]="['/affiliates']" routerLinkActive="active">Affiliates </button>
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+            <li>
+              <button mat-button (click)="selectedItem = 'item4'">SERVICES </button>
+              <div class="menudown">
+                <button [routerLink]="['/homeowner-hub']" routerLinkActive="active">Homeowner Hub </button>
+                <button [routerLink]="['/member-login']" routerLinkActive="active">Member Login</button>
+                <button [routerLink]="['/file-a-claim']" routerLinkActive="active">File a Claim </button>
+                <button>Get a Plan </button>
+
+                <button style="float: right;" (click)="selectedItem = ''"> <img src="assets/images/cross.png" width="16"
+                    alt=""></button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="header-mobile">
+
+          <div class="menumobilemain">
+            <div class="menucontent">
+              <a class="float-left" style="max-width: 102px;left: -4px;;position: relative;"><img
+                  src="./assets/images/rosefull.svg" alt="" style="max-width: none; height: 45px; "></a>
+              <a class="rightbtnhome" (click)="toggle()" [routerLink]="['/home-warranty-quotes']">
+                <img src="assets/images/rosehomeicon.svg" alt="" class="goldhradcart" style="height: 45px;" /> <img
+                  src="assets/images/rosehomeicon.svg" alt="" class="greenhradcart" style="height:45px" />
+                <span class="cartitems">0</span>
+              </a>
+              <ul>
+                <li><a (click)="selectedItemsub = 'itemmenusub1'"> HOME WARRANTY</a></li>
+                <li><a (click)="selectedItemsub = 'itemmenusub3'"> PLANS AND PRICING </a></li>
+                <li><a (click)="selectedItemsub = 'itemmenusub2'"> PARTNER WITH US</a></li>
+                <li><a (click)="selectedItemsub = 'itemmenusub4'"> SERVICES </a></li>
+                <li><a class="borderankr" (click)="toggle()"><span> MEMBER LOGIN </span> </a></li>
+                <li><a class="borderankr" (click)="toggle()"><span> FILE A CLAIM </span></a></li>
+                <li><a class="borderankr" (click)="toggle()" [routerLink]="['/buy-home-warranties']"><span> Get a Plan
+                    </span></a>
+                </li>
+
+
+              </ul>
+              <a style="margin-bottom: -27px; float: left; position: relative;" href="tel:(888) 354-8398"><img
+                  src="assets/images/callus.svg" alt="" height="34px" /></a>
+              <a (click)="toggle()" class="no-border mainclose">
+                <img src="assets/images/cross.png" width="16" alt="" style="margin-right: 5px;"> <span>Close</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="mobilesub"
+            [ngClass]="{'activesub1': selectedItemsub === 'itemmenusub1','activesub2': selectedItemsub === 'itemmenusub2', 'activesub3': selectedItemsub === 'itemmenusub3','activesub4': selectedItemsub === 'itemmenusub4', 'close': selectedItemsub === 'close'}">
+
+            <div class="secmenusub1 secmenusub">
+              <a class="logosub"><img src="./assets/images/greenfull.svg" alt="" style="max-width: none; "
+                  height="45"></a>
+              <h5>Home Warranty</h5>
+              <a class="rightbtnhome" [routerLink]="['/home-warranty-quotes']" (click)="toggle()">
+                <img src="assets/images/ee.svg" alt="" style="height: 45px;" />
+                <span class="cartitems">0</span>
+              </a>
+              <ul>
+                <li>
+                  <img src="assets/images/micon1.png" alt="">
+                  <p> <a [routerLink]="['/home-warranty-guide']" routerLinkActive="active" (click)="toggle()">Home
+                      Warranty <br> GUIDE </a>
+                  </p>
+                </li>
+                <li>
+                  <img src="assets/images/hw.png" alt="">
+                  <p> <a [routerLink]="['/homeowners-warranty']" routerLinkActive="active" (click)="toggle()">HOMEOWNERS
+                      <br> WARRANTY</a>
+                  </p>
+                </li>
+
+
+                <li>
+                  <img src="assets/images/micon2.png" alt="">
+                  <p> <a [routerLink]="['/maintenance-and-repairs']" routerLinkActive="active"
+                      (click)="toggle()">Maintenance <br>and
+                      Repairs </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon3.png" alt="">
+                  <p><a [routerLink]="['/home-warranties-questions-and-answers']" routerLinkActive="active"
+                      (click)="toggle()"> Questions
+                      <br>and Answers </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon4.png" alt="">
+                  <p> <a [routerLink]="['/home-warranty-coverage-map']" routerLinkActive="active"
+                      (click)="toggle()">Home Warranty <br>
+                      Coverage Map</a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon5.png" alt="">
+                  <p> <a [routerLink]="['/agreement']" routerLinkActive="active" (click)="toggle()">Sample Contract </a>
+                  </p>
+                </li>
+
+              </ul>
+              <div class="textcross">
+                <a (click)="selectedItemsub = 'close'" class="goback">
+                  <!-- <img src="assets/images/mobilegoback.png" alt=""> -->
+                  <img src="assets/images/mobilegobackMonly.png" width="16" alt="">
+                  <span>GO BACK</span>
+                </a>
+                <span (click)="toggle()" [class.activeTogglebtn]="show">
+                  <img src="assets/images/mobilecloseXOnly.png" alt="" height="16">
+                  <a class="pl-1">CLOSE</a> <img class="d-none" src="assets/images/mobileclose.png" alt="">
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="secmenusub2 secmenusub">
+              <a class="logosub"><img src="./assets/images/greenfull.svg" alt="" style="max-width: none; "
+                  height="45"></a>
+              <h5>Partner With Us</h5>
+              <a class="rightbtnhome" [routerLink]="['/home-warranty-quotes']" (click)="toggle()">
+                <img src="./assets/images/ee.svg" alt="" style="height: 45px;">
+                <span class="cartitems">0</span>
+              </a>
+              <ul>
+                <li>
+                  <img src="assets/images/partnerslogin.png" alt="">
+                  <p><a [routerLink]="['/partners-login']" routerLinkActive="active" (click)="toggle()"> Partners <br>
+                      Login </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon10.png" alt="">
+                  <p><a [routerLink]="['/service-providers']" routerLinkActive="active" (click)="toggle()"> Certified
+                      Service <br>
+                      Providers </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon9.png" alt="">
+                  <p><a [routerLink]="['/real-estate-professionals']" routerLinkActive="active" (click)="toggle()"> Real
+                      Estate <br>
+                      Professionals </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon8.png" alt="">
+                  <p> <a [routerLink]="['/title-agencies']" routerLinkActive="active" (click)="toggle()">Title Agencies
+                    </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon7.png" alt="">
+                  <p> <a [routerLink]="['/suppliers']" routerLinkActive="active" (click)="toggle()">Suppliers </a>
+                  </p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon6.png" alt="">
+                  <p><a [routerLink]="['/affiliates']" routerLinkActive="active" (click)="toggle()"> Affiliates </a></p>
+                </li>
+
+              </ul>
+
+              <div class="textcross">
+                <a (click)="selectedItemsub = 'close'" class="goback">
+                  <img src="assets/images/mobilegobackMonly.png" width="16" alt="">
+                  <span>GO BACK</span>
+                  <!-- <img src="assets/images/mobilegoback.png" alt=""> -->
+                </a>
+                <span (click)="toggle()" [class.activeTogglebtn]="show">
+                  <img src="assets/images/mobilecloseXOnly.png" alt="" height="16">
+                  <a class="pl-1">CLOSE</a> <img class="d-none" src="assets/images/mobileclose.png" alt="">
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="secmenusub3 secmenusub">
+              <a class="logosub"><img src="./assets/images/greenfull.svg" alt="" style="max-width: none; "
+                  height="45"></a>
+              <h5>Plans and Pricing</h5>
+              <a class="rightbtnhome" [routerLink]="['/home-warranty-quotes']" (click)="toggle()">
+                <img src="assets/images/ee.svg" alt="" style="height: 45px;">
+                <span _ngcontent-serverapp-c1="" class="cartitems">0</span>
+              </a>
+
+              <ul>
+                <li>
+                  <img src="assets/images/micon11.png" alt="">
+                  <p><a [routerLink]="['/elite-appliances']" routerLinkActive="active" (click)="toggle()">Elite
+                      Appliances </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon12.png" alt="">
+                  <p><a [routerLink]="['/elite-systems']" routerLinkActive="active" (click)="toggle()"> Elite Systems
+                    </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon13.png" alt="">
+                  <p> <a [routerLink]="['/elite-complete']" routerLinkActive="active" (click)="toggle()">Elite Complete
+                    </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon14.png" alt="">
+                  <p> <a (click)="toggle()" [routerLink]="['elite-electronics']" routerLinkActive="active">Elite
+                      Electronics </a></p>
+                </li>
+
+                <li>
+                  <img src="assets/images/micon15.png" alt="">
+                  <p><a (click)="toggle()"> Elite Service Line </a></p>
+                </li>
+                <li>
+                  <img src="assets/images/micon17.png" alt="">
+                  <p><a [routerLink]="['/customize-your-own']" routerLinkActive="active" (click)="toggle()"> Customize
+                      your own </a></p>
+                </li>
+                <li>
+                  <img src="assets/images/compare.svg" alt="" width="48">
+                  <p><a [routerLink]="['/compare-home-warranty-plans']" routerLinkActive="active" (click)="toggle()">
+                      Compare Plans </a>
+                  </p>
+                </li>
+
+              </ul>
+              <div class="textcross">
+                <a (click)="selectedItemsub = 'close'" class="goback">
+                  <img src="assets/images/mobilegobackMonly.png" width="16" alt="">
+                  <span>GO BACK</span>
+                  <!-- <img src="assets/images/mobilegoback.png" alt=""> -->
+                </a>
+                <span (click)="toggle()" [class.activeTogglebtn]="show">
+                  <img src="assets/images/mobilecloseXOnly.png" alt="" height="16">
+                  <a class="pl-1">CLOSE</a> <img class="d-none" src="assets/images/mobileclose.png" alt="">
+                </span>
+
+              </div>
+
+            </div>
+            <div class="secmenusub4 secmenusub">
+              <a class="logosub"><img src="./assets/images/greenfull.svg" alt="" style="max-width: none; "
+                  height="45"></a>
+              <h5>Services</h5>
+              <a class="rightbtnhome" [routerLink]="['/home-warranty-quotes']" (click)="toggle()">
+                <img src="assets/images/ee.svg" alt="" style="height: 45px;">
+                <span class="cartitems">0</span>
+              </a>
+              <ul>
+                <li>
+                  <img src="assets/images/hub.png" alt="">
+                  <p><a [routerLink]="['/homeowner-hub']" routerLinkActive="active" (click)="toggle()">Homeowner Hub</a>
+                  </p>
+                </li>
+
+                <li>
+                  <img src="assets/images/memlogin.png" alt="">
+                  <p><a [routerLink]="['/member-login']" routerLinkActive="active" (click)="toggle()"> Member Login </a>
+                  </p>
+                </li>
+
+                <li>
+                  <img src="assets/images/claim.png" alt="">
+                  <p> <a [routerLink]="['/file-a-claim']" routerLinkActive="active" (click)="toggle()">File A Claim </a>
+                  </p>
+                </li>
+
+                <li>
+                  <img src="assets/images/custom.png" alt="">
+                  <p> <a (click)="toggle()">Get a Plan </a></p>
+                </li>
+
+              </ul>
+              <div class="textcross">
+                <a (click)="selectedItemsub = 'close'" class="goback">
+                  <img src="assets/images/mobilegobackMonly.png" width="16" alt="">
+                  <span>GO BACK</span>
+                  <!-- <img src="assets/images/mobilegoback.png" alt=""> -->
+                </a>
+                <span (click)="toggle()" [class.activeTogglebtn]="show">
+                  <img src="assets/images/mobilecloseXOnly.png" alt="" height="16">
+                  <a class="pl-1">CLOSE</a> <img class="d-none" src="assets/images/mobileclose.png" alt="">
+                </span>
+
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="footbn align-items-center">
+    <a [routerLink]="['/file-a-claim']">
+      <span style="display: inline-block;">FILE A CLAIM</span>
+    </a>
+    <a href="tel:(888) 354-8398">
+      <span>CALL US</span>
+    </a>
+  </div>
+</header>
+
+
+
+<!--
+         <a [routerLink]="['/landing']" class="showMobile mobileLogo"><img src="./assets/images/goldenLogo.png"
+            alt=""></a>
+        <div class="landing-menu nav nav-tabs" id="nav-tab" role="tablist">
+          <div class="tab">
+            <a class="nav-item" id="tab1" data-toggle="tab" [ngClass]="{'active': formType === 'csp'}"
+              (click)="scrollToDiv('csp'); toggle()" href="#tabcon1" role="tab" aria-controls="nav-home"
+              aria-selected="true">
+              <img src="assets/images/certified-service.svg" alt="" class="headerIcon" />
+              <span class="headerText">CERTIFIED SERVICE PROVIDERS</span>
+            </a>
+          </div>
+          <div class="tab">
+            <a class="nav-item" id="tab2" data-toggle="tab" [ngClass]="{'active': formType === 'rep'}"
+              (click)="scrollToDiv('rep'); toggle()" href="#tabcon2" role="tab" aria-controls="nav-profile"
+              aria-selected="false">
+              <img src="assets/images/real-estate.svg" alt="" class="headerIcon" />
+              <span class="headerText">REAL ESTATE PROFESSIONALS</span>
+            </a>
+          </div>
+          <div class="tab">
+            <a class="nav-item" id="tab3" data-toggle="tab" [ngClass]="{'active': formType === 'title_agencies'}"
+              (click)="scrollToDiv('title_agencies'); toggle()" href="#tabcon3" role="tab" aria-controls="nav-contact"
+              aria-selected="false">
+              <img src="assets/images/titles-agencies.svg" alt="" class="headerIcon" />
+              <span class="headerText">TITLE AGENCIES</span>
+            </a>
+          </div>
+          <div class="tab">
+            <a class="nav-item" id="tab4" data-toggle="tab" [ngClass]="{'active': formType === 'vendors'}"
+              (click)="scrollToDiv('vendors'); toggle()" href="#tabcon4" role="tab" aria-controls="nav-profile"
+              aria-selected="false">
+              <img src="assets/images/vendors.svg" alt="" class="headerIcon" />
+              <span class="headerText">SUPPLIERS</span>
+            </a>
+          </div>
+          <div class="tab">
+            <a class="nav-item" id="tab5" data-toggle="tab" [ngClass]="{'active': formType === 'affiliates'}"
+              (click)="scrollToDiv('affiliates'); toggle()" href="#tabcon5" role="tab" aria-controls="nav-contact"
+              aria-selected="false">
+              <img src="assets/images/affiliates.svg" alt="" class="headerIcon" />
+              <span class="headerText">AFFILIATES</span>
+            </a>
+          </div>
+        </div>-->

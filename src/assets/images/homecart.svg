@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2019 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.209827in" height="0.15985in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 4.43 3.38"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <font id="FontID0" horiz-adv-x="960" font-variant="normal" style="fill-rule:nonzero" font-weight="400">
+	<font-face 
+		font-family="EuroseWide Heavy">
+		<font-face-src>
+			<font-face-name name="EuroseWide Heavy"/>
+		</font-face-src>
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="0" horiz-adv-x="956" d="M904.948 486.626l0 -279.302c0,-68.8784 -29.5029,-120.767 -88.394,-156.354 -59.0059,-35.3576 -127.884,-52.9216 -206.52,-52.9216l-288.027 0c-69.3376,0 -131.213,16.416 -185.513,49.5925 -54.2992,33.0616 -81.5061,78.0622 -81.5061,134.887l0 303.983c0,56.8247 27.6662,100.677 82.9985,131.328 55.3323,30.8805 116.634,46.1485 184.02,46.1485l288.027 0c69.3376,0 135.805,-16.5308 199.518,-49.4777 63.5977,-33.1764 95.3966,-75.6515 95.3966,-127.884zm-198.944 -229.939l0 149.696c0,42.9342 -11.8241,73.2407 -35.4724,90.9195 -23.6483,17.9084 -64.1717,26.7478 -121.57,26.7478l-165.997 0c-47.2965,0 -81.1617,-8.8394 -101.481,-26.7478 -20.3191,-17.6788 -30.5361,-47.9853 -30.5361,-90.9195l0 -149.696c0,-41.6714 10.1022,-71.1744 30.0769,-88.5088 19.9747,-17.564 53.9548,-26.1738 101.94,-26.1738l165.997 0c59.3502,0 100.333,7.80622 123.063,23.6483 22.6151,15.7272 33.98,46.0338 33.98,91.0343z"/>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"EuroseWide Heavy";font-variant:normal;font-weight:normal;src:url("#FontID0") format(svg)}
+    .fil4 {fill:none}
+    .fil1 {fill:url(#id0)}
+    .fil0 {fill:url(#id1)}
+    .fil2 {fill:url(#id2)}
+    .fil3 {fill:url(#id3)}
+    .fnt0 {font-weight:normal;font-size:0.72px;font-family:'EuroseWide Heavy'}
+   ]]>
+  </style>
+  <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="3.24" y1="0.94" x2="3.24" y2="0.86">
+   <stop offset="0" style="stop-opacity:1; stop-color:#B5846E"/>
+   <stop offset="0.501961" style="stop-opacity:1; stop-color:#ECD1B4"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#B5846E"/>
+  </linearGradient>
+  <linearGradient id="id1" gradientUnits="userSpaceOnUse" xlink:href="#id0" x1="2.25" y1="1.88" x2="2.25" y2="0.48">
+  </linearGradient>
+  <linearGradient id="id2" gradientUnits="userSpaceOnUse" xlink:href="#id0" x1="2.24" y1="2.9" x2="2.24" y2="0.74">
+  </linearGradient>
+  <linearGradient id="id3" gradientUnits="userSpaceOnUse" xlink:href="#id0" x1="2.71" y1="2.58" x2="2.71" y2="2.1">
+  </linearGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_1908126912">
+   <g>
+    <path class="fil0" d="M0.67 1.88l1.54 -1.19 1.54 1.19 0.31 0 -0.64 -0.5 0 -0.41 -0.38 0 0 0.12 -0.75 -0.58c-0.04,-0.03 -0.1,-0.03 -0.14,0l-1.78 1.37 0.31 0z"/>
+    <polygon class="fil1" points="2.99,0.94 3.47,0.94 3.47,0.86 2.99,0.86 "/>
+    <path class="fil2" d="M0.92 1.74l0 1.09c0,0.04 0.04,0.07 0.09,0.07l0.67 0 0.64 0 0 -1.14c0,-0.02 0.02,-0.04 0.05,-0.04l0.65 0c0.03,0 0.05,0.02 0.05,0.04l0 1.14 0.34 0c0.05,0 0.09,-0.03 0.09,-0.07l0 -1.09 -1.29 -1 -1.29 1zm0.38 0.16l0.31 0 0.06 0 0.31 0 0 0.31 0 0 0 0.06 0 0 0 0.31 -0.31 0 -0.06 0 -0.31 0 0 -0.69zm0.38 0.31l0.25 0 0 -0.25 -0.25 0 0 0.25zm-0.31 0l0.25 0 0 -0.25 -0.25 0 0 0.25zm0.25 0.06l-0.25 0 0 0.25 0.25 0 0 -0.25zm0.31 0l-0.25 0 0 0.25 0.25 0 0 -0.25z"/>
+    <text x="2.35" y="2.58"  class="fil3 fnt0">0</text>
+   </g>
+   <rect class="fil4" width="4.43" height="3.38"/>
+  </g>
+ </g>
+</svg>

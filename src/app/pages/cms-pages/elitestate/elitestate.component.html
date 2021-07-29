@@ -1,0 +1,312 @@
+<div class="inner-container commonpage pb-0">
+
+  <div class="blogbanner">
+    <img [src]="baseFilePath +'state_article/'+stateDetails?.section_one?.image_one" alt="" class="img-fluid">
+    <div class="bannerblog-text">
+      <div class="bannerblog-inner">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <h1>{{stateDetails?.section_one?.title_one}}</h1>
+              <div class="whitebanner">
+                <p [innerHTML]="stateDetails?.section_one?.content_one">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-blog">
+    <div class="container">
+      <div class="row mt-5 mb-5 align-items-center">
+        <div class="col-md-4">
+          <div class="imgsec">
+            <img
+              [src]="stateDetails?.section_two?.image_one ? baseFilePath +'state_article/'+stateDetails?.section_two?.image_one : 'assets/images/imagespace.png'"
+              alt="" class="img-fluids">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="textsec">
+            <h3>{{stateDetails?.section_two?.title_one}}</h3>
+            <p [innerHTML]="stateDetails?.section_two?.content_one">
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5 mb-5 align-items-center">
+        <div class="col-md-4 order-12">
+          <div class="imgsec">
+            <img
+              [src]="stateDetails?.section_two?.image_two ? baseFilePath +'state_article/'+stateDetails?.section_two?.image_two : 'assets/images/imagespace.png'"
+              alt="" class="img-fluids">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="textsec">
+            <h3>{{stateDetails?.section_two?.title_two}}</h3>
+            <p [innerHTML]="stateDetails?.section_two?.content_two">
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5 mb-5 align-items-center">
+        <div class="col-sm-12">
+          <h3>{{stateDetails?.section_three?.title_one}}</h3>
+          <p [innerHTML]="stateDetails?.section_three?.content_one"></p>
+        </div>
+      </div>
+
+      <div class="row mt-5 mb-5 align-items-center">
+        <div class="article-box ">
+          <div class="row align-items-center">
+            <div class="col-md-4">
+              <div class="atimg">
+                <img
+                  [src]="stateDetails?.section_three?.image_one ? baseFilePath +'state_article/'+stateDetails?.section_two?.image_one : 'assets/images/imagespace.png'"
+                  alt="" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="attext">
+                <p [innerHTML]="stateDetails?.section_three?.content_two">
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row mt-5 mb-5 align-items-center">
+        <div class="col-sm-12">
+          <p [innerHTML]="stateDetails?.section_two?.content_three"></p>
+        </div>
+      </div>
+
+      <div class="plans mt-5 mb-5">
+        <h2 class="text-center">PLANS AND PRICING</h2>
+        <div class="row mt-5 mb-5 align-items-center">
+          <div class="col-md-4">
+            <div class="imgsec">
+              <img
+                [src]="staticImageList?.elite_appliances_image ? baseFilePath +'state_article/'+staticImageList?.elite_appliances_image : 'assets/images/ap1.png'"
+                alt="" class="img-fluids">
+              <button class="lrnbtn"> <img src="assets/images/lrnmore.png" alt=""></button>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="textsec">
+              <h3>ELITE APPLIANCES</h3>
+              <p [innerHTML]="stateDetails?.section_four?.content_one">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 mb-5 align-items-center">
+          <div class="col-md-4 order-12">
+            <div class="imgsec">
+              <img
+                [src]="staticImageList?.elite_systems_image ? baseFilePath +'state_article/'+staticImageList?.elite_systems_image : 'assets/images/ap2.png'"
+                alt="" class="img-fluids">
+              <button class="lrnbtn"> <img src="assets/images/lrnmore.png" alt=""></button>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="textsec text-right">
+              <h3>ELITE SYSTEMS</h3>
+              <p [innerHTML]="stateDetails?.section_four?.content_two">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 mb-5 align-items-center ">
+
+          <div class="col-md-12">
+            <div class="textsec ">
+              <h3 class="text-center">ELITE COMPLETE</h3>
+              <p [innerHTML]="stateDetails?.section_four?.content_three">
+              </p>
+
+              <div class="text-center">
+                <div class="imgsec" style="display: inline-block; position: relative;">
+                  <img
+                    [src]="staticImageList?.elite_complete_image ? baseFilePath +'state_article/'+staticImageList?.elite_complete_image :'assets/images/ap3.png'"
+                    alt="" class="img-fluids">
+                  <button class="lrnbtn"> <img src="assets/images/lrnmore.png" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 mb-5 align-items-center">
+          <div class="col-md-4">
+            <div class="imgsec">
+              <img
+                [src]="staticImageList?.elite_electronics_image ? baseFilePath +'state_article/'+staticImageList?.elite_electronics_image :'assets/images/ap4.png'"
+                alt="" class="img-fluids">
+              <button class="lrnbtn"> <img src="assets/images/lrnmore.png" alt=""></button>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="textsec">
+              <h3>ELITE ELECTRONICS</h3>
+              <p [innerHTML]="stateDetails?.section_four?.content_four">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 mb-5 align-items-center">
+          <div class="col-md-4 order-12">
+            <div class="imgsec">
+              <img
+                [src]="staticImageList?.elite_sewer_image ? baseFilePath +'state_article/'+staticImageList?.elite_sewer_image :'assets/images/ap5.png'"
+                alt="" class="img-fluids">
+              <button class="lrnbtn"> <img src="assets/images/lrnmore.png" alt=""></button>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="textsec text-right">
+              <h3>ELITE SEWER</h3>
+              <p [innerHTML]="stateDetails?.section_four?.content_five">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 mb-5 align-items-center ">
+
+          <div class="col-md-12">
+            <div class="textsec ">
+              <h3 class="text-center">CUSTOMIZE YOUR OWN</h3>
+              <p [innerHTML]="stateDetails?.section_four?.content_six">
+              </p>
+
+              <div class="text-center">
+                <div class="imgsec  " style="display: inline-block; position: relative;">
+                  <img
+                    [src]="staticImageList?.customize_own_image ? baseFilePath +'state_article/'+staticImageList?.customize_own_image :'assets/images/ap6.png'"
+                    alt="" class="img-fluids">
+                  <button class="lrnbtn"> <img src="assets/images/lrnmore.png" alt=""></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="articlebody">
+    <div class="container-fluid">
+      <div class="article-box">
+        <div class="row align-items-center">
+          <div class="col-sm-12 padding-45 mb-5">
+            <h3>{{stateDetails?.section_five?.title_one}}</h3>
+            <p [innerHTML]="stateDetails?.section_five?.content_one"></p>
+          </div>
+
+          <div class="col-md-4 mt-5 mb-5">
+            <div class="atimg">
+              <img alt="" class="img-fluid"
+                [src]="stateDetails?.section_five?.image_one ? baseFilePath +'state_article/'+stateDetails?.section_five?.image_one : 'assets/images/imagespace.png'" />
+            </div>
+          </div>
+          <div class="col-md-8 mt-5 mb-5 ">
+            <div class="attext">
+              <p [innerHTML]="stateDetails?.section_five?.content_two"></p>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-end align-items-center">
+          <div class="col-sm-12 padding-45">
+            <p [innerHTML]="stateDetails?.section_five?.content_three"></p>
+          </div>
+        </div>
+      </div>
+      <div class="subtitlesec">
+        <div class="article-box">
+          <div class="row align-items-center">
+            <div class="col-sm-12 padding-45">
+              <h3>{{stateDetails?.section_six?.title_one}}</h3>
+              <p [innerHTML]="stateDetails?.section_six?.content_one">
+              </p>
+            </div>
+
+            <div class="col-md-8 ">
+              <div class="attext">
+                <p [innerHTML]="stateDetails?.section_six?.content_two">
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4 mt-5 mb-5">
+              <div class="atimg">
+                <img alt="" class="img-fluid"
+                  [src]="stateDetails?.section_six?.image_one ? baseFilePath +'state_article/'+stateDetails?.section_six?.image_one : 'assets/images/imagespace.png'" />
+              </div>
+            </div>
+            <div class="col-md-12 padding-45 mt-5 mb-5">
+              <p [innerHTML]="stateDetails?.section_six?.content_three">
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reliable pb-0">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Reliable service you can trust. <br>
+            We are here when you need us the most</h4>
+          <p>
+            When things happen, we are here to help. We’re committed to be here for you with the most reliable, caring
+            and
+            prompt response possible. We provide the
+            exceptional service we would like to experience ourselves.
+          </p>
+        </div>
+
+        <div class="col-sm-6">
+          <h4>Switching to us from another provider? <br>
+            We can help</h4>
+          <p>
+            You can change your home warranty service provider at any time. When switching
+            to us, we will fluctuate the waiting period of 30 days to provide you with new
+            coverage from the expiration date of your existing agreement to ensure that your
+            home warranty coverage will not lapse
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="boxsec ">
+      <div class="boxright boxitem boxfull mb-0">
+        <div>
+          <h4>EVERY FIVE MINUTES
+            SOMEONE GETS AN ELITE <br> HOME WARRENTY SERVICE AGREEMENT</h4>
+          <button class="box-btnin" [routerLink]="['/buy-home-warranties']">GET A PLAN </button>
+        </div>
+        <div class="hoverarea">
+          <div>
+            <h4>EVERY FIVE MINUTES SOMEONE GETS AN ELITE <br> HOME WARRENTY SERVICE AGREEMENT</h4>
+            <button class="box-btnin" [routerLink]="['/buy-home-warranties']">GET A PLAN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2355 @@
+<div class="banner">
+  <div class="container flex justify middle">
+    <div class="lftSide">
+      <h2><span>Finally!</span> <strong>A Home Warranty Company That Will Work For You.</strong></h2>
+      <!-- DISCOVER OUR PLANS AND CHOOSE THE RIGHT ONE FOR YOUR HOME. -->
+      <p>We provide the exceptional service we would like to experience ourselves.</p>
+      <!-- <p>Providing complete transparency and fully customized plans to fulfill your needs.</p> -->
+      <p>We’re here to help you protect your home and your wallet.</p>
+    </div>
+    <div class="rgtSide">
+      <img src="assets/images/banner.png" alt="" />
+    </div>
+  </div>
+  <div class="container flex center">
+    <h1>More than just <span>peace of mind</span></h1>
+  </div>
+</div>
+
+
+<div class="iconList">
+  <ul>
+    <li *ngFor="let slide of slides" data-aos="fade-right" data-aos-duration="">
+      <span class="icon">
+        <img [src]="slide.img" alt="" />
+      </span>
+      <span class="content">
+        <h3>{{slide.title}}</h3>
+        <p>{{slide.content}}</p>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<div class="partnerSec">
+  <div class=" flex center middle column">
+    <h1>Partner with us</h1>
+    <span class="greensec">
+      We are now accepting new applications.
+    </span>
+    <p style="position: relative;">
+      <span> WE WORK WITH SERVICE providers and contractors, real estate professionals, title agencies, suppliers and
+        affiliates. We provide an easy to use platform.
+        <br>
+        Together, we can improve customers experience and make everything better.</span>
+    </p>
+    <span class="rosesec">Join our network today.</span>
+    <span class="mobnone">Please select your application from the following options</span>
+    <div class="mobon text-center">
+      <span>Please select your application </span>
+      <br />
+      <!-- <span>   </span> -->
+      <span>from the following options</span>
+    </div>
+  </div>
+</div>
+
+<div class="landing-body">
+  <div class="landing-body-tab">
+    <div class="landing-lft-col border-gradient">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <div class="tab-menu">
+          <a class="nav-item" id="tab1" data-toggle="tab" [ngClass]="{'active': formType === 'csp'}"
+            (click)="registrationMenuChange('csp'); scrollto(target); " href="#tabcon1" role="tab"
+            aria-controls="nav-home" [attr.aria-selected]="formType === 'csp'"> <span>
+              <img src="assets/images/certified-service.svg" alt="" />
+            </span><strong>CERTIFIED SERVICE PROVIDERS</strong>
+          </a>
+        </div>
+        <div class="tab-menu">
+          <a class="nav-item" id="tab2" data-toggle="tab" [ngClass]="{'active': formType === 'rep'}"
+            (click)="registrationMenuChange('rep'); scrollto(target);" href="#tabcon2" role="tab"
+            aria-controls="nav-profile" [attr.aria-selected]="formType === 'rep'"> <span>
+              <img src="assets/images/real-estate.svg" alt="" />
+            </span><strong>REAL ESTATE PROFESSIONALS</strong></a>
+        </div>
+        <div class="tab-menu">
+          <a class="nav-item" id="tab3" data-toggle="tab" [ngClass]="{'active': formType === 'title_agencies'}"
+            (click)="registrationMenuChange('title_agencies'); scrollto(target);" href="#tabcon3" role="tab"
+            aria-controls="nav-contact" [attr.aria-selected]="formType === 'title_agencies'"> <span>
+              <img src="assets/images/titles-agencies.svg" alt="" />
+            </span><strong>TITLE AGENCIES</strong></a>
+        </div>
+        <div class="tab-menu">
+          <a class="nav-item" id="tab4" data-toggle="tab" [ngClass]="{'active': formType === 'vendors'}"
+            (click)="registrationMenuChange('vendors'); scrollto(target);" href="#tabcon4" role="tab"
+            aria-controls="nav-profile" [attr.aria-selected]="formType === 'vendors'"> <span>
+              <img src="assets/images/vendors.svg" alt="" />
+            </span><strong>SUPPLIERS</strong></a>
+        </div>
+        <div class="tab-menu">
+          <a class="nav-item" id="tab5" data-toggle="tab" [ngClass]="{'active': formType === 'affiliates'}"
+            (click)="registrationMenuChange('affiliates'); scrollto(target);" href="#tabcon5" role="tab"
+            aria-controls="nav-contact" [attr.aria-selected]="formType === 'affiliates'"> <span>
+              <img src="assets/images/affiliates.svg" alt="" />
+            </span><strong>AFFILIATES</strong></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="landing-rt-col" #target>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade" [ngClass]="{'active show': formType === 'csp'}" id="tabcon1" role="tabpanel"
+          aria-labelledby="tab1">
+          <div class="land-form">
+            <div class="land-form-title">
+              <h3>CERTIFIED SERVICE PROVIDERS</h3>
+              <p *ngIf="stepper.selectedIndex !== 0">{{providersFormQuestion?.csp[selectedInddex]}}</p>
+            </div>
+
+
+            <mat-horizontal-stepper [linear]="false" #stepper>
+              <mat-step [stepControl]="ChooseFormgroup">
+                <p> Would you like to go over and edit your previous application ?</p>
+                <div class="btn-sec" style="flex-direction: column;">
+                  <div class="form-fld text-center" style="width: 100%;">
+                    <div class="actionControl fullSzBtn">
+                      <button type="button" class="submit-btn" (click)="accessForm('acsess')">
+                        <span>ACCESS MY APPLICATION</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center" style="width: 100%;">
+                    <div class="actionControl fullSzBtn">
+                      <button type="button" class="submit-btn" (click)="accessForm('New')">
+                        <span>CREATE NEW APPLICATION</span>
+                      </button>
+
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+
+              <mat-step [stepControl]="basicInfoForm">
+                <form [formGroup]="basicInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="name" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Uname')" (blur)="removelastspace($event, 'Uname')">
+                      <label>Enter Full Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('required')">
+                      This field is required.</mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('pattern')">
+                      Full name is incorrect.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="mobile" placeholder="">
+                      <label>Enter Mobile Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('required')">
+                      This field is required.</mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('minlength')">
+                      Mobile number must have 10 digits.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Enter Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('required')">
+                      This field is required.</mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.value !== '' && basicInfoForm.controls.email.hasError('pattern')">
+                      Email is invalid.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="actionControl">
+                      <button type="button" class="submit-btn"
+                        (click)="validateForm(stepper, 'basicInfoForm', 1, 'companyInfoForm')"><span>CONTINUE</span></button>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="companyInfoForm">
+                <form [formGroup]="companyInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="companyName" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Cname')" (blur)="removelastspace($event, 'Cname')">
+                      <label>Company Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('pattern')">
+                      Company name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="ein_number" placeholder="" maxlength="10"
+                        mask="00-0000000">
+                      <label>EIN Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.ein_number.touched && companyInfoForm.controls.ein_number.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.ein_number.touched && companyInfoForm.controls.ein_number.hasError('minlength')">
+                      Minimum 9 numbers is required.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="address" placeholder="" #csp disabled>
+                      <label>Company Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.address.touched && companyInfoForm.controls.address.hasError('required')">
+                      This field is required.</mat-error>
+                    <ng-container
+                      *ngIf="companyInfoForm.controls.address.touched && !companyInfoForm.controls.address.hasError('required')">
+                      <mat-error *ngIf="!addressSeldcted">
+                        Please select any address from the list.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.state.hasError('required') && addressSeldcted">
+                        Address must contains any state.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.city.hasError('required') && addressSeldcted">
+                        Address must contains any city.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.zipCode.hasError('required') && addressSeldcted">
+                        Address must contains any zipcode.
+                      </mat-error>
+                    </ng-container>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="additionalAddress" placeholder="" #csp>
+                      <label>Apartment, floor #</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.additionalAddress.touched && companyInfoForm.controls.additionalAddress.hasError('required')">
+                      This field is required.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="zipCode" placeholder="" #csp readonly>
+                      <label>Zipcode</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.zipCode.touched && companyInfoForm.controls.zipCode.hasError('required')">
+                      This field is required.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="city" placeholder="" #csp>
+                      <label>City</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.city.touched && companyInfoForm.controls.city.hasError('required')">
+                      This field is required.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="state" placeholder="" #csp>
+                      <label>State</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.state.touched && companyInfoForm.controls.state.hasError('required')">
+                      This field is required.</mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn" (click)="goBack(stepper, 'basicInfoForm', 0)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper, 'companyInfoForm', 2, 'businessContactForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="businessContactForm">
+                <form [formGroup]="businessContactForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="business_email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Business Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('pattern')">
+                      Email is invalid.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="business_phone" placeholder="">
+                      <label>Business Phone Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('minlength')">
+                      Phone number must have 10 digits.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper, 'companyInfoForm', 1)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper, 'businessContactForm', 3, 'licensedTechniciansForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="licensedTechniciansForm">
+                <form [formGroup]="licensedTechniciansForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="0*" matInput formControlName="licensed_employees" placeholder="">
+                      <label>Number of Licensed Technicians</label>
+                    </div>
+                    <mat-error
+                      *ngIf="licensedTechniciansForm.controls.licensed_employees.touched && licensedTechniciansForm.controls.licensed_employees.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper, 'businessContactForm', 2)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper, 'licensedTechniciansForm', 4, 'additionalStateForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="additionalStateForm">
+                <form [formGroup]="additionalStateForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input matInput type="text" formControlName="availability" placeholder=""
+                        [matAutocomplete]="autounique1" [disabled]="additionalStateForm.controls.nationWide.value"
+                        (keyup)="searchfilter($event)" multiple>
+                      <label>Add State</label>
+                      <mat-autocomplete #autounique1="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let State of filteredStates" [value]="selectedState">
+                          <div (click)="stateOptionClicked($event, State)">
+                            <mat-checkbox [checked]="State.selected" (change)="toggleStateSelection(State)"
+                              (click)="$event.stopPropagation()">
+                              {{State?.title}}
+                            </mat-checkbox>
+                          </div>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <div *ngIf="selectedState">
+                      <ul
+                        style="list-style: none; margin: 0; padding: 10px 10px 0 10px; display: flex; flex-wrap: wrap;">
+                        <li *ngFor="let item of selectedState">
+                          <mat-checkbox [checked]="item?.selected" (click)="removeState(item)">
+                            <p>
+                              {{item?.title}}
+                            </p>
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    Or
+                  </div>
+                  <div class="form-fld text-center">
+                    <mat-checkbox formControlName="nationWide">Nationwide</mat-checkbox>
+                    <mat-error
+                      *ngIf="additionalStateForm.controls.nationWide.touched && additionalStateForm.controls.nationWide.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper, 'licensedTechniciansForm', 3)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper, 'additionalStateForm', 5, 'insuranceInfoForm')"><span>CONTINUE</span></button>
+                      </div>
+                      <!-- [disabled]="states.length === 0" -->
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="insuranceInfoForm">
+                <form [formGroup]="insuranceInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="contractor_licence_no" placeholder="">
+                      <label>Contractor License No:</label>
+                      <mat-error
+                        *ngIf="insuranceInfoForm.controls.contractor_licence_no.touched && insuranceInfoForm.controls.contractor_licence_no.hasError('required')">
+                        This field is required.
+                      </mat-error>
+                    </div>
+
+                    <br>
+                    <div class="formControl">
+                      <div class="formctrlinner">
+                        <span class="uploadfile">
+                          <input type="file" class="hidden" #uploadLicence
+                            (change)="uploadDocumentInit($event, uploadLicence)" accept=".pdf" multiple>
+
+                          <a class="upload-btn" (click)="uploadLicence.click()">
+                            <span class="material-icons">
+                              cloud_upload
+                            </span> Upload Contractor License</a>
+                        </span>
+                      </div>
+                    </div>
+
+                    <mat-checkbox formControlName="Option_select">Provide Later
+                    </mat-checkbox>
+                    <div *ngIf="insuranceInfoForm.controls.contractor_licence_upload.value">
+                      <div class="upload_file"
+                        *ngFor="let item of insuranceInfoForm.controls.contractor_licence_upload.value; let i=index">
+                        <p>
+                          {{item?.name}}
+                          &nbsp;
+                        </p>
+                        <i class="fas fa-trash-alt" (click)="removeDocument(i, 'contractor_licence_upload')"></i>
+                        &nbsp;&nbsp;
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="insurance_carrier" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'insurer')"
+                        (blur)="removelastspace($event, 'insurer')">
+                      <label>Name of insurer</label>
+                    </div>
+                    <mat-error
+                      *ngIf="insuranceInfoForm.controls.insurance_carrier.touched && insuranceInfoForm.controls.insurance_carrier.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="policy_no" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'policy_no')"
+                        (blur)="removelastspace($event, 'policy_no')">
+                      <label>Insurance Policy No:</label>
+                      <mat-error
+                        *ngIf="insuranceInfoForm.controls.policy_no.touched && insuranceInfoForm.controls.policy_no.hasError('required')">
+                        This field is required.
+                      </mat-error>
+                    </div>
+                    <br>
+                    <div class="formControl">
+                      <div class="formctrlinner">
+                        <span class="uploadfile">
+                          <input type="file" class="hidden" #policyDoc
+                            (change)="uploadDocumentInsuranceInit($event, policyDoc)" accept=".pdf" multiple>
+                          <a class="upload-btn" (click)="policyDoc.click()"><span class="material-icons">
+                              cloud_upload
+                            </span> Upload Insurance Policy</a>
+                        </span>
+                      </div>
+                    </div>
+                    <mat-checkbox formControlName="choose_option">Provide Later
+                    </mat-checkbox>
+
+                    <!-- <p style="float: right;" *ngIf="insuranceInfoForm.controls.policy_document.value">
+                      {{insuranceInfoForm.controls.policy_document.value.name}}
+                    </p> -->
+                    <div *ngIf="insuranceInfoForm.controls.policy_document.value">
+                      <div class="upload_file"
+                        *ngFor="let item of insuranceInfoForm.controls.policy_document.value; let i=index">
+                        <p>
+                          {{item?.name}}
+                          &nbsp;
+                        </p>
+                        <i class="fas fa-trash-alt" (click)="removeDocument(i, 'policy_document')"></i>
+                        &nbsp;&nbsp;
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper, 'additionalStateForm', 4)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper, 'insuranceInfoForm', 6,'ServiceDiagnosisForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="ServiceDiagnosisForm">
+                <form [formGroup]="ServiceDiagnosisForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input formControlName="fee" type="text" matInput (keypress)="isNumberKey($event)"
+                        (keydown)="Addsign($event)" />
+                      <label>Diagnosis Service Fee: </label>
+                    </div>
+                    <mat-error
+                      *ngIf="ServiceDiagnosisForm.controls.fee.touched && ServiceDiagnosisForm.controls.fee.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+
+                  <div class="form-fld text-center">
+                    <p>Please confirm service fee is factored into the cost of labor:</p>
+                    <mat-radio-group aria-label="Select an option" formControlName="factored">
+                      <mat-radio-button value="Yes" checked>Yes</mat-radio-button>
+                      <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-error
+                      *ngIf="ServiceDiagnosisForm.controls.factored.touched && ServiceDiagnosisForm.controls.factored.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper, 'insuranceInfoForm', 5)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper, 'ServiceDiagnosisForm', 7, 'preformServicesForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="preformServicesForm">
+                <form [formGroup]="preformServicesForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input matInput type="text" formControlName="items" [matAutocomplete]="auto_service"
+                        (keyup)="serarchService($event)">
+                      <mat-autocomplete #auto_service="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let service of filteredService" [value]="selectedUsers">
+                          <div (click)="optionClicked($event, service)">
+                            <mat-checkbox [checked]="service.selected" (change)="toggleSelection(service)"
+                              (click)="$event.stopPropagation()">
+                              {{service?.title}}
+                            </mat-checkbox>
+                          </div>
+                        </mat-option>
+                      </mat-autocomplete>
+                      <label>Select Services</label>
+                    </div>
+                    <div *ngIf="selectedUsers">
+                      <ul
+                        style="list-style: none; margin: 0; padding: 10px 10px 0 10px; display: flex; flex-wrap: wrap;">
+                        <li *ngFor="let item of selectedUsers">
+                          <mat-checkbox [checked]="item?.selected" (click)="removeOption(item)">
+                            <p>
+                              {{item?.title}}
+                            </p>
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </div>
+                    <mat-error
+                      *ngIf="preformServicesForm.controls.items.touched && preformServicesForm.controls.items.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper, 'ServiceDiagnosisForm', 6)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper, 'preformServicesForm', 8,'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="commentBoxForm">
+                <form [formGroup]="commentBoxForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl" style="height: 75px;">
+                      <textarea formControlName="comments" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'comments')"
+                        (blur)="removelastspace($event, 'comments')"></textarea>
+                      <label>Comment box</label>
+                    </div>
+                    <mat-error
+                      *ngIf="commentBoxForm.controls.comments.touched && commentBoxForm.controls.comments.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper, 'preformServicesForm', 7)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper, 'commentBoxForm', 9, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="stepFinishForm">
+                <form [formGroup]="stepFinishForm">
+                  <div class="form-fld text-center">
+                    <p>Thank you for your interest in becoming one of our preferred service providers, you will
+                      receive
+                      email confirmation along with your account login credentials once your service provider account
+                      is
+                      approved.</p>
+                  </div>
+                </form>
+              </mat-step>
+
+            </mat-horizontal-stepper>
+          </div>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'active show': formType === 'rep'}" id="tabcon2" role="tabpanel"
+          aria-labelledby="tab2">
+          <div class="land-form">
+            <div class="land-form-title">
+              <h3>REAL ESTATE PROFESSIONALS</h3>
+              <p>{{providersFormQuestion?.rep[selectedInddex]}}</p>
+            </div>
+            <mat-horizontal-stepper [linear]="false" #stepper1>
+
+              <mat-step [stepControl]="basicInfoForm">
+                <form [formGroup]="basicInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="name" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Uname')" (blur)="removelastspace($event, 'Uname')">
+                      <label>Enter Full Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('pattern')">
+                      Full name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="mobile" placeholder="">
+                      <label>Enter Mobile Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('minlength')">
+                      Mobile number must have 10 digits.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Enter Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.value !== '' && basicInfoForm.controls.email.hasError('pattern')">
+                      Email is invalid.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="actionControl">
+                      <button type="button" class="submit-btn"
+                        (click)="validateForm(stepper1, 'basicInfoForm', 1, 'companyInfoForm')"><span>CONTINUE</span></button>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="companyInfoForm">
+                <form [formGroup]="companyInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="companyName" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Cname')" (blur)="removelastspace($event, 'Cname')">
+                      <label>Company Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('pattern')">
+                      Company name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="address" placeholder="" #rep>
+                      <label>Company Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.address.touched && companyInfoForm.controls.address.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <ng-container
+                      *ngIf="companyInfoForm.controls.address.touched && !companyInfoForm.controls.address.hasError('required')">
+                      <mat-error *ngIf="!addressSeldcted">
+                        Please select any address from the list.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.state.hasError('required') && addressSeldcted">
+                        Address must contains any state.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.city.hasError('required') && addressSeldcted">
+                        Address must contains any city.
+                      </mat-error>
+
+                      <mat-error *ngIf="companyInfoForm.controls.zipCode.hasError('required') && addressSeldcted">
+                        Address must contains any zipcode.
+                      </mat-error>
+                    </ng-container>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="additionalAddress" placeholder="" #csp>
+                      <label>Apartment, floor #</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.additionalAddress.touched && companyInfoForm.controls.additionalAddress.hasError('required')">
+                      This field is required.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="zipCode" placeholder="" #csp readonly>
+                      <label>Zipcode</label>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="city" placeholder="" #csp>
+                      <label>City</label>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="state" placeholder="" #csp>
+                      <label>State</label>
+                    </div>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper1, 'companyInfoForm', 0)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper1, 'companyInfoForm', 2, 'businessContactForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="businessContactForm">
+                <form [formGroup]="businessContactForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="business_email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Business Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('pattern')">
+                      Email is invalid.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="business_phone" placeholder="">
+                      <label>Business Phone Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('minlength')">
+                      Phone number must have 10 digits.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper1, 'businessContactForm', 1)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper1, 'businessContactForm', 3, 'licensedTechniciansForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="licensedTechniciansForm">
+                <form [formGroup]="licensedTechniciansForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="0*" matInput formControlName="licensed_employees" placeholder="">
+                      <label>Number of Licensed Technicians</label>
+                    </div>
+                    <mat-error
+                      *ngIf="licensedTechniciansForm.controls.licensed_employees.touched && licensedTechniciansForm.controls.licensed_employees.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper1, 'licensedTechniciansForm', 2)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper1, 'licensedTechniciansForm', 4, 'additionalStateForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="additionalStateForm">
+                <form [formGroup]="additionalStateForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input matInput type="text" formControlName="availability" placeholder=""
+                        [matAutocomplete]="autounique1" [disabled]="additionalStateForm.controls.nationWide.value"
+                        (keyup)="searchfilter($event)" multiple>
+                      <label>Add State</label>
+                      <mat-autocomplete #autounique1="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let State of filteredStates" [value]="selectedState">
+                          <div (click)="stateOptionClicked($event, State)">
+                            <mat-checkbox [checked]="State.selected" (change)="toggleStateSelection(State)"
+                              (click)="$event.stopPropagation()">
+                              {{State?.title}}
+                            </mat-checkbox>
+                          </div>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <div *ngIf="selectedState">
+                      <ul
+                        style="list-style: none; margin: 0; padding: 10px 10px 0 10px; display: flex; flex-wrap: wrap;">
+                        <li *ngFor="let item of selectedState">
+                          <mat-checkbox [checked]="item?.selected" (click)="removeState(item)">
+                            <p>
+                              {{item?.title}}
+                            </p>
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    Or
+                  </div>
+                  <div class="form-fld text-center">
+                    <mat-checkbox formControlName="nationWide">Nationwide</mat-checkbox>
+                    <mat-error
+                      *ngIf="additionalStateForm.controls.nationWide.touched && additionalStateForm.controls.nationWide.hasError('required')">
+                      This field is required.
+                    </mat-error>
+
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper1, 'additionalStateForm', 3)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper1, 'additionalStateForm', 5, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="commentBoxForm">
+                <form [formGroup]="commentBoxForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl" style="height: 75px;">
+                      <textarea matInput formControlName="comments" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'comments')"
+                        (blur)="removelastspace($event, 'comments')"></textarea>
+                      <label>Comment box</label>
+                    </div>
+                    <mat-error
+                      *ngIf="commentBoxForm.controls.comments.touched && commentBoxForm.controls.comments.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper1, 'commentBoxForm', 4)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper1, 'commentBoxForm', 9, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="stepFinishForm">
+                <form [formGroup]="stepFinishForm">
+                  <div class="form-fld text-center">
+                    <p>Thank you for your interest in becoming one of our preferred real estate firms, you will receive
+                      email confirmation along with your account login credentials once your real estate account is
+                      approved.</p>
+                  </div>
+                </form>
+              </mat-step>
+
+            </mat-horizontal-stepper>
+          </div>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'active show': formType === 'title_agencies'}" id="tabcon3"
+          role="tabpanel" aria-labelledby="tab3">
+          <div class="land-form">
+            <div class="land-form-title">
+              <h3>TITLE AGENCIES</h3>
+              <p>{{providersFormQuestion?.title_agencies[selectedInddex]}}</p>
+            </div>
+
+            <mat-horizontal-stepper [linear]="false" #stepper2>
+
+              <mat-step [stepControl]="basicInfoForm">
+                <form [formGroup]="basicInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="name" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Uname')" (blur)="removelastspace($event, 'Uname')">
+                      <label>Enter Full Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('pattern')">
+                      Full name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="mobile" placeholder="">
+                      <label>Enter Mobile Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('minlength')">
+                      Mobile number must have 10 digits.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Enter Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('pattern')">
+                      Email is invalid.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="actionControl">
+                      <button type="button" class="submit-btn"
+                        (click)="validateForm(stepper2, 'basicInfoForm', 1, 'companyInfoForm')"><span>CONTINUE</span></button>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="companyInfoForm">
+                <form [formGroup]="companyInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="companyName" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Cname')" (blur)="removelastspace($event, 'Cname')">
+                      <label>Company Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('pattern')">
+                      Company name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="address" placeholder="" #title_agencies>
+                      <label>Company Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.address.touched && companyInfoForm.controls.address.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <ng-container
+                      *ngIf="companyInfoForm.controls.address.touched && !companyInfoForm.controls.address.hasError('required')">
+                      <mat-error *ngIf="!addressSeldcted">
+                        Please select any address from the list.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.state.hasError('required') && addressSeldcted">
+                        Address must contains any state.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.city.hasError('required') && addressSeldcted">
+                        Address must contains any city.
+                      </mat-error>
+
+                      <mat-error *ngIf="companyInfoForm.controls.zipCode.hasError('required') && addressSeldcted">
+                        Address must contains any zipcode.
+                      </mat-error>
+                    </ng-container>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="additionalAddress" placeholder="" #csp>
+                      <label>Apartment, floor #</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.additionalAddress.touched && companyInfoForm.controls.additionalAddress.hasError('required')">
+                      This field is required.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="zipCode" placeholder="" #csp readonly>
+                      <label>Zipcode</label>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="city" placeholder="" #csp>
+                      <label>City</label>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="state" placeholder="" #csp>
+                      <label>State</label>
+                    </div>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper2, 'companyInfoForm', 0)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper2, 'companyInfoForm', 2, 'businessContactForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="businessContactForm">
+                <form [formGroup]="businessContactForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="business_email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Business Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('pattern')">
+                      Email is invalid.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="business_phone" placeholder="">
+                      <label>Business Phone Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('minlength')">
+                      Phone number must have 10 digits.
+                    </mat-error>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper2, 'businessContactForm', 1)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper2, 'businessContactForm', 3, 'licensedTechniciansForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="licensedTechniciansForm">
+                <form [formGroup]="licensedTechniciansForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="0*" matInput formControlName="licensed_employees" placeholder="">
+                      <label>Number of Agents</label>
+                    </div>
+                    <mat-error
+                      *ngIf="licensedTechniciansForm.controls.licensed_employees.touched && licensedTechniciansForm.controls.licensed_employees.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper2, 'licensedTechniciansForm', 2)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper2, 'licensedTechniciansForm', 4, 'additionalStateForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="additionalStateForm">
+                <form [formGroup]="additionalStateForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input matInput type="text" formControlName="availability" placeholder=""
+                        [matAutocomplete]="autounique1" [disabled]="additionalStateForm.controls.nationWide.value"
+                        (keyup)="searchfilter($event)" multiple>
+                      <label>Add State</label>
+                      <mat-autocomplete #autounique1="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let State of filteredStates" [value]="selectedState">
+                          <div (click)="stateOptionClicked($event, State)">
+                            <mat-checkbox [checked]="State.selected" (change)="toggleStateSelection(State)"
+                              (click)="$event.stopPropagation()">
+                              {{State?.title}}
+                            </mat-checkbox>
+                          </div>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <div *ngIf="selectedState">
+                      <ul
+                        style="list-style: none; margin: 0; padding: 10px 10px 0 10px; display: flex; flex-wrap: wrap;">
+                        <li *ngFor="let item of selectedState">
+                          <mat-checkbox [checked]="item?.selected" (click)="removeState(item)">
+                            <p>
+                              {{item?.title}}
+                            </p>
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    Or
+                  </div>
+                  <div class="form-fld text-center">
+                    <mat-checkbox formControlName="nationWide">Nationwide</mat-checkbox>
+                    <mat-error
+                      *ngIf="additionalStateForm.controls.nationWide.touched && additionalStateForm.controls.nationWide.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper2, 'additionalStateForm', 3)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper2, 'additionalStateForm', 5, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="commentBoxForm">
+                <form [formGroup]="commentBoxForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl" style="height: 75px;">
+                      <textarea matInput formControlName="comments" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'comments')"
+                        (blur)="removelastspace($event, 'comments')">
+                      </textarea>
+                      <label>Comment box</label>
+                    </div>
+                    <mat-error
+                      *ngIf="commentBoxForm.controls.comments.touched && commentBoxForm.controls.comments.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper2, 'commentBoxForm', 4)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper2, 'commentBoxForm', 9, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="stepFinishForm">
+                <form [formGroup]="stepFinishForm">
+                  <div class="form-fld text-center">
+                    <p>Thank you for your interest in becoming one of our preferred title companies, you will receive
+                      email confirmation along with your account login credentials once your title company account is
+                      approved.</p>
+                  </div>
+                </form>
+              </mat-step>
+
+            </mat-horizontal-stepper>
+          </div>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'active show': formType === 'vendors'}" id="tabcon4" role="tabpanel"
+          aria-labelledby="tab4">
+          <div class="land-form">
+            <div class="land-form-title">
+              <h3>SUPPLIERS</h3>
+              <p>{{providersFormQuestion?.vendors[selectedInddex]}}</p>
+            </div>
+            <mat-horizontal-stepper [linear]="false" #stepper3>
+
+              <mat-step [stepControl]="basicInfoForm">
+                <form [formGroup]="basicInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="name" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Uname')" (blur)="removelastspace($event, 'Uname')">
+                      <label>Enter Full Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('pattern')">
+                      Full name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="mobile" placeholder="">
+                      <label>Enter Mobile Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('minlength')">
+                      Mobile number must have 10 digits.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Enter Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('pattern')">
+                      Email is invalid.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="actionControl">
+                      <button type="button" class="submit-btn"
+                        (click)="validateForm(stepper3, 'basicInfoForm', 1, 'companyInfoForm')"><span>CONTINUE</span></button>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="companyInfoForm">
+                <form [formGroup]="companyInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="companyName" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Cname')" (blur)="removelastspace($event, 'Cname')">
+                      <label>Company Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('pattern')">
+                      Company name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="address" placeholder="" #vendors>
+                      <label>Company Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.address.touched && companyInfoForm.controls.address.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <ng-container
+                      *ngIf="companyInfoForm.controls.address.touched && !companyInfoForm.controls.address.hasError('required')">
+                      <mat-error *ngIf="!addressSeldcted">
+                        Please select any address from the list.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.state.hasError('required') && addressSeldcted">
+                        Address must contains any state.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.city.hasError('required') && addressSeldcted">
+                        Address must contains any city.
+                      </mat-error>
+
+                      <mat-error *ngIf="companyInfoForm.controls.zipCode.hasError('required') && addressSeldcted">
+                        Address must contains any zipcode.
+                      </mat-error>
+                    </ng-container>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="additionalAddress" placeholder="" #csp>
+                      <label>Apartment, floor #</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.additionalAddress.touched && companyInfoForm.controls.additionalAddress.hasError('required')">
+                      This field is required.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="zipCode" placeholder="" #csp readonly>
+                      <label>Zipcode</label>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="city" placeholder="" #csp>
+                      <label>City</label>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="state" placeholder="" #csp>
+                      <label>State</label>
+                    </div>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper3, 'companyInfoForm', 0)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper3, 'companyInfoForm', 2, 'businessContactForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="businessContactForm">
+                <form [formGroup]="businessContactForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="business_email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Business Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('pattern')">
+                      Email is invalid.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="business_phone" placeholder="">
+                      <label>Business Phone Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('minlength')">
+                      Phone number must have 10 digits.
+                    </mat-error>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper3, 'businessContactForm', 1)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper3, 'businessContactForm', 3, 'additionalStateForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="additionalStateForm">
+                <form [formGroup]="additionalStateForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input matInput type="text" formControlName="availability" placeholder=""
+                        [matAutocomplete]="autounique1" [disabled]="additionalStateForm.controls.nationWide.value"
+                        (keyup)="searchfilter($event)" multiple>
+                      <label>Add State</label>
+                      <mat-autocomplete #autounique1="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let State of filteredStates" [value]="selectedState">
+                          <div (click)="stateOptionClicked($event, State)">
+                            <mat-checkbox [checked]="State.selected" (change)="toggleStateSelection(State)"
+                              (click)="$event.stopPropagation()">
+                              {{State?.title}}
+                            </mat-checkbox>
+                          </div>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                    <div *ngIf="selectedState">
+                      <ul
+                        style="list-style: none; margin: 0; padding: 10px 10px 0 10px; display: flex; flex-wrap: wrap;">
+                        <li *ngFor="let item of selectedState">
+                          <mat-checkbox [checked]="item?.selected" (click)="removeState(item)">
+                            <p>
+                              {{item?.title}}
+                            </p>
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    Or
+                  </div>
+                  <div class="form-fld text-center">
+                    <mat-checkbox formControlName="nationWide">Nationwide</mat-checkbox>
+                    <mat-error
+                      *ngIf="additionalStateForm.controls.nationWide.touched && additionalStateForm.controls.nationWide.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper3, 'additionalStateForm', 2)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper3, 'additionalStateForm', 4, 'preformServicesForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="preformServicesForm">
+                <form [formGroup]="preformServicesForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input matInput type="text" formControlName="items" [matAutocomplete]="auto_service"
+                        (keyup)="serarchService($event)">
+                      <mat-autocomplete #auto_service="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let service of filteredService" [value]="selectedUsers">
+                          <div (click)="optionClicked($event, service)">
+                            <mat-checkbox [checked]="service.selected" (change)="toggleSelection(service)"
+                              (click)="$event.stopPropagation()">
+                              {{service?.title}}
+                            </mat-checkbox>
+                          </div>
+                        </mat-option>
+                      </mat-autocomplete>
+                      <label>Select Services</label>
+                    </div>
+                    <div *ngIf="selectedUsers">
+                      <ul style="list-style: none;">
+                        <li *ngFor="let item of selectedUsers">
+                          <mat-checkbox [checked]="item?.selected" (click)="removeOption(item)">
+                            <p>
+                              {{item?.title}}
+                            </p>
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </div>
+                    <mat-error
+                      *ngIf="preformServicesForm.controls.items.touched && preformServicesForm.controls.items.hasError('required')">
+                      This field is required.
+                    </mat-error>
+
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper3, 'preformServicesForm', 3)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper3, 'preformServicesForm', 5, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="commentBoxForm">
+                <form [formGroup]="commentBoxForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl" style="height:75px;">
+                      <textarea matInput formControlName="comments" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'comments')"
+                        (blur)="removelastspace($event, 'comments')">
+                                    </textarea>
+                      <label>Comment box</label>
+                    </div>
+                    <mat-error
+                      *ngIf="commentBoxForm.controls.comments.touched && commentBoxForm.controls.comments.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper3, 'commentBoxForm', 4)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper3, 'commentBoxForm', 9, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="stepFinishForm">
+                <form [formGroup]="stepFinishForm">
+                  <div class="form-fld text-center">
+                    <p>Thank you for your interest in becoming one of our preferred suppliers, you will receive email
+                      confirmation along with your account login credentials once your vendor account is approved.</p>
+                  </div>
+                </form>
+              </mat-step>
+
+            </mat-horizontal-stepper>
+          </div>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'active show': formType === 'affiliates'}" id="tabcon5" role="tabpanel"
+          aria-labelledby="tab5">
+          <div class="land-form">
+            <div class="land-form-title">
+              <h3>AFFILIATES</h3>
+              <p>{{providersFormQuestion?.affiliates[selectedInddex]}}</p>
+            </div>
+            <mat-horizontal-stepper [linear]="false" #stepper4>
+
+              <mat-step [stepControl]="basicInfoForm">
+                <form [formGroup]="basicInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="name" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Uname')" (blur)="removelastspace($event, 'Uname')">
+                      <label>Enter Full Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('pattern')">
+                      Full name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="mobile" placeholder="">
+                      <label>Enter Mobile Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('minlength')">
+                      Mobile number must have 10 digits.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Enter Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('pattern')">
+                      Email is invalid.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="actionControl">
+                      <button type="button" class="submit-btn"
+                        (click)="validateForm(stepper4, 'basicInfoForm', 1, 'companyInfoForm')"><span>CONTINUE</span></button>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="companyInfoForm">
+                <form [formGroup]="companyInfoForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="companyName" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'Cname')" (blur)="removelastspace($event, 'Cname')">
+                      <label>Company Name</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('pattern')">
+                      Company name is incorrect.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="address" placeholder="" #affiliates>
+                      <label>Company Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.address.touched && companyInfoForm.controls.address.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <ng-container
+                      *ngIf="companyInfoForm.controls.address.touched && !companyInfoForm.controls.address.hasError('required')">
+                      <mat-error *ngIf="!addressSeldcted">
+                        Please select any address from the list.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.state.hasError('required') && addressSeldcted">
+                        Address must contains any state.
+                      </mat-error>
+                      <mat-error *ngIf="companyInfoForm.controls.city.hasError('required') && addressSeldcted">
+                        Address must contains any city.
+                      </mat-error>
+
+                      <mat-error *ngIf="companyInfoForm.controls.zipCode.hasError('required') && addressSeldcted">
+                        Address must contains any zipcode.
+                      </mat-error>
+                    </ng-container>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="additionalAddress" placeholder="" #csp>
+                      <label>Apartment, floor #</label>
+                    </div>
+                    <mat-error
+                      *ngIf="companyInfoForm.controls.additionalAddress.touched && companyInfoForm.controls.additionalAddress.hasError('required')">
+                      This field is required.</mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="zipCode" placeholder="" #csp readonly>
+                      <label>Zipcode</label>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="city" placeholder="" #csp>
+                      <label>City</label>
+                    </div>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="state" placeholder="" #csp>
+                      <label>State</label>
+                    </div>
+                  </div>
+
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper4, 'companyInfoForm', 0)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper4, 'companyInfoForm', 2,'businessContactForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="businessContactForm">
+                <form [formGroup]="businessContactForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" matInput formControlName="business_email" placeholder=""
+                        (keyup)="restrictSpace($event)">
+                      <label>Business Email Address</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('pattern')">
+                      Email is invalid.
+                    </mat-error>
+                  </div>
+                  <div class="form-fld text-center">
+                    <div class="formControl">
+                      <input type="text" mask="(000) 000-0000" matInput formControlName="business_phone" placeholder="">
+                      <label>Business Phone Number</label>
+                    </div>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                    <mat-error
+                      *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('minlength')">
+                      Phone number must have 10 digits.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper4, 'businessContactForm', 1)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper4, 'businessContactForm', 3, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="commentBoxForm">
+                <form [formGroup]="commentBoxForm">
+                  <div class="form-fld text-center">
+                    <div class="formControl" style="height: 75px;">
+                      <textarea matInput formControlName="comments" placeholder=""
+                        (keyup)="replaceMorethenoneSpace($event, 'comments')"
+                        (blur)="removelastspace($event, 'comments')">
+                      </textarea>
+                      <label>Comment box</label>
+                    </div>
+                    <mat-error
+                      *ngIf="commentBoxForm.controls.comments.touched && commentBoxForm.controls.comments.hasError('required')">
+                      This field is required.
+                    </mat-error>
+                  </div>
+                  <div class="btn-sec">
+                    <div class="form-fld text-center" style="margin-bottom: 0px;">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="goBack(stepper4, 'commentBoxForm', 2)"><span>GO
+                            BACK</span></button>
+                      </div>
+                    </div>
+                    <div class="form-fld text-center">
+                      <div class="actionControl">
+                        <button type="button" class="submit-btn"
+                          (click)="validateForm(stepper4, 'commentBoxForm', 9, 'commentBoxForm')"><span>CONTINUE</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="stepFinishForm">
+                <form [formGroup]="stepFinishForm">
+                  <div class="form-fld text-center">
+                    <p>Thank you for your interest in becoming one of our preferred affiliate companies, you will
+                      receive email confirmation along with your account login credentials once your affiliate account
+                      is approved.</p>
+                  </div>
+                </form>
+              </mat-step>
+
+            </mat-horizontal-stepper>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="statesSec" data-aos="fade-right" data-aos-duration="">
+  <div class="container flex center column">
+    <h2>HOME WARRANTY</h2>
+    <div class="text-center">
+      <div class="selectstate" (click)="status=!status" style="cursor: pointer;">
+        Select a state
+        <a style="cursor: pointer;" (click)="status=!status">↴</a>
+        <div class="statedropdown" [ngClass]="status ? 'show' : 'hide'">
+          <div class="statelist">
+            <a [class]="item?.className" *ngFor="let item of allStates; let i=index"
+              style="margin-right: 10px;margin-bottom: 3px;cursor: pointer;"
+              (click)="stateSel(item, 'list')">{{item?.title}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="map">
+      <span class="mapswatch">
+        <img src="assets/images/swatchone.png" alt="" style="margin-bottom: 5px;" />
+        <img src="assets/images/swatchtwo.png" alt="" style="margin-bottom: 5px;" />
+        <img src="assets/images/swatchthree.png" alt="" style="margin-bottom: 5px;" />
+      </span>
+      <div class="mapSection">
+        <app-map (homeState)="stateSel($event, 'map')" [statedata]="allStates"></app-map>
+      </div>
+
+      <div class="benotify">
+        <h3>Be notified when we launch in your state</h3>
+        <form [formGroup]="newsLetter">
+          <div class="mapnotifyform">
+            <input type="text" placeholder="Enter Mobile Number" mask="(000) 000-0000"
+              formControlName="newsLettermobilenum">
+            <input type="text" placeholder="Enter Zip Code" mask="00000" class="zipinpt"
+              formControlName="newsLetterzipcode">
+            <button> <span> SEND </span></button>
+          </div>
+        </form>
+      </div>
+      <!-- <img src="assets/images/mapnew.png" alt="" /> -->
+    </div>
+  </div>
+</div>
+
+<div class="plansSec">
+  <div class="container flex center column">
+    <!-- <h2>FINALLY! CUSTOMIZED PLANS <br /> WITH COVERAGE TO <span>MEET YOUR NEEDS.</span></h2> -->
+    <h2>DISCOVER OUR HOME WARRANTIES AND CHOOSE THE RIGHT PLAN FOR <span>YOUR HOME.</span></h2>
+    <!-- <ul>
+      <li>
+        <h3><span>Best Value</span></h3>
+        <div class="imageContainer flex justify middle">
+          <img src="assets/images/appliance62.jpg" alt="" style="width: 100%;" class="mobnone" />
+          <img src="assets/images/appliance6-mobile.jpg" alt="" style="width: 100%;" class="mobon" />
+
+        </div>
+        <a routerLink=""><span>Elite Complete</span></a>
+      </li>
+      <li>
+        <div class="imageContainer flex justify middle">
+          <img src="assets/images/appliance1.jpg" alt="" />
+        </div>
+        <a routerLink=""><span>Elite Appliances</span></a>
+      </li>
+      <li>
+        <div class="imageContainer flex justify middle">
+          <img src="assets/images/appliance2.jpg" alt="" class="mobnone" />
+          <img src="assets/images/appliance2mobile.jpg" alt="" class="mobon" />
+        </div>
+        <a routerLink=""><span>Elite Systems</span></a>
+      </li>
+      <li>
+        <h3><span>More Personalized</span></h3>
+        <div class="imageContainer flex justify middle width33">
+          <img src="assets/images/appliance3.jpg" alt="" class="mobnone" />
+          <img src="assets/images/appliance5.jpg" alt="" class="mobnone secondimg" />
+          <img src="assets/images/appliance5mobile.jpg" alt="" class="mobon secondimg" />
+
+        </div>
+        <a routerLink=""><span>Customize your own</span></a>
+      </li>
+    </ul> -->
+
+    <ul>
+      <li>
+        <div class="planrow">
+          <div class="planimgcont">
+            <img src="assets/images/cp1-img.png" alt="" width="100%" />
+            <span class="topdesc">
+              Protecting Your Home
+              <br> Major Appliances.
+            </span>
+            <h4 class="nameimg">
+              <span class="colorsec"><span> Elite Appliances </span></span>
+            </h4>
+            <a routerlink="" href="#/"><span>LEARN MORE</span></a>
+          </div>
+
+
+          <div class="planimgcont">
+            <img src="assets/images/cp2-img.png" alt="" width="100%" />
+            <span class="topdesc">
+              Protecting Your Home
+              <br> Major Systems.
+            </span>
+            <h4 class="nameimg">
+              <span class="colorsec"><span> Elite Systems </span></span>
+            </h4>
+            <a routerlink="" href="#/"><span>LEARN MORE</span></a>
+          </div>
+        </div>
+
+      </li>
+      <li>
+        <div class="planimgcont planimgcont-big cp3" style="background-image: url(assets/images/cp3-bg.png);">
+          <img src="assets/images/cp3-img.png" alt="" width="100%" class="desk" />
+          <img src="assets/images/cp3-img-mob.png" alt="" width="100%" class="mob" />
+          <!-- <span class="topsectxt"><span> BEST VALUE </span></span> -->
+          <span class="topdesc">
+            Protecting Your Home
+            <br> Major Systems, Appliances and More.
+          </span>
+          <h4 class="nameimg">
+            <span class="colorsec"><span> Elite Complete </span></span>
+          </h4>
+          <a routerlink="" href="#/"><span>LEARN MORE</span></a>
+        </div>
+      </li>
+
+      <li>
+        <div class="planrow">
+          <div class="planimgcont">
+            <img src="assets/images/cp4-img.png" alt="" width="100%" />
+            <span class="topdesc">
+              Protecting Your Home
+              <br> Major Electronics.
+            </span>
+            <h4 class="nameimg">
+              <span class="colorsec"><span> Elite Electronics</span></span>
+            </h4>
+            <a routerlink="" href="#/"><span>LEARN MORE</span></a>
+          </div>
+          <div class="planimgcont">
+            <img src="assets/images/cp5-img-new.png" alt="" width="100%" class="desk" />
+            <img src="assets/images/cp5-img-mob.png" alt="" width="100%" class="mob" />
+            <span class="topdesc">
+              Protecting Your Home
+              <br> Sewer System and Water Line.
+            </span>
+            <h4 class="nameimg">
+              <span class="colorsec"><span> Elite Service Line </span> </span>
+            </h4>
+            <a routerlink="" href="#/"><span>LEARN MORE</span></a>
+          </div>
+        </div>
+
+      </li>
+
+
+      <li>
+        <div class="planimgcont planimgcont-big cp6" style="background-image: url(assets/images/cp6-bg.png);">
+          <img src="assets/images/cp6-img.png" alt="" width="100%" class="desk" />
+          <img src="assets/images/cp6-img-mob.png" alt="" width="100%" class="mob" />
+          <!-- <span class="topsectxt"><span> MORE Personalized </span></span> -->
+          <span class="topdesc">
+            Select the items you wish to cover.
+
+          </span>
+          <h4 class="nameimg">
+            <span class="colorsec"><span> Customize your own </span></span>
+          </h4>
+          <a routerlink="" href="#/"><span>LEARN MORE</span></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="educationCen" data-aos="fade-right" data-aos-duration="">
+  <div class="container flex center column">
+    <h2> HOMEOWNER HUB</h2>
+    <div class="blogList">
+      <ngx-slick-carousel class="carousel" [config]="slideConfig">
+        <div ngxSlickItem class="slide">
+          <a>
+            <img src="assets/images/home.jpg" alt="" />
+            <div class="blogContent">
+              <h4>Lorem Ipsum</h4>
+              <p>Lorem Ipsum is simply an dummy text for the typesetting industry, dummy text for the typesetting
+                industry.</p>
+            </div>
+          </a>
+        </div>
+        <div ngxSlickItem class="slide">
+          <a>
+            <img src="assets/images/home.jpg" alt="" />
+            <div class="blogContent">
+              <h4>Lorem Ipsum</h4>
+              <p>Lorem Ipsum is simply an dummy text for the typesetting industry, dummy text for the typesetting
+                industry.</p>
+            </div>
+          </a>
+        </div>
+        <div ngxSlickItem class="slide">
+          <a>
+            <img src="assets/images/home.jpg" alt="" />
+            <div class="blogContent">
+              <h4>Lorem Ipsum</h4>
+              <p>Lorem Ipsum is simply an dummy text for the typesetting industry, dummy text for the typesetting
+                industry.</p>
+            </div>
+          </a>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</div>
+
+<div class="commnfq">
+  <app-faq [pagetype]='"landing"'></app-faq>
+</div>
+
+<div class="landingcontact">
+  <div class="container">
+    <div class="contactuppersec">
+      <div class="contacthead">
+        <h3>We are <span>here</span> for you</h3>
+        <p>We understand that you may have some <br />questions and would like to hear more.</p>
+      </div>
+
+      <div class="contactsecnd">
+        <div class="left-contact" data-aos="fade-right" data-aos-duration="">
+          <img src="assets/images/mobileimg.png" alt="" />
+          <p>Want to speak with us now? <br />We're waiting to hear from you <small
+              style="font-family:'Segoe UI', Tahoma, Geneva, Verdana,  sans-serif;">:-)</small></p>
+          <p>
+            <span><a href="tel:(888) ELITE 98">(888) ELITE 98</a></span>
+            <span><a href="tel:(888) 354-8398">(888) 354-8398</a></span>
+          </p>
+          <p class="psmall">We provide the exceptional service we <br /> would like to experience ourselves.
+
+          </p>
+        </div>
+
+        <div class="right-contact" data-aos="fade-left" data-aos-duration="">
+          <form class="roundform" [formGroup]="contactForm">
+            <div class="formitem text-center">
+              <img src="assets/images/mailfly.png" alt="" />
+            </div>
+            <div class="formitem text-center">
+              <p>Leave us your information.<br /> We'll call you as soon as we can.</p>
+            </div>
+            <div class="formitemin formiteminfull text-center">
+              <span>
+
+
+                <mat-form-field appearance="legacy">
+                  <mat-label>Enter Full Name</mat-label>
+                  <input matInput type="text" formControlName="full_name"
+                    (keyup)="replaceMorethenoneSpace($event, 'conUname')"
+                    (blur)="removelastspace($event, 'conUname')" />
+
+                </mat-form-field>
+
+                <mat-error
+                  *ngIf="contactForm.controls.full_name.touched && contactForm.controls.full_name.hasError('required')">
+                  Full Name is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="contactForm.controls.full_name.value !== '' && contactForm.controls.full_name.hasError('pattern')">
+                  Enter a valid Full Name.
+                </mat-error>
+              </span>
+            </div>
+            <div class="formitemin text-center">
+
+              <span>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Enter Zip Code</mat-label>
+                  <input matInput #zipcode type="text" mask="00000" formControlName="zip_code" id="zipcode" />
+                </mat-form-field>
+                <mat-error
+                  *ngIf="contactForm.controls.zip_code.touched && contactForm.controls.zip_code.hasError('required')">
+                  Zip Code is required.
+                </mat-error>
+              </span>
+
+
+
+
+              <span>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Enter Mobile Number</mat-label>
+                  <input matInput type="text" mask="(000) 000-0000" formControlName="mobile_no" />
+                </mat-form-field>
+                <mat-error
+                  *ngIf="contactForm.controls.mobile_no.touched && contactForm.controls.mobile_no.hasError('required')">
+                  Mobile Number is required.
+                </mat-error>
+              </span>
+            </div>
+            <div class="formitemin formiteminfull text-center">
+              <span>
+
+                <mat-form-field appearance="legacy">
+                  <mat-label>Enter Email Address</mat-label>
+                  <input matInput type="text" formControlName="email" (keyup)="restrictSpace($event)" />
+                </mat-form-field>
+                <mat-error
+                  *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('required')">
+                  Email Address is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="contactForm.controls.email.value !== '' && contactForm.controls.email.hasError('pattern')">
+                  Enter a valid Email Address.
+                </mat-error>
+              </span>
+            </div>
+
+
+            <!-- <div class="formitemin text-center">
+              <span>
+                <input matInput type="text" placeholder="Your City" formControlName="City" />
+                <mat-error *ngIf="contactForm.controls.City.touched && contactForm.controls.City.hasError('required')">
+                  City is required.
+                </mat-error>
+              </span>
+              <span>
+                <input matInput type="text" placeholder="Your State" formControlName="State" />
+                <mat-error
+                  *ngIf="contactForm.controls.State.touched && contactForm.controls.State.hasError('required')">
+                  State is required.
+                </mat-error>
+              </span>
+            </div> -->
+
+            <div class="formitemin text-center">
+              <!-- <span> <button>
+                  <span (click)="contactUs()">
+                    Call Me
+                  </span>
+                </button></span> -->
+
+              <div class="form-fld text-center">
+                <div class="actionControl"><button class="submit-btn" type="button" (click)="contactUs()"><span>CALL
+                      ME</span></button></div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

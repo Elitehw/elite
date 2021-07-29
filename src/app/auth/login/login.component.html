@@ -1,0 +1,49 @@
+<div class="flex middle">
+  <div class="width-30">
+    <div class="box">
+      <h1>Login</h1>
+      <form [formGroup]="form" #loginForm>
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Email" required="true" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            formControlName="email">
+          <mat-error *ngIf="form.controls.email.touched && form.controls.email.hasError('required')">
+            Email address is required.
+          </mat-error>
+          <mat-error *ngIf="form.controls.email.touched && form.controls.email.hasError('pattern')">
+            Enter valid email address.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Email" required="true" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            formControlName="email">
+          <mat-error *ngIf="form.controls.email.touched && form.controls.email.hasError('required')">
+            Email address is required.
+          </mat-error>
+          <mat-error *ngIf="form.controls.email.touched && form.controls.email.hasError('pattern')">
+            Enter valid email address.
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="full-width" appearance="outline">
+          <input type="password" required="true" matInput placeholder="Password" autocomplete="new-password"
+            formControlName="password">
+          <mat-error *ngIf="form.controls.password.touched && form.controls.password.hasError('required')">
+            Email address is required.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button">
+          <button type="submit" class="pxwidth-120" (click)="loginInit(form.value)" color="primary"
+            mat-raised-button>Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="width-30">
+    <div class="flex center">
+      <h1>DEMO LOGIN CREDENTIAL</h1>
+      <pre>{{dummyLogin | json}}</pre>
+    </div>
+  </div>
+</div>

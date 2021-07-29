@@ -1,0 +1,83 @@
+<div class="agreement">
+  <div class="container">
+    <div class="agreementinner">
+
+      <div class="row " style="align-items: baseline;">
+        <div class="col-lg-6">
+          <div class="agrmnt-rght">
+
+            <div class="loginsecdiv w-450">
+              <h4 class="text-left">FIND YOUR HOME
+                WARRANTY AGREEMENT</h4>
+              <p class="text-left">Find your service agreement in order to file your
+                claim online or login to your online account</p>
+
+              <div class="stepsec">
+                <div class="stepcount">STEP 1:</div>
+                <div class="stepfrm w-100">
+                  <label for="">Enter your Zip Code</label>
+                  <input type="text" class="form-control" mask="00000" placeholder="Enter Zip Code">
+                </div>
+              </div>
+              <div class="stepsec">
+                <div class="stepcount">STEP 2:</div>
+                <div class="stepfrm w-100">
+                  <label for="">PROVIDE INFORMATION FOR ONE
+                    OF THE FOLLOWING OPTIONS</label>
+
+                  <input type="text" class="form-control" mask="(000) 000-0000" placeholder="Enter Phone Number">
+
+                  <input type="text" class="form-control" placeholder="Enter Agreement Number">
+
+                  <input type="text" class="form-control" [(ngModel)]="streetAddress" placeholder="Enter Street Address"
+                    #street>
+
+                </div>
+              </div>
+
+              <button class="greenbtn mt-3"> find my warranty</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="agrmnt-rght">
+            <a class="need ">Need Help?</a>
+            <div class="loginsecdiv">
+              <h4 class="text-left">MEMBER LOGIN
+                AREA</h4>
+              <p class="text-left">Log in to your account to file a claim, view the
+                status of claims and access your membership</p>
+              <div class="itemmember">
+                <label for="">EMAIL ADDRESS</label>
+                <input type="text" class="form-control" placeholder="Enter email address">
+              </div>
+
+              <div class="itemmember">
+                <label for="">Password</label>
+                <input type="password" class="form-control" placeholder="Enter your password">
+              </div>
+
+              <div class="itemmember ">
+
+                <div class="row ">
+                  <div class="col">
+                    <mat-slide-toggle>Remember me</mat-slide-toggle>
+                  </div>
+                  <div class="col text-right">
+                    <a>Forgot password?</a>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+
+              <button class="greenbtn mt-3"> LOGIN</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

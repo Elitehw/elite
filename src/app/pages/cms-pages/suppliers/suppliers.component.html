@@ -1,0 +1,600 @@
+<div class="inner-container commonpage">
+  <div class="container">
+    <div class="homeowner__header">
+      <h2>Elite Home Warranty <br>
+        Partners With <br>
+        Suppliers</h2>
+    </div>
+    <div class="homeowner__content">
+      <div></div>
+      <p>Home warranty partnerships are a great
+        way for suppliers to find new revenue
+        streams and grow their businesses. And
+        Elite Home Warranty is the best
+      </p>
+    </div>
+    <div class="homeowner__content">
+      <div></div>
+      <p class="custom__paragraph"><span>APPLY NOW </span> to join the Elite Home Warranty
+        partnership network!</p>
+    </div>
+    <br><br>
+    <div class="homeowner__content w-100">
+      <div class="w-50 m-auto">
+        <div class="land-form-title">
+          <h3>SUPPLIERS</h3>
+          <p>{{providersFormQuestion?.vendors[selectedInddex]}}</p>
+        </div>
+        <mat-horizontal-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="ChooseFormgroup">
+            <p style="width: 104%;"> Would you like to go over and edit your previous application ?</p>
+            <div class="access__btn__sec">
+              <div class="form-fld text-center" style="width: 72%;margin: 0 auto;">
+                <div class="actionControl fullSzBtn">
+                  <button type="button" class="submit-btn" (click)="accessForm('acsess')">
+                    <span>ACCESS MY APPLICATION</span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-fld text-center" style="width: 100%;">
+                <div class="actionControl fullSzBtn">
+                  <button type="button" class="submit-btn" (click)="accessForm('New')">
+                    <span>CREATE NEW APPLICATION</span>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step [stepControl]="basicInfoForm">
+            <form [formGroup]="basicInfoForm">
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="name" placeholder="Enter Full Name"
+                    (keyup)="replaceMorethenoneSpace($event, 'Uname')" (blur)="removelastspace($event, 'Uname')">
+                  <label>Enter Full Name</label>
+                </div>
+                <mat-error
+                  *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('pattern')">
+                  Full name is incorrect.
+                </mat-error>
+              </div>
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" mask="(000) 000-0000" matInput formControlName="mobile"
+                    placeholder="Enter Mobile Number">
+                  <label>Enter Mobile Number</label>
+                </div>
+                <mat-error
+                  *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="basicInfoForm.controls.mobile.touched && basicInfoForm.controls.mobile.hasError('minlength')">
+                  Mobile number must have 10 digits.
+                </mat-error>
+              </div>
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="email" placeholder="Enter Email Address"
+                    (keyup)="restrictSpace($event)">
+                  <label>Enter Email Address</label>
+                </div>
+                <mat-error
+                  *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('pattern')">
+                  Email is invalid.
+                </mat-error>
+              </div>
+              <div class="form-fld text-center">
+                <div class="actionControl">
+                  <button type="button" class="submit-btn"
+                    (click)="validateForm(stepper, 'basicInfoForm', 1)"><span>CONTINUE</span></button>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="companyInfoForm">
+            <form [formGroup]="companyInfoForm">
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="companyName" placeholder="Company Name"
+                    (keyup)="replaceMorethenoneSpace($event, 'Cname')" (blur)="removelastspace($event, 'Cname')">
+                  <label>Company Name</label>
+                </div>
+                <mat-error
+                  *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="companyInfoForm.controls.companyName.touched && companyInfoForm.controls.companyName.hasError('pattern')">
+                  Company name is incorrect.
+                </mat-error>
+              </div>
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="address" placeholder="Company Address" #vendors>
+                  <label>Company Address</label>
+                </div>
+                <mat-error
+                  *ngIf="companyInfoForm.controls.address.touched && companyInfoForm.controls.address.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <ng-container
+                  *ngIf="companyInfoForm.controls.address.touched && !companyInfoForm.controls.address.hasError('required')">
+                  <mat-error *ngIf="!addressSeldcted">
+                    Please select any address from the list.
+                  </mat-error>
+                  <mat-error *ngIf="companyInfoForm.controls.state.hasError('required') && addressSeldcted">
+                    Address must contains any state.
+                  </mat-error>
+                  <mat-error *ngIf="companyInfoForm.controls.city.hasError('required') && addressSeldcted">
+                    Address must contains any city.
+                  </mat-error>
+
+                  <mat-error *ngIf="companyInfoForm.controls.zipCode.hasError('required') && addressSeldcted">
+                    Address must contains any zipcode.
+                  </mat-error>
+                </ng-container>
+              </div>
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="additionalAddress" placeholder="Apartment, floor #" #csp>
+                  <label>Apartment, floor #</label>
+                </div>
+                <mat-error
+                  *ngIf="companyInfoForm.controls.additionalAddress.touched && companyInfoForm.controls.additionalAddress.hasError('required')">
+                  This field is required.</mat-error>
+              </div>
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="zipCode" placeholder="Zipcode" #csp readonly>
+                  <label>Zipcode</label>
+                </div>
+              </div>
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="city" placeholder="City" #csp>
+                  <label>City</label>
+                </div>
+              </div>
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="state" placeholder="State" #csp>
+                  <label>State</label>
+                </div>
+              </div>
+              <div class="btn-sec">
+                <div class="form-fld text-center" style="margin-bottom: 0px;">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn" (click)="goBack(stepper)"><span>GO
+                        BACK</span></button>
+                  </div>
+                </div>
+                <div class="form-fld text-center">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn"
+                      (click)="validateForm(stepper, 'companyInfoForm', 2)"><span>CONTINUE</span></button>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="businessContactForm">
+            <form [formGroup]="businessContactForm">
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" matInput formControlName="business_email" placeholder="Business Email Address"
+                    (keyup)="restrictSpace($event)">
+                  <label>Business Email Address</label>
+                </div>
+                <mat-error
+                  *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="businessContactForm.controls.business_email.touched && businessContactForm.controls.business_email.hasError('pattern')">
+                  Email is invalid.
+                </mat-error>
+              </div>
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input type="text" mask="(000) 000-0000" matInput formControlName="business_phone"
+                    placeholder="Business Phone Number">
+                  <label>Business Phone Number</label>
+                </div>
+                <mat-error
+                  *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="businessContactForm.controls.business_phone.touched && businessContactForm.controls.business_phone.hasError('minlength')">
+                  Phone number must have 10 digits.
+                </mat-error>
+              </div>
+
+              <div class="btn-sec">
+                <div class="form-fld text-center" style="margin-bottom: 0px;">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn" (click)="goBack(stepper)"><span>GO
+                        BACK</span></button>
+                  </div>
+                </div>
+                <div class="form-fld text-center">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn"
+                      (click)="validateForm(stepper, 'businessContactForm', 3)"><span>CONTINUE</span></button>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="additionalStateForm">
+            <form [formGroup]="additionalStateForm">
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input matInput type="text" formControlName="availability" placeholder="Add State"
+                    [matAutocomplete]="autounique1" [disabled]="additionalStateForm.controls.nationWide.value"
+                    (keyup)="searchfilter($event)" multiple>
+                  <label>Add State</label>
+                  <mat-autocomplete #autounique1="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let State of filteredStates" [value]="selectedState">
+                      <div (click)="stateOptionClicked($event, State)">
+                        <mat-checkbox [checked]="State.selected" (change)="toggleStateSelection(State)"
+                          (click)="$event.stopPropagation()">
+                          {{State?.title}}
+                        </mat-checkbox>
+                      </div>
+                    </mat-option>
+                  </mat-autocomplete>
+                </div>
+                <div *ngIf="selectedState">
+                  <ul style="list-style: none; margin: 0; padding: 10px 10px 0 10px; display: flex; flex-wrap: wrap;">
+                    <li *ngFor="let item of selectedState">
+                      <mat-checkbox [checked]="item?.selected" (click)="removeState(item)">
+                        <p>
+                          {{item?.title}}
+                        </p>
+                      </mat-checkbox>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form-fld text-center">
+                Or
+              </div>
+              <div class="form-fld text-center">
+                <mat-checkbox formControlName="nationWide">Nationwide</mat-checkbox>
+                <mat-error
+                  *ngIf="additionalStateForm.controls.nationWide.touched && additionalStateForm.controls.nationWide.hasError('required')">
+                  This field is required.
+                </mat-error>
+              </div>
+
+              <div class="btn-sec">
+                <div class="form-fld text-center" style="margin-bottom: 0px;">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn" (click)="goBack(stepper)"><span>GO
+                        BACK</span></button>
+                  </div>
+                </div>
+                <div class="form-fld text-center">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn"
+                      (click)="validateForm(stepper, 'additionalStateForm', 4)"><span>CONTINUE</span></button>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="preformServicesForm">
+            <form [formGroup]="preformServicesForm">
+              <div class="form-fld text-center">
+                <div class="formControl">
+                  <input matInput type="text" formControlName="items" [matAutocomplete]="auto_service"
+                    (keyup)="serarchService($event)" placeholder="Select Services">
+                  <mat-autocomplete #auto_service="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let service of filteredService" [value]="selectedUsers">
+                      <div (click)="optionClicked($event, service)">
+                        <mat-checkbox [checked]="service.selected" (change)="toggleSelection(service)"
+                          (click)="$event.stopPropagation()">
+                          {{service?.title}}
+                        </mat-checkbox>
+                      </div>
+                    </mat-option>
+                  </mat-autocomplete>
+                  <label>Select Services</label>
+                </div>
+                <div *ngIf="selectedUsers">
+                  <ul style="list-style: none;">
+                    <li *ngFor="let item of selectedUsers">
+                      <mat-checkbox [checked]="item?.selected" (click)="removeOption(item)">
+                        <p>
+                          {{item?.title}}
+                        </p>
+                      </mat-checkbox>
+                    </li>
+                  </ul>
+                </div>
+                <mat-error
+                  *ngIf="preformServicesForm.controls.items.touched && preformServicesForm.controls.items.hasError('required')">
+                  This field is required.
+                </mat-error>
+
+              </div>
+              <div class="btn-sec">
+                <div class="form-fld text-center" style="margin-bottom: 0px;">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn" (click)="goBack(stepper)"><span>GO
+                        BACK</span></button>
+                  </div>
+                </div>
+                <div class="form-fld text-center">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn"
+                      (click)="validateForm(stepper, 'preformServicesForm', 5)"><span>CONTINUE</span></button>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="commentBoxForm">
+            <form [formGroup]="commentBoxForm">
+              <div class="form-fld text-center">
+                <div class="formControl" style="height:75px;">
+                  <textarea matInput formControlName="comments" placeholder="Comment box"
+                    (keyup)="replaceMorethenoneSpace($event, 'comments')" (blur)="removelastspace($event, 'comments')"
+                    style="width: 100%;">
+                  </textarea>
+                  <label>Comment box</label>
+                </div>
+                <mat-error
+                  *ngIf="commentBoxForm.controls.comments.touched && commentBoxForm.controls.comments.hasError('required')">
+                  This field is required.
+                </mat-error>
+              </div>
+              <div class="btn-sec">
+                <div class="form-fld text-center" style="margin-bottom: 0px;">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn" (click)="goBack(stepper)"><span>GO
+                        BACK</span></button>
+                  </div>
+                </div>
+                <div class="form-fld text-center">
+                  <div class="actionControl">
+                    <button type="button" class="submit-btn"
+                      (click)="validateForm(stepper, 'commentBoxForm', 9)"><span>CONTINUE</span></button>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="stepFinishForm">
+            <form [formGroup]="stepFinishForm">
+              <div class="form-fld text-center">
+                <p style="width: 100%;">Thank you for your interest in becoming one of our preferred suppliers, you will
+                  receive email
+                  confirmation along with your account login credentials once your vendor account is approved.</p>
+              </div>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+
+    <div class="homeowner__header mt-5">
+      <h3 class="w-70">Why Suppliers Partner
+        With Elite Home Warranty
+      </h3>
+    </div>
+    <div class="homeowner__content" style="display: block;">
+      <div class="w-70 ml-auto">
+        <div class="w-60 ">
+
+
+          <small>
+            Suppliers around the country recognize the value
+            of partnering with a company like ours. We
+            operate differently than other home warranty
+            companies.
+          </small>
+        </div>
+      </div>
+      <div class="w-70 mt-5 mb-5 ml-auto">
+        <div class="w-70 ml-auto">
+
+
+          <small>
+            Our founding principles are honesty and integrity.
+            We have a simple claims process and are 100%
+            committed to customer service.
+          </small>
+        </div>
+
+        <div class="greenline"></div>
+
+        <br>
+        <br>
+        <p class="w-100">
+          In addition to enhancing your credibility and profile in
+          a local community, Elite Home Warranty can
+          provide access to new clients and increased profit.
+        </p>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="homeowner__header mt-5">
+      <h3 class="w-60">Supplier
+        Requirements</h3>
+    </div>
+
+    <div class="homeowner__content">
+      <div class="w-65">
+        <img alt="" class="img-fluid" src="assets/images/supplier1.png">
+
+
+        <small>Because Elite Home Warranty provides above-and-beyond customer
+          service, it is important to us that all of our homeowners get the very
+          best. While there are minimal official requirements, we will ensure
+          that you supply quality parts and are an adequately credentialed business
+          before we finalize our partnership
+        </small>
+
+        <div class="greenline"></div>
+      </div>
+    </div>
+
+
+
+    <div class="homeowner__header mt-5">
+      <h3 class="w-60">Supplier Partnership
+        Benefits</h3>
+    </div>
+
+    <div class="homeowner__content">
+      <div class="w-50">
+
+        <small>Suppliers have benefited immensely from partnering with home warranty
+          companies like ours. With Elite Home Warranty specifically, you could gain
+          even more than you would with another home warranty company
+        </small>
+      </div>
+    </div>
+
+
+
+
+    <div class="homeowner__content mt-5">
+
+      <div class="accr-common w-70">
+        <h4>In this partnership, you will learn that it is:</h4>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                - Free to join
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                - Easy to earn
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                - Easy to use order processing system
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                - Easy to use platform
+
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                - Regular, reliable business
+
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+
+
+
+
+        </mat-accordion>
+        <br> <br>
+        <small class="w-100">
+          Because we have built our company around homeowner satisfaction, the
+          profit you stand to earn from this partnership is predictable. People love to
+          be taken care of! And we do it well. Which means that our network is always
+          growing. Apply above to be a part of it
+        </small>
+
+
+      </div>
+    </div>
+
+
+
+
+    <div class="homeowner__header mt-5">
+      <h3 class="w-60">Learn More About
+        Partnering With Elite
+        Home Warranty</h3>
+    </div>
+    <div class="homeowner__content">
+      <div class="w-65">
+
+
+        <small>Elite Home Warranty exists to make people s lives
+          easier by helping them in a time of need. For
+          homeowners, a serious appliance or system
+          breakdown can be a crisis. With a home warranty,
+          it won t be. Our network will immediately activate
+          to meet their needs</small>
+      </div>
+    </div>
+
+
+    <div class="homeowner__content justify-content-end mt-5">
+      <p class="w-70" style="background: #dae2d2; padding: 20px;"> At the end of the day, we are here to support
+        everyone who buys a home warranty service
+        agreement from us</p>
+    </div>
+
+    <div style="clear: both;"></div>
+
+
+    <div class="ps-section">
+      <div class="ps">
+        P.S
+      </div>
+      <div class="w-100">
+        <h2>Building the future of
+          home warranties together</h2>
+      </div>
+    </div>

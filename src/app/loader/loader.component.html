@@ -1,0 +1,20 @@
+<ng-container *ngIf="(isLoading | async) && !isButton && loading">
+  <div class="loader {{class}}" [ngStyle]="{'background-color': background, 'z-index': 999}" [class.full]="fullPage">
+    <p [ngStyle]="{'color': color}">{{text}}</p>
+    <div class="bounce1" [ngStyle]="{'background-color': color}"></div>
+    <div class="bounce2" [ngStyle]="{'background-color': color}"></div>
+    <div class="bounce3" [ngStyle]="{'background-color': color}"></div>
+  </div>
+</ng-container>
+<ng-container *ngIf="!(isLoading | async) && isButton">
+  {{buttonText}}
+</ng-container>
+
+<ng-container *ngIf="(isLoading | async) && isButton">
+  <div class="loader {{class}}" [ngStyle]="{'background-color': background, 'z-index': 999}">
+    <p [ngStyle]="{'color': color}">{{text}}</p>
+    <div class="bounce1" [ngStyle]="{'background-color': color}"></div>
+    <div class="bounce2" [ngStyle]="{'background-color': color}"></div>
+    <div class="bounce3" [ngStyle]="{'background-color': color}"></div>
+  </div>
+</ng-container>

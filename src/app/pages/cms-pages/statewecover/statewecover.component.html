@@ -1,0 +1,204 @@
+<div class="inner-container commonpage">
+  <div class="container">
+    <div class="homeowner__header">
+      <h2>Elite Home Warranty: <br>
+        States We Cover</h2>
+    </div>
+    <div class="homeowner__content">
+      <div></div>
+      <p class="w-70">
+        <small>
+          Elite Home Warranty is a nationwide home warranty company. We
+          provide comprehensive coverage for homeowners throughout the
+          United States. There are some great benefits to buying a service
+          agreement with us. Wherever you live, homeowners can be assured
+          of honest, straightforward plans, transparent terms and
+          conditions and timely responses to filed claims</small></p>
+    </div>
+
+    <div class="homeowner__content mt-5">
+      <div></div>
+      <p class="w-70">
+        <small>Elite Home Warranty is licensed, bonded and regulated in every
+          state where we provide coverage. In the U.S., home warranties are
+          governed by each state. The process of receiving these credentials
+          is time-consuming and expensive, but it’s important to us that we
+          are a reliable and trustworthy source of support. We’ve gone to
+          great lengths to comply with all rules and regulations in every state,
+          so that homeowners know they are getting an elite level of coverage
+        </small>
+      </p>
+    </div>
+
+    <div class="homeowner__content mt-5">
+      <div></div>
+      <p class="">
+        <small>As you shop online for a home warranty, you
+          will encounter many different companies. It’s
+          important to understand what you are
+          buying into. We would strongly recommend
+          that you only buy a service agreement with
+          licensed home warranty companies, like ours
+        </small>
+      </p>
+    </div>
+
+    <div class="homeowner__content mt-5">
+      <div></div>
+      <p class="w-70">
+        Wondering about Elite Home Warranty plans in
+        your state? Select your location and read about
+        our plans and pricing!
+      </p>
+    </div>
+
+    <div class="homeowner__content">
+      <div></div>
+      <p class="custom__paragraph w-70"> <span>Have additional questions? Contact our
+          friendly sales team to learn more.</span></p>
+    </div>
+
+    <div class="homeowner__header mt-5">
+      <h3 class="w-60">HERE IS WHERE WE ARE AVAILABLE </h3>
+    </div>
+
+    <div class="homeowner__content pt-5" style="position: relative;">
+      <p class="custom__paragraph" (click)="status=!status" style="margin-top: 20px;"><strong class="strong">Select
+          a state</strong>
+        &nbsp; <img class="custom__paragraph__image" alt="" src="assets/images/downar.png" width="15"
+          (click)="status=!status"></p>
+
+      <div class="statedropdown" [ngClass]="status ? 'show' : 'hide'"
+        style="top: 107px; left: auto; right: 0; width: 65%;">
+        <div class="statelist">
+          <a [class]="item?.className" class="statename" *ngFor="let item of allStates; let i=index"
+            style="margin-right: 10px;margin-bottom: 3px;cursor: pointer;">{{item?.title}}</a>
+          <!-- (click)="stateSel(item, 'list')" -->
+        </div>
+      </div>
+    </div>
+    <div id="state-artical" class="mapSection" style="overflow: hidden;">
+      <app-map (homeState)="stateSel($event, 'map')" [statedata]="allStates"></app-map>
+    </div>
+
+    <div class="benotify mb-5">
+      <h3>Be notified when we launch in your state</h3>
+      <!-- <form>
+        <div class="mapnotifyform">
+          <input type="text" placeholder="Enter Mobile Number" mask="(000) 000-0000"
+            formControlName="newsLettermobilenum">
+          <input type="text" placeholder="Enter Zip code" mask="00000" class="zipinpt"
+            formControlName="newsLetterzipcode">
+          <button> <span> SEND </span></button>
+        </div>
+      </form> -->
+      <form [formGroup]="newsLetter">
+        <div class="mapnotifyform">
+          <input type="text" placeholder="Enter Mobile Number" mask="(000) 000-0000"
+            formControlName="newsLettermobilenum">
+          <input type="text" placeholder="Enter Zip Code" mask="00000" class="zipinpt"
+            formControlName="newsLetterzipcode">
+          <button> <span> SEND </span></button>
+        </div>
+      </form>
+    </div>
+    <div class="mapcode pt-1 pb-5">
+      <div class="container">
+        <div class="mapcode-container">
+          <h4 (click)="statusstate = !statusstate">Elite Home Warranty Licenses and Registrations #’s.</h4>
+          <div class="mapcodelist" [ngClass]="statusstate ? 'show' : 'hide'">
+            <ul>
+              <ng-container *ngFor="let item of allStates | sort:'asc':'abbreviation'">
+                <li *ngIf="item?.license_number">
+                  <p>
+                    <a [href]="item?.state_url" target="_blank"> {{item?.abbreviation}} {{item?.license_number}}</a>
+                  </p>
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="homeowner__header">
+      <h2>Elite Home Warranty: <br>
+        Protecting Your Home</h2>
+    </div>
+    <div class="homeowner__content">
+      <div></div>
+      <p class="w-50 m-auto">
+        <small>
+          While we’re certainly here to help you out with
+          claims, we’d prefer it if you never experienced
+          unwanted or unwelcome break downs. And we can
+          help with that, too. We offer additional resources
+          that help you understand how to maintain the
+          systems and appliances in your home</small></p>
+
+
+    </div>
+
+    <div class="homeowner__content">
+      <div></div>
+      <p class="w-50 mt-5 mb-5">
+        <small>
+          Feel free to visit our Homeowner’s Hub. This is full
+          of great articles that will help you understand
+          annual home maintenance, quarterly home
+          maintenance and how to maintain the different
+          appliances and systems in your home</small></p>
+
+
+    </div>
+
+
+    <div style="clear: both;"></div>
+
+    <div class="homeowner__content justify-content-start">
+      <p class="w-60">Contact Us. We are here to answer all of
+        your questions and get you the right
+        home warranty agreement that gives you
+        peace of mind
+      </p>
+    </div>
+
+    <div class="homeowner__content w-100 mb-5">
+      <div></div>
+      <p class="custom__paragraph">Fill out the form below to receive a <span>FREE QUOTE</span></p>
+    </div>
+
+    <div class="homeowner__content w-100">
+      <div class="w-50 m-auto">
+        <form>
+          <div class="abt-frm">
+            <input type="text" placeholder="Enter Full Name">
+          </div>
+
+          <div class="abt-frm">
+            <input type="text" placeholder="Enter Full Number">
+          </div>
+
+          <div class="abt-frm">
+            <input type="text" placeholder="Enter Full Address">
+          </div>
+
+          <div class="abt-frmin ">
+            <div class="actionControl float-right">
+              <button class="submit-btn float-left" type="button"><span>CONTINUE</span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="ps-section">
+      <div class="ps">
+        P.S
+      </div>
+      <div class="w-100">
+        <h2>Building the future of
+          home warranties together</h2>
+      </div>
+    </div>
+
+  </div>
+</div>

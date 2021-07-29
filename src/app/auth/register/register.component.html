@@ -1,0 +1,73 @@
+<div class="flex middle">
+  <div class="width-30">
+    <div class="box">
+      <h1>REGISTER</h1>
+      <form [formGroup]="form" #signupForm>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="First Name" required="true" formControlName="firstName">
+          <mat-error *ngIf="form.controls.firstName.touched && form.controls.firstName.hasError('required')">
+            First Name is required.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Last Name" required="true" formControlName="lastName">
+          <mat-error *ngIf="form.controls.lastName.touched && form.controls.lastName.hasError('required')">
+            Last Name is required.
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Email" required="true" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            formControlName="email">
+          <mat-error *ngIf="form.controls.email.touched && form.controls.email.hasError('required')">
+            Email address is required.
+          </mat-error>
+          <mat-error *ngIf="form.controls.email.touched && form.controls.email.hasError('pattern')">
+            Enter valid email address.
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="full-width" appearance="outline">
+          <input type="password" (input)="matchPassword(form?.controls?.password, form?.controls?.confirmPassword)"
+            required="true" matInput placeholder="Password" autocomplete="new-password" formControlName="password">
+          <mat-error *ngIf="form.controls.password.touched && form.controls.password.hasError('required')">
+            Password is required.
+          </mat-error>
+
+          <mat-error *ngIf="form.controls.confirmPassword.dirty && form.controls.confirmPassword.hasError('noMatch')">
+            Password is not matched.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <input type="password" (input)="matchPassword(form?.controls?.password, form?.controls?.confirmPassword)"
+            required="true" matInput placeholder="Confirm Password" autocomplete="new-password"
+            formControlName="confirmPassword">
+          <mat-error
+            *ngIf="form.controls.confirmPassword.touched && form.controls.confirmPassword.hasError('required')">
+            Confirm Password is required.
+          </mat-error>
+
+          <mat-error *ngIf="form.controls.confirmPassword.dirty && form.controls.confirmPassword.hasError('noMatch')">
+            Password is not matched.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button">
+          <button type="submit" class="pxwidth-120" (click)="signup(form.value)" color="primary" mat-raised-button>Sign
+            Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="width-30">
+    <div class="flex center">
+      <h1>REGISTER</h1>
+      <!-- <pre>{{dummyLogin | json}}</pre> -->
+    </div>
+  </div>
+</div>

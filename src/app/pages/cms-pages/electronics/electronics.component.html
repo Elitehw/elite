@@ -1,0 +1,309 @@
+
+<div class="compare-page compare-page-white">
+    <div class="container-fluid">
+      <div class="comparehead">
+        <p>
+            <img src="assets/images/compare.png" alt="" width="40"> COMPARE PLANS
+        </p>
+    </div>   
+    <div class="compare-nav">
+        <nav mat-tab-nav-bar>
+            <a mat-tab-link *ngFor="let link of linkList" (click)="routeTopage(link?.name) ;activeLink = link"
+            [active]="activeLink == link"
+            > {{link?.name}} </a>
+          </nav>
+    </div> 
+  
+    <div class="compare-img">
+        <div class="row mt-5 mb-5 align-items-center">
+            <div class="col-md-6">
+                <img src="assets/images/imgspace.png" alt="">
+            </div>
+            <div class="col-md-6">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+    </div>
+      </div>
+  </div>
+
+<div class="compare-page">
+    <div class="container-fluid">
+  
+
+    <div class="compareh3 text-center">
+        <h3>COVERAGE EXCLUSIONS AND LIMITATIONS</h3>
+        <p>DESCRIPTIONS TEXT</p>
+    </div>
+
+    <div class="collapse-compare">
+        <p>COVERED ELECTRONICS:</p>
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 TV'S
+                </mat-panel-title>
+              
+              </mat-expansion-panel-header>
+          
+            <div class="content-collaps">
+                <div class="row">
+                    <div class="col-xl-3">
+                        <div class="content-collaps-left">
+                            <img src="assets/images/tv.png" alt="">
+                            <p>Electonic devices such as tv's desktop and a laptop  </p>
+                            <div class="greensec-col">
+                                <small>Typical cost to repair or replace</small>
+                                <p class="price">$200* - $1,500</p>
+                                <span><strong> Without a Elite Plan </strong></span>
+                            </div>
+                            <div class="roesesec-col mt-2 mb-2  ">
+                              <span> View Sample contact</span> 
+                            </div>
+                            <div class="greensec-col">
+                                <a class="price"> GET A FREE QUOTE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9">
+                        <div class="content-collaps-right">
+                        <div class="greensec-col">
+                            <h5>Coverage Highlights:</h5>
+                            <ul>
+                                <li><img src="assets/images/right-round.png" alt="" width="30"> Lorem ipsum dolor sit amet, consectetur </li>
+                                <li> <img src="assets/images/right-round.png" alt="" width="30"> Lorem ipsum dolor sit amet, consectetur </li>
+                            </ul>
+                        </div>
+                        <div class="content-collaps-right-text">
+                        <div class="row ">
+                            <div class="col-xl-6">
+                                <div class="grysec mt-5 mb-5">
+                                    <h5>What we cover:</h5>
+                                    <p>
+                                        <img src="assets/images/tick.png" alt="">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-6">
+                                <div class="whtsec mt-5 mb-5">
+                                    <h5>What we  do not cover:</h5>
+                                    <p>
+                                        <img src="assets/images/right-round.png" alt="">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <p>
+                                  
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+
+                                <p>
+                                  
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+
+                                <p>
+                                  
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+
+                                </div>
+
+</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Desktop
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+
+                <div class="content-collaps">
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <div class="content-collaps-left">
+                                <img src="assets/images/desktop.png" alt="">
+                                <p>Electonic devices such as tv's desktop and a laptop  </p>
+                                <div class="greensec-col">
+                                    <small>Average cost to repair or replace</small>
+                                <p class="price">$200* - $1,500</p>
+                                <span>Without a home warranty plan </span>
+                                </div>
+                                <div class="roesesec-col mt-2 mb-2  ">
+                                  <span> View Sample contact</span> 
+                                </div>
+                                <div class="greensec-col">
+                                    <a class="price"> GET A FREE QUOTE</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9">
+                            <div class="content-collaps-right">
+                            <div class="greensec-col">
+                                <h5>Coverage Highlights</h5>
+                                <ul>
+                                    <li><img src="assets/images/right-round.png" alt="" width="30"> Lorem ipsum dolor sit amet, consectetur </li>
+                                    <li> <img src="assets/images/right-round.png" alt="" width="30"> Lorem ipsum dolor sit amet, consectetur </li>
+                                </ul>
+                            </div>
+                            <div class="content-collaps-right-text">
+                            <div class="row ">
+                                <div class="col-xl-6">
+                                    <div class="grysec mt-5 mb-5">
+                                        <h5>What we cover</h5>
+                                        <p>
+                                            <img src="assets/images/tick.png" alt="">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+                                    </div>
+                                </div>
+    
+    
+                                <div class="col-xl-6">
+                                    <div class="whtsec mt-5 mb-5">
+                                        <h5>What we  do not cover</h5>
+                                        <p>
+                                            <img src="assets/images/right-round.png" alt="">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <p>
+                                      
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+    
+                                    <p>
+                                      
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+    
+                                    <p>
+                                      
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+    
+                                    </div>
+    
+    </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+              </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Laptop
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+
+                <div class="content-collaps">
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <div class="content-collaps-left">
+                                <img src="assets/images/laptop.png" alt="">
+                                <p>Electonic devices such as tv's desktop and a laptop  </p>
+                                <div class="greensec-col">
+                                    <small>Typical cost to repair or replace</small>
+                                    <p class="price">$200* - $1,500</p>
+                                    <span><strong> Without a Elite Plan </strong></span>
+                                </div>
+                                <div class="roesesec-col mt-2 mb-2  ">
+                                  <span> View Sample contact</span> 
+                                </div>
+                                <div class="greensec-col">
+                                    <a class="price"> GET A FREE QUOTE</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9">
+                            <div class="content-collaps-right">
+                            <div class="greensec-col">
+                                <h5>Coverage Highlights</h5>
+                                <ul>
+                                    <li><img src="assets/images/right-round.png" alt="" width="30"> Lorem ipsum dolor sit amet, consectetur </li>
+                                    <li> <img src="assets/images/right-round.png" alt="" width="30"> Lorem ipsum dolor sit amet, consectetur </li>
+                                </ul>
+                            </div>
+                            <div class="content-collaps-right-text">
+                            <div class="row ">
+                                <div class="col-xl-6">
+                                    <div class="grysec mt-5 mb-5">
+                                        <h5>What we cover</h5>
+                                        <p>
+                                            <img src="assets/images/tick.png" alt="">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+                                    </div>
+                                </div>
+    
+    
+                                <div class="col-xl-6">
+                                    <div class="whtsec mt-5 mb-5">
+                                        <h5>What we  do not cover</h5>
+                                        <p>
+                                            <img src="assets/images/right-round.png" alt="">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <p>
+                                      
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+    
+                                    <p>
+                                      
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+    
+                                    <p>
+                                      
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+    
+                                    </div>
+    
+    </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+              </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+
+      
+       
+    </div>
+</div>
+
+
+
+
+<app-faq></app-faq>
+
+

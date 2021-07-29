@@ -1,0 +1,546 @@
+
+<div class="compare-page compare-page-white">
+    <div class="container-fluid">
+      <div class="comparehead">
+        <p>
+            <img src="assets/images/compare.png" alt="" width="40"> COMPARE PLANS
+        </p>
+    </div>   
+    <div class="compare-nav">
+        <!-- <ul>
+            <li>
+                <a>ELITE APPLIANCES</a>
+            </li>
+  
+            <li>
+                <a>ELITE SYSTEMS</a>
+            </li>
+  
+            <li  class="active">
+                <a>ELITE COMPLETE</a>
+            </li>
+  
+            <li>
+                <a>ELITE ELECTRONICS</a>
+            </li>
+  
+            <li>
+                <a>ELITE EXTEROR</a>
+            </li>
+  
+            <li>
+                <a>CUSTOMIZE YOUR OWN</a>
+            </li>
+        </ul> -->
+        <nav mat-tab-nav-bar>
+          <a mat-tab-link *ngFor="let link of linkList" (click)="routeTopage(link?.name) ;activeLink = link"
+          [active]="activeLink == link"
+          > {{link?.name}} </a>
+        </nav>
+      </div> 
+  
+    <div class="compare-img">
+        <div class="row mt-5 mb-5 align-items-center">
+            <div class="col-md-6">
+                <img src="assets/images/imgspace.png" alt="">
+            </div>
+            <div class="col-md-6">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+    </div>
+      </div>
+  </div>
+  
+  
+  <div class="compare-page">
+      <div class="container-fluid">
+    
+  
+      <div class="compareh3 text-center">
+          <h3>COVERAGE EXCLUSIONS AND LIMITATIONS</h3>
+          <p>DESCRIPTIONS TEXT</p>
+      </div>
+  
+      <div class="collapse-compare">
+          <p>COVERED APPLIANCES:</p>
+          <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title style="text-transform: uppercase;">
+                    Refrigerator including ice maker & water dispenser
+                  </mat-panel-title>
+                
+                </mat-expansion-panel-header>
+            
+              <div class="content-collaps">
+                  <div class="row">
+                      <div class="col-xl-3">
+                          <div class="content-collaps-left">
+                              <img src="assets/images/almr.png" alt="">
+                              <div class="greensec-col">
+                                  <small>Average cost to repair or replace</small>
+                                  <p class="price">$200* - $1,500</p>
+                                  <span>Without a home warranty plan </span>
+                              </div>
+                              <div class="roesesec-col mt-2 mb-2  ">
+                                <span> View Sample contact</span> 
+                              </div>
+                              <div class="greensec-col">
+                                  <a class="price"> GET A FREE QUOTE</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-9">
+                          <div class="content-collaps-right">
+                          <div class="greensec-col">
+                              <h5>Coverage Highlights:</h5>
+                              <ul>
+                                  <li><img src="assets/images/right-round.png" alt="" width="30"> Lorem ipsum dolor sit amet, consectetur </li>
+                                  <li> <img src="assets/images/right-round.png" alt="" width="30"> Lorem ipsum dolor sit amet, consectetur </li>
+                              </ul>
+                          </div>
+                          <div class="content-collaps-right-text">
+                          <div class="row ">
+                              <div class="col-xl-6">
+                                  <div class="grysec mt-5 mb-5">
+                                      <h5>What we cover:</h5>
+                                      <p>
+                                          <img src="assets/images/tick.png" alt="">
+                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                      </p>
+                                  </div>
+                              </div>
+  
+  
+                              <div class="col-xl-6">
+                                  <div class="whtsec mt-5 mb-5">
+                                      <h5>What we  do not cover:</h5>
+                                      <p>
+                                          <img src="assets/images/right-round.png" alt="">
+                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="col-xl-12">
+                                  <p>
+                                    
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                  </p>
+  
+                                  <p>
+                                    
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                  </p>
+  
+                                  <p>
+                                    
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                  </p>
+  
+                                  </div>
+  
+  </div>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    CLOTHES WASHER
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+  
+  
+              <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        CLOTHES DRYER
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        RANGE/ OVEN/ COOKTOP
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        DISHWASHER
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        BUILT-IN MICROWAVE OVEN
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        TRASH COMPACTOR 
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+                <mat-expansion-panel> 
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        GARBAGE DISPOSAL
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+  
+                <h3 class="commnh3">COVERED SYSTEMS:</h3>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        HVAC SYSTEM INCLUDING DUCTWORK
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+  
+                
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        AIR CONDITIONING INCLUDING DUCTWORK
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        HEATING INCLUDING DUCTWORK
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        ELECTRICAL
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        PLUMBING
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        PLUMBING STOPPAGES
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+
+
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      WATER HEATER
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+             
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    GARAGE DOOR OPENER
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+  
+  
+              <h3 class="commnh3">ADDITIONAL COVERED ITEMS:</h3>
+
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    DOOR BELL
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+
+
+
+              
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    SMOKE DETECTOR
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    CEILING FANS
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+              <h3 class="commnh3">OPTIONAL ITEMS*:</h3>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    WELL PUMP
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    SEPTIC SYSTEM PUMPING & SEPTIC SEWAGE EJECTOR PUMP
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    SUMP PUMP
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    GRINDER PUMP
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header>
+             
+              </mat-expansion-panel>
+
+
+           
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    EJECTOR PUMP
+                </mat-panel-title>
+                
+              </mat-expansion-panel-header>
+           
+            </mat-expansion-panel>
+
+  
+              <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      INGROUND POOL EQUIPMENT
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      ABOVE GROUND POOL EQUIPMENT
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      CENTRAL VACUUM
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      WATER FILTRATION SYSTEM
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      PLUMBING FIXTURES
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      STAND ALONE FREEZER
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      FREE STANDING ICE MAKER
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      LAWN SPRINKLER SYSTEM
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      INGROUND SPA EQUIPMENT
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      ABOVE GROUND SPA EQUIPMENT
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      ELECTRONICS
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+  
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      EXTERIOR
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+               
+                </mat-expansion-panel>
+                <h3 class="commnh3">*Optional items can be added for additional fees and are not included in any of our plans."</h3>
+            </mat-accordion>
+          </div>
+  
+  
+      
+  
+         
+      </div>
+  </div>
+  
+  <app-faq></app-faq>
+  

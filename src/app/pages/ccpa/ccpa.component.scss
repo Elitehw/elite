@@ -1,0 +1,131 @@
+.container.containerother {
+  width: 1170px;
+}
+
+ol li {
+  list-style: none;
+  position: relative;
+
+  &::before {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: -22px;
+    top: 4px;
+    content: "";
+    background: url("../../../assets/images/bullet.png");
+    background-size: cover;
+  }
+}
+.headersec {
+  text-align: center;
+  padding-top: 0px;
+  p {
+    margin-bottom: 0px;
+    color: #4b5952;
+    font-weight: 600;
+  }
+  h3 {
+    width: 58%;
+    margin: 0 auto;
+    color: #4b5952;
+    @media (max-width: 767px) {
+      width: 98%;
+      font-size: 18px;
+    }
+  }
+}
+
+.content {
+  width: 88%;
+  margin: 0 auto;
+  margin-top: 15px;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+  h3 {
+    margin-bottom: 10px;
+    color: #394c45;
+    font-size: 20px;
+  }
+  p {
+    color: #394c45;
+    font-size: 14px;
+    span {
+      font-size: 14px;
+      font-weight: 800;
+      color: #394c45;
+    }
+    a {
+      background: linear-gradient(#cf937b 30%, #f5d0b3 50%, #cf937b 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  ol {
+    li {
+      margin-bottom: 15px;
+      h4 {
+        margin-bottom: 2px;
+        font-size: 16px;
+        color: #394c45;
+        float: left;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.contentHeader {
+  border-bottom: 2px solid #cf937b;
+  width: 88%;
+  margin: 0 auto;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+  p {
+    // padding: 0px 33px;
+    color: #394c45;
+    font-size: 13px;
+    font-weight: 700;
+    padding-bottom: 2px;
+    margin-top: 25px;
+
+    span {
+      background: linear-gradient(#cf937b 30%, #f5d0b3 50%, #cf937b 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+  }
+}
+
+.text-left {
+  text-align: left !important;
+}
+ul,
+ol {
+  padding: 0 0 0 24px;
+
+  &.paddingoff {
+    padding: 0;
+  }
+
+  ul,
+  ol {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .landingiconsec {
+    border-top: 10px solid #e6e6e6;
+    margin-top: 0;
+    overflow: hidden;
+  }
+
+  p {
+    font-size: 13px !important;
+  }
+}

@@ -1,0 +1,178 @@
+<div class="position-fixed w-100 h-100-- d-flex align-items-center justify-content-center cookiesWrapBox active"
+  style="z-index: 99;opacity: 0.9;" *ngIf="isclosecookiediv" data-aos="fade-up">
+  <div class="card text-center position-relative py-4 px-4 border-0">
+    <div class="text-right closeBtn position-absolute"><img src="assets/images/closeNew.png" alt=""
+        (click)="closecookieDiv()"></div>
+    <p class="px-md-5">We use cookies and other tracking technologies to provide you with the best user experience. By
+      using our
+      website, you consent to our <b> <a [routerLink]="['/terms-of-service']">terms of service</a>, <a
+          [routerLink]="['/privacy-statement']">privacy statement</a> and <a [routerLink]="['/cookie-policy']">cookies
+          policy</a>.</b>
+    </p>
+    <div class="form-fld text-center">
+      <div class="actionControl">
+        <button class="submit-btn" type="button" (click)="closecookieDiv()">
+          <span>
+            <img src="assets/images/understand.png" alt="" width="200">
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="px-5 d-block d-md-none">
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="landingiconsec">
+  <div class="container">
+    <div class="landingiconsecin">
+      <div class="iniconsec logosec">
+        <div class="logobg">
+          <a class="footlogo">
+
+            <img src="assets/images/logofoot.png" alt="" data-aos="flip-left" data-aos-duration="1500" />
+
+          </a>
+        </div>
+      </div>
+
+      <div class="iniconsec iniconsecicon">
+        <a [routerLink]="['/service-providers']" data-aos="fade-right" data-aos-duration="">
+          <span class="borderin" (click)="scrollToDiv('#tabcon1', 'csp')">
+            <img src="assets/images/contact-icon3.png" alt="" />
+            <span>Certified </span><span>Service </span><span>Providers </span>
+          </span>
+        </a>
+        <a [routerLink]="['/real-estate-professionals']" data-aos="fade-right" data-aos-duration="">
+          <span class="borderin"> <img src="assets/images/contact-icon2.png" alt="" />
+            <span>REAL </span><span>ESTATE </span><span>PROFESSIONALS </span></span>
+        </a>
+
+        <a [routerLink]="['/title-agencies']" data-aos="fade-right" data-aos-duration="">
+          <span class="borderin"> <img src="assets/images/contact-icon1.png" alt="" />
+            <span>Title </span><span>Agencies </span></span>
+        </a>
+        <a [routerLink]="['/homeowners-warranty']" data-aos="fade-right" data-aos-duration="">
+          <span class="borderin"> <img src="assets/images/contact-icon4.png" alt="" />
+            <span>Homeowners </span></span>
+        </a>
+        <a [routerLink]="['/suppliers']" data-aos="fade-right" data-aos-duration="">
+          <span class="borderin"> <img src="assets/images/contact-icon5.png" alt="" />
+            <span>Suppliers </span></span>
+        </a>
+        <a [routerLink]="['/affiliates']" data-aos="fade-right" data-aos-duration="">
+          <span class="borderin"> <img src="assets/images/contact-icon6.png" alt="" />
+            <span>AFFILIATES </span></span>
+        </a>
+      </div>
+
+      <div class="iniconsec greysec">
+        <div class="navfoot">
+          <h4>Home Warranty</h4>
+          <ul>
+            <li>
+              <a [routerLink]="['/file-a-claim']" routerLinkActive="active">File a Claim</a>
+            </li>
+
+            <li>
+              <a [routerLink]="['/member-login']" routerLinkActive="active"> Member Login</a>
+            </li>
+            <li>
+              <a [routerLink]="['/compare-home-warranty-plans']" routerLinkActive="active">Plans and Pricing</a>
+            </li>
+            <li>
+              <a [routerLink]="['/homeowners-warranty']" routerLinkActive="active">Homeowners</a>
+            </li>
+            <li>
+              <a [routerLink]="['/the-best-home-warranties']" routerLinkActive="active">Why Elite</a>
+            </li>
+            <li>
+              <a [routerLink]="['/buy-home-warranties']">Get a Plan </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="iniconsec greysec">
+        <div class="navfoot">
+          <h4>Work With Us</h4>
+          <ul>
+            <li>
+              <a [routerLink]="['/service-providers']" routerLinkActive="active">Certified Service Providers</a>
+            </li>
+
+            <li>
+              <a [routerLink]="['/real-estate-professionals']" routerLinkActive="active">Real Estate Professionals</a>
+            </li>
+            <li>
+              <a [routerLink]="['/home-buyers-and-sellers']" routerLinkActive="active">Buyers and Sellers</a>
+            </li>
+            <li>
+              <a [routerLink]="['/title-agencies']" routerLinkActive="active">Title Agencies</a>
+            </li>
+            <li>
+              <a [routerLink]="['/suppliers']" routerLinkActive="active">Suppliers</a>
+            </li>
+            <li>
+              <a [routerLink]="['/affiliates']" routerLinkActive="active">Affiliates</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="iniconsec greysec sidesec">
+        <div class="navfoot">
+          <h4>Education Center</h4>
+          <ul>
+            <li>
+              <a [routerLink]="['/home-warranty-guide']" routerLinkActive="active">Home Warranty Guide</a>
+            </li>
+
+            <li>
+              <a [routerLink]="['/maintenance-and-repairs']" routerLinkActive="active">Maintenance and Repairs</a>
+            </li>
+            <li>
+              <a [routerLink]="['/home-warranties-questions-and-answers']" routerLinkActive="active">Questions and
+                Answers</a>
+            </li>
+            <li>
+              <a [routerLink]="['/homeowner-hub']" routerLinkActive="active">Homeowner Hub</a>
+            </li>
+            <li>
+              <a [routerLink]="['/agreement']" routerLinkActive="active">Sample Contract</a>
+            </li>
+            <li>
+              <a [routerLink]="['/contact']" routerLinkActive="active">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="landing-footer">
+  <span class="footspanone"><img src="assets/images/footeraway.png" alt=""></span>
+  <span class="footspantwo"><img src="assets/images/footernumber.png" alt=""></span>
+  <div class="container flex center column">
+    <div class="foot-logo">
+      <a [routerLink]="['/landing']" routerLinkActive="active"><img src="./assets/images/foot-logo.png" alt=""></a>
+    </div>
+    <div class="prvtpolicy-col">
+      <p class="prvtpolicy">
+        <a [routerLink]="" routerLinkActive="active">Data Settings</a>&nbsp; | &nbsp;
+        <a [routerLink]="['/privacy-statement']" routerLinkActive="active">Privacy Statement</a> &nbsp; | &nbsp;
+        <a [routerLink]="['/terms-of-service']" routerLinkActive="active">Terms of Service</a> &nbsp; | &nbsp;
+        <a [routerLink]="['/ccpa-notice']" routerLinkActive="active">CCPA Notice</a> &nbsp; | &nbsp;
+        <a [routerLink]="['/cookie-policy']" routerLinkActive="active">Cookie Policy</a>.
+        <br>
+        Copyright &copy; 2020 Elite Home Warranty. All rights reserved.
+      </p>
+    </div>
+    <div class="disclaimer">
+      <p>By requesting a quote from Elite Home Warranty, You hereby certify that you are the individual authorizing
+        Elite Home Warranty to contact you using your phone numbers and emails via phone calls, texts, emails, and using
+        automated technology related to Elite’s services or that you have the authority to submit this request on behalf
+        of such individual.</p>
+    </div>
+  </div>
+
+
+</footer>

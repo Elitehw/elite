@@ -1,0 +1,55 @@
+.compare-page{
+    background: #fff;
+}
+.grysec{
+    background: #e6e6e6;
+    .container-fluid{
+        padding: 0 30px;
+    max-width: 1300px;
+    }
+  
+}
+.qscllps  {
+   
+    .compare-page{
+        background: #e6e6e6;
+    }
+}
+
+.comitems{
+    display: flex;
+    .comitems-name{
+        min-width: 40%;
+        padding: 10px;
+        border-bottom: 1px solid #e6e6e6;
+        width: 100%;
+        small{
+            font-size: 14px;
+        }
+    }
+    .comitems-prod{
+        background: #f3f4f4;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #e6e6e6;
+        margin: 0 10px;
+        min-width: 124px;
+        max-width: 124px;
+        position: relative;
+        padding-top: 20px;
+        img{
+            max-width: 100%;
+        }
+        &.bestsell{
+            span{
+                background:   linear-gradient(#394C45 30%, #394C45 50%, #394C45 90%);;
+                color: #CF937B ;
+                font-weight: bold;
+                position: absolute;
+                width: 90%;
+                top: -6px;
+                left: 5%;
+            }
+        }
+    }
+}

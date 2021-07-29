@@ -1,0 +1,185 @@
+<div class="inner-container commonpage">
+  <div class="container">
+    <div class="homeowner__header">
+      <h2>Contact Us</h2>
+    </div>
+
+    <div class="homeowner__content">
+      <div></div>
+      <p class="custom__paragraph">
+        A home warranty is a valuable source of protection. If a major
+        appliance or system in your home breaks, you will be responsible for
+        the full payment of repairing or replacing it. This can be immensely
+        cost-prohibitive and burdensome. The average cost of repairing or
+        replacing a major appliance or system doesn’t come close to our
+        entire annual home warranty premium<br> <br>
+
+        Additionally, the logistics and challenges of arranging service and
+        repair or replacement is a challenge for some homeowners. If you live
+        in a rural area or are otherwise frustrated in your attempts to find
+        trustworthy, reliable service providers, EHW is here to help. We
+        have a network of qualified providers who are available to help you <br> <br>
+
+        At the end of the day, Elite Home Warranty is in it always on your side.
+        Whether you cover one item with us or your entire house, we hope
+        that you know you are important and we want to be a safety net for
+        you
+        <br> <br>
+        <br>
+        <span> Contact us to ask all of your questions
+          and learn more</span>
+
+
+      </p>
+    </div>
+    <br><br>
+  </div>
+</div>
+<div class="landingcontact">
+  <div class="container">
+    <div class="contactuppersec">
+      <div class="contacthead">
+        <h3>We are <span>here</span> for you</h3>
+        <p>We understand that you may have some <br />questions and would like to hear more.</p>
+      </div>
+
+      <div class="contactsecnd">
+        <div class="left-contact" data-aos="fade-right" data-aos-duration="">
+          <img src="assets/images/mobileimg.png" alt="" />
+          <p>Want to speak with us now? <br />We're waiting to hear from you <small
+              style="font-family:'Segoe UI', Tahoma, Geneva, Verdana,  sans-serif;">:-)</small></p>
+          <p>
+            <span><a href="tel:(888) ELITE 98">(888) ELITE 98</a></span>
+            <span><a href="tel:(888) 354-8398">(888) 354-8398</a></span>
+          </p>
+          <p class="psmall">We provide the exceptional service we <br /> would like to experience ourselves.
+
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contactsec">
+  <div class="container">
+    <div class="formarea">
+      <div class="row justify-content-end">
+        <div class="col-md-8">
+          <p><img src="assets/images/mailfly.png" alt="" width="80"></p>
+          <p class="mt-5 mb-5">To edit the details on your order, including updating your
+            information or to request cancellations, please visit your
+            online account. For all other inquiries, please email us
+            using the form below</p>
+        </div>
+
+
+        <div class="col-md-12">
+          <form class="contfrm" [formGroup]="contactForm">
+            <div class="row">
+              <div class="col-sm-12">
+                <label for="">Select a department</label>
+                <!-- <select name="" id="" class="form-control">
+                  <option value="">Customer Service</option>
+                </select> -->
+
+                <div class="contact-select">
+                  <mat-form-field appearance="outline">
+                    <!-- <mat-label>Customer Service</mat-label> -->
+                    <mat-select formControlName="department">
+
+                      <mat-option value="option">Claims</mat-option>
+
+                      <mat-option value="option">Sales</mat-option>
+
+                      <mat-option value="option">Renewals</mat-option>
+
+                      <mat-option value="option">Partnerships</mat-option>
+
+                      <mat-option value="option">Billing</mat-option>
+
+                      <mat-option value="option">Retention</mat-option>
+
+                      <mat-option value="option">Marketing</mat-option>
+
+                      <mat-option value="option">Other</mat-option>
+                    </mat-select>
+
+                  </mat-form-field>
+                  <mat-error
+                    *ngIf="contactForm.controls.department.touched && contactForm.controls.department.hasError('required')">
+                    This field is required.
+                  </mat-error>
+                </div>
+
+              </div>
+
+              <div class="col-sm-6">
+                <label for="">Full Name</label>
+                <input type="text" class="form-control" formControlName="fullname"
+                  (keyup)="replaceMorethenoneSpace($event, 'Uname')" (blur)="removelastspace($event, 'Uname')">
+                <mat-error
+                  *ngIf="contactForm.controls.fullname.touched && contactForm.controls.fullname.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="contactForm.controls.fullname.touched && contactForm.controls.fullname.hasError('pattern')">
+                  Full name is incorrect.
+                </mat-error>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="">Mobile number </label>
+                <input type="text" class="form-control" mask="(000) 000-0000" formControlName="mobilenumber">
+                <mat-error
+                  *ngIf="contactForm.controls.mobilenumber.touched && contactForm.controls.mobilenumber.hasError('required')">
+                  This field is required.
+                </mat-error>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="">Zip Code</label>
+                <input type="text" class="form-control" mask="00000" formControlName="zipcode">
+                <mat-error
+                  *ngIf="contactForm.controls.zipcode.touched && contactForm.controls.zipcode.hasError('required')">
+                  This field is required.
+                </mat-error>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="">Email address </label>
+                <input type="text" class="form-control" formControlName="email" (keyup)="restrictSpace($event)">
+                <mat-error
+                  *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('required')">
+                  This field is required.
+                </mat-error>
+                <mat-error *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('pattern')">
+                  Email is invalid.
+                </mat-error>
+              </div>
+
+              <div class="col-sm-12">
+                <label for="">Massage</label>
+                <textarea name="" id="" cols="30" rows="10" class="form-control" formControlName="message"></textarea>
+              </div>
+
+              <div class="col-sm-12 text-center">
+                <div class="actionControl d-inline-block float-none"><button class="submit-btn"
+                    type="button"><span>SEND</span></button></div>
+
+
+                    
+              </div>
+
+
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

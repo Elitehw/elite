@@ -1,0 +1,71 @@
+.mapSection{
+  margin: 0 auto;
+}
+.navfoot{
+  text-align: left;
+  padding: 0 10px;
+
+  h4{
+      background: linear-gradient(#CF937B 30%, #F5D0B3 50%, #CF937B 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      position: relative;
+      text-align: left;
+      font-size: 13px;
+      text-transform: uppercase;
+
+      &::before{
+          width: 30px;
+          border-bottom: 1px solid #394C45;
+          content: '';
+          height: 1px;
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+      }
+
+      @media screen and (max-width:1365px) and (min-width:1200px) {
+         font-size: 13px;
+     }
+  }
+  ul{
+      padding: 0;
+  }
+  li{
+      list-style: none;
+      font-size: 14px;
+      text-align: left;
+      a{
+          font-size: 12px;
+          color: #4b5b53;
+          @media screen and (max-width:1200px) {
+              font-size:10px;
+          }
+      }
+  }
+ }
+
+
+
+ .text-left{ text-align: left !important;}
+ ul, ol{
+     padding: 0 0 0 24px;
+
+     &.paddingoff{
+         padding: 0;
+
+     }
+
+     ul, ol{
+         padding: 0;
+     }
+
+ }
+ @media screen and (max-width: 767px){
+     .landingiconsec {
+         border-top: 10px solid #e6e6e6;
+         margin-top: 0;
+         overflow: hidden;
+     }
+     }

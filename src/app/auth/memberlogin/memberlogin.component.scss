@@ -1,0 +1,29 @@
+.agreement .agrmnt-lft div h2 {
+  font-size: 35px;
+  line-height: 45px;
+}
+
+.agreement .agrmnt-rght div {
+
+
+  &.loginsecdiv {
+    width: 400px;
+    max-width: 100%;
+
+    label {
+      font-family: "EuroseWide";
+      text-transform: uppercase;
+      margin: 0;
+      background: linear-gradient(#394c45 36%, #6e7a78 52%, #394c45 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    input {
+      border: 1px solid #394c45;
+      margin-bottom: 15px;
+    }
+  }
+}

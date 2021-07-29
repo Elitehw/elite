@@ -1,0 +1,281 @@
+.w-70 {
+  width: 70%;
+}
+
+.mapswatch {
+  img {
+    max-width: 230px;
+    margin: 0 10px;
+    max-height: 25px;
+  }
+}
+
+.statedropdown {
+  // margin: -30px auto 0;
+  display: none;
+  width: 100%;
+
+  max-width: 100%;
+  position: absolute;
+  // left: 50%;
+  left: 46%;
+  margin-top: 20px;
+  background: #eee;
+  height: 0;
+  overflow: hidden;
+  z-index: 99;
+  box-shadow: 0 0 2px #aaa;
+
+  @media (max-width: 767px) {
+    left: 10%;
+    top: 79px;
+  }
+
+  a {
+    display: inline-block;
+    float: left;
+    color: #394c45;
+    text-align: center;
+    width: 100%;
+    padding: 5px 10px;
+    border-bottom: 1px solid #dbdbdb;
+    margin: 0 !important;
+
+    font-size: 10px;
+
+    &:nth-child(even) {
+      border-right: none;
+    }
+
+    &:hover {
+      background: #394c45;
+      color: #cf937b;
+    }
+  }
+
+  &.show {
+    display: block;
+    height: 400px;
+    overflow: auto;
+    margin-top: 0px;
+    border: none;
+    // top: 40px;
+    top: 53px;
+    left: 0;
+    background: linear-gradient(#f1f0f1, #fff);
+  }
+}
+
+.slick-slide img {
+  display: inline-block;
+}
+
+.slick-dotted.slick-slider {
+  padding-bottom: 50px;
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+
+/* Style the button used to pause/play the video */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+
+.mapSection {
+  margin-top: -60px !important;
+
+  @media (max-width:1199px) {
+    margin-top: 0 !important;
+  }
+}
+
+.benotify h3 {
+  margin-top: -10px;
+
+  @media (max-width:1199px) {
+    margin-top: 0 !important;
+  }
+}
+
+.boxitem {
+  &:hover {
+    .box-btn {
+      display: none;
+    }
+  }
+}
+
+.bannersmall {
+  font-size: 18px;
+  color: #484748;
+  text-align: left;
+
+  @media (max-width:767px) {
+    font-size: 14px;
+  }
+
+  @media (min-width:1199px) {
+    margin-top: 120px;
+  }
+}
+
+@media (max-width:767px) {
+  .mapSection {
+
+    overflow: visible !important;
+    padding-top: 100px;
+
+  }
+
+  .maphead {
+    padding-bottom: 60px;
+  }
+
+  .benotify {
+    margin-top: 30px;
+  }
+}
+
+.mapcode ul li:hover {
+  text-decoration: underline;
+}
+
+.priceplan {
+  margin-bottom: 0;
+}
+
+.boxleft,
+.boxright {
+  overflow: visible;
+}
+
+.box-btn-div {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -25px;
+  height: 40px;
+  z-index: 9;
+
+  .box-btn {
+    bottom: 0;
+  }
+}
+
+.reliable {
+  .boxitem {
+    &:hover {
+      h4 {
+        color: #cf937b;
+        position: relative;
+        z-index: 3;
+        -webkit-text-fill-color: #cf937b !important;
+      }
+
+      &::before {
+        display: block;
+      }
+
+      .hoverarea {
+        display: block;
+
+        h4 {
+          color: #cf937b;
+          margin-top: 133px;
+          font-size: 0px;
+          height: 100px;
+        }
+      }
+
+      .box-btn {
+        display: block;
+      }
+    }
+  }
+}
+
+.boxitem {
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    .hoverarea {
+      display: none;
+    }
+
+    .box-btn {
+      display: block;
+    }
+  }
+
+  &.hoverclass {
+    &::before {
+      display: block;
+    }
+
+    .hoverarea {
+      display: flex;
+    }
+
+    .box-btn {
+      margin-bottom: 50px;
+    }
+
+    .box-btn-div {
+      height: 300px;
+    }
+
+    .hoverarea {
+      h4 {
+        position: absolute;
+        bottom: 180px;
+        width: 100%;
+        left: 0;
+
+        color: #cf937b;
+
+        &.priceplan {
+          bottom: 150px;
+        }
+      }
+    }
+  }
+}
+
+.movabelsection {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  bottom: 0;
+
+}
+
+.feeditem {
+  p {
+    min-height: 147px;
+  }
+}

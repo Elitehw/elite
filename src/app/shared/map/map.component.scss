@@ -1,0 +1,22 @@
+#chartdiv{
+    @media screen and (max-width:450px) {
+        transform: scale(1.17);
+    }
+
+
+    ::ng-deep.amcharts-Label{
+      text{
+        font-size: 12px;
+        @media (max-width: 768px) {
+          font-size: 7px;
+          font-weight: 600;
+        }
+        @media (max-width: 560px) {
+          font-size: 4px;
+          font-weight: 600;
+        }
+      }
+    }
+}
+
+

@@ -1,0 +1,637 @@
+<div class="cartpage">
+  <div class="container">
+    <div class="row justify-content-lg-center">
+
+      <div class="text-right col-sm-10" style="margin-right: -30px;" *ngIf="cartlist && !verificatonrequired">
+        <span class="lightgrnbtn nohover">Number: {{mobilenumber.value | phone:'US'}}</span>
+      </div>
+      <div class="col-lg-10 cart-header">
+        <h2>HOME WARRANTY <br> QUOTES
+          <div class="row justify-content-between mt-5 btncart checkoutpage">
+            <div class="order-md-12 mb-3" style="margin-right:20px ;">
+              <button class="darkgrnbtn" *ngIf="!verificatonrequired && !linkAnotherNumber"
+                (click)="togaleLinkNumberVerification()">
+                LINK ANOTHER PHONE NUMBER
+              </button>
+            </div>
+            <div class="order-md-12 mb-3">
+              <button class="darkgrnbtn" *ngIf="!verificatonrequired"
+                (click)="verificatonrequired = true; linkAnotherNumber = false;"
+                matTooltip="When using multiple phone numbers to generate a quote, you can switch to using another phone number in order to access the additional quotes using any of the phone numbers that you have previously used.">
+                SWITCH PHONE NUMBER
+              </button>
+            </div>
+          </div>
+        </h2>
+        <div *ngIf="linkAnotherNumber" class="mt-5">
+          <p *ngIf="!linkNumberOtpsectionEnable" style="color: #4b5b53;">
+            PLEASE ADD THE ADDITIONAL PHONE NUMBERS THAT YOU WOULD LIKE TO LINK TO YOUR SHOPPING CART.
+            <span class="text-left d-block mt-2" *ngIf="linkednumberArray">
+              <button type="button" class="lightgrnbtn" style="margin-right:20px ;"
+                *ngFor="let numberObj of linkednumberArray">
+                {{numberObj?.number | phone:'US'}}
+                <span class="badge badge-light" (click)="openConfirmBox(numberObj.number)">x</span>
+              </button>
+            </span>
+
+            <span class="text-left d-block mt-2" *ngIf="!linkednumberArray">
+              <button type="button" class="lightgrnbtn" style="margin-right:20px;">
+                {{mobilenumber.value | phone:'US'}}
+                <span class="badge badge-light" (click)="openConfirmBox(mobilenumber.value)">x</span>
+              </button>
+            </span>
+          </p>
+          <p style="color: #4b5b53;" *ngIf="linkNumberOtpsectionEnable">
+            Please enter the 4 digits verification code in order to link the additional phone numbers to your account.
+          </p>
+          <div class="checkoutpage stepthree">
+            <div class="rightcheckout" style="padding-top: 0px;">
+              <form [formGroup]="linknumberForm">
+                <ng-container *ngIf="!linkNumberOtpsectionEnable">
+                  <div class="linknumber" formArrayName="mobilenumberNode">
+                    <ng-container *ngFor="let numitem of mobileNumberArray.controls; let numindex = index">
+                      <div class="col-lg-12 " style="margin-bottom: 14px;">
+                        <ng-container [formGroupName]="numindex">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Enter Phone Number</mat-label>
+                            <input matInput mask="(000) 000-0000" formControlName="number">
+                            <span *ngIf="numindex !== 0" class="badge badge-light"
+                              (click)="reMoveInputBox(numindex)">x</span>
+                            <mat-error class="custom_error" style="width: 25%;"
+                              *ngIf="numitem['controls'].number.touched && numitem['controls'].number.hasError('required')">
+                              This is required
+                            </mat-error>
+                            <mat-error class="custom_error" style="width: 62%;"
+                              *ngIf="numitem['controls'].number.errors?.minlength">
+                              Mobile number must be at least 10 digit long.
+                            </mat-error>
+                          </mat-form-field>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div class="col-lg-12 ">
+                    <div class="d-flex justify-content-between">
+                      <button class="linedbutton" style="width: 180px !important;" (click)="addMultipleNumber()">
+                        <span>Add Number</span>
+                      </button>
+                      <button class="linedbutton" style="width: 180px !important;" (click)="verifyPhoneNum()">
+                        <span>Continue</span>
+                      </button>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="linkNumberOtpsectionEnable">
+                  <div class="col-lg-12" formArrayName="otpGroup">
+                    <ng-container *ngFor="let otpitem of otpArray.controls; let otpindex = index">
+                      <div style="margin-bottom: 20px;">
+                        <ng-container [formGroupName]="otpindex">
+                          <div class="row align-items-center">
+                            <div class="col-lg-6">
+                              <p style="margin: 0px; height: 54px; line-height: 36px; "
+                                class="lightgrnbtn nohover text-center">{{otpitem?.value?.number | phone:'US'}}</p>
+                            </div>
+                            <div class="col-lg-6">
+                              <mat-form-field appearance="outline">
+                                <mat-label>Enter passcode</mat-label>
+                                <input matInput mask="0000" formControlName="code">
+                                <mat-error style="width: 50%;" class="custom_error"
+                                  *ngIf="otpitem['controls'].code.touched && otpitem['controls'].code.hasError('required')">
+                                  This is required
+                                </mat-error>
+                                <mat-error class="custom_error" style="width: 50%;"
+                                  *ngIf="otpitem['controls'].code?.errors?.minlength">
+                                  Code must be 4 digit long.
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                    <div class="col-lg-12" style="padding-left: 0px;">
+                      <button class="linedbutton " style="width: 180px !important;"
+                        (click)="sendOtpForMultiple()"><span>Continue</span></button>
+                    </div>
+                  </div>
+                </ng-container>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="cartdetails">
+          <div class="checkoutpage stepthree">
+            <div class="rightcheckout" style="width: 85%;" *ngIf="isquoteAvailable">
+              <div class="vrifycontent">
+                <h3>THERE ARE 0 QUOTES ASSIGNED TO THIS NUMBER</h3>
+              </div>
+              <div style="display: flex;justify-content: space-evenly;text-align: center !important;">
+                <div>
+                  <button class="linedbutton" style="width: 206px !important;" [routerLink]="['/buy-home-warranties']">
+                    <span>START A FREE QUOTE</span></button>
+                </div>
+                <div>
+                  <button class="linedbutton" style="width: 206px !important;" (click)="isquoteAvailable = false"
+                    matTooltip="When using multiple phone numbers to generate a quote, you can switch to using another phone number in order to access the additional quotes using any of the phone numbers that you have previously used.">
+                    <span>SWITCH PHONE NUMBER</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="checkoutpage stepthree" *ngIf="verificatonrequired && !isquoteAvailable && !linkAnotherNumber">
+            <div class="rightcheckout" style="width: 85%;">
+              <div class="vrifycontent">
+                <h3>PLEASE ENTER YOUR PHONE NUMBER TO ACCESS YOUR QUOTES</h3>
+              </div>
+              <form>
+                <div class="row" style="max-width: 595px; margin: 0 auto;">
+                  <ng-container *ngIf="!isOtpsection">
+                    <div class="col-lg-12" style="margin-bottom: 14px;">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Enter Phone Number</mat-label>
+                        <input matInput mask="(000) 000-0000" [formControl]="mobilenumber">
+                        <mat-error class="custom_error"
+                          *ngIf="mobilenumber?.touched && mobilenumber?.hasError('required')">
+                          This is required
+                        </mat-error>
+                        <mat-error class="custom_error" style="width: 55%;" *ngIf="mobilenumber?.errors?.minlength">
+                          Mobile number must be at least 10 digit long.
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="text-center col-lg-12">
+                      <button class="linedbutton ml-auto" style="width: 180px !important;"
+                        (click)="enableverificationsection(mobilenumber?.value, 'click')">
+                        <span>Continue</span>
+                      </button>
+                    </div>
+                  </ng-container>
+
+                  <ng-container *ngIf="isOtpsection">
+                    <div class="col-sm-12 vrifycontent">
+                      <p>
+                        Please enter 4 digits verification code
+                      </p>
+                    </div>
+                    <div class="col-lg-12">
+                      <mat-form-field appearance="outline">
+                        <mat-label>4 digit code</mat-label>
+                        <input matInput mask="0000" [formControl]="varificationCode">
+                        <mat-error class="custom_error"
+                          *ngIf="varificationCode.touched && varificationCode.hasError('required')">
+                          This is required
+                        </mat-error>
+                        <mat-error class="custom_error" style="width: 33%;" *ngIf="varificationCode?.errors?.minlength">
+                          Code must be 4 digit long.
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="text-center col-lg-12">
+                      <button class="linedbutton" style="width: 180px !important;"
+                        (click)="verify()"><span>Continue</span></button>
+                    </div>
+                  </ng-container>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <ng-container *ngIf="cartlist && !verificatonrequired && !linkAnotherNumber">
+            <ng-container *ngFor="let cart of cartlist">
+              <div class="carttable">
+                <div class="mobnone">
+                  <table>
+                    <thead>
+                      <th>QUOTE NUMBER </th>
+                      <th>NAME OF THE PLAN</th>
+                      <th>Customer Name</th>
+                      <th>Home Address</th>
+                      <th>Total Cost</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{cart?.quote_number}}</td>
+                        <td>{{cart?.step7?.title}}</td>
+                        <td>{{cart?.first_name +' '+cart?.last_name}}</td>
+                        <td>{{cart.property_street_address.split(',')[0]}},
+                          {{cart.property_street_address.split(',')[1]}}<br>{{cart?.property_zip_code}}</td>
+                        <td>
+                          <span>${{cart?.totalcost | number: '2.0'}}</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="desknone carttablemobile">
+                  <div class="carttablemobile-head">
+                    <div class="cart-lft">QUOTE NUMBER</div>
+                    <div class="cart-right">{{cart?.quote_number}}</div>
+                  </div>
+
+                  <div class="carttablemobile-body">
+                    <div class="cart-lft">Name of the Plan</div>
+                    <div class="cart-right"><span> {{cart?.step7?.title}} </span></div>
+                  </div>
+
+                  <div class="carttablemobile-body">
+                    <div class="cart-lft">Customer Name</div>
+                    <div class="cart-right"><span> {{cart?.first_name +' '+cart?.last_name}} </span></div>
+                  </div>
+
+                  <div class="carttablemobile-body">
+                    <div class="cart-lft">Home Address</div>
+                    <div class="cart-right"><span> {{cart.property_street_address.split(',')[0]}},
+                        {{cart.property_street_address.split(',')[1]}} {{cart?.property_zip_code}} </span></div>
+                  </div>
+
+                  <div class="carttablemobile-body">
+                    <div class="cart-lft">Total Cost</div>
+                    <div class="cart-right"><span class="big"> ${{cart?.totalcost}} </span></div>
+                  </div>
+                </div>
+                <div class="totalcart">
+                  <div class="totalleft">
+                    <mat-checkbox class="example-margin" (change)="addForcheckout($event, cart)">Add to Checkout
+                    </mat-checkbox>
+                  </div>
+
+                  <div class="totalright text-right">
+                    <button (click)="cart.show = !cart.show">
+                      {{ ( cart?.show ? 'CLOSE DETAILS' : 'VIEW DETAILS') }}
+                    </button>
+                    <button (click)="editQuote(cart)">EDIT</button>
+                    <mat-icon style="cursor: pointer;color: #4b5b53;" (click)="deleteQuote(cart._id)">delete</mat-icon>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stepacrdn" [ngClass]="cart?.show ? 'open' : 'hide'">
+                <hr>
+                <mat-accordion>
+                  <mat-expansion-panel [expanded]=true>
+                    <div class="cardcollapsedetails">
+                      <div class="greenhead">
+                        <h4>{{cart?.step7?.title}}</h4>
+                      </div>
+
+                      <div class="datacart">
+                        <ul>
+                          <li>
+                            <div class="lefttext">
+                              Quote Number
+                            </div>
+                            <div class="righttext">
+                              <strong>{{cart?.quote_number}}</strong>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="lefttext">
+                              EFFECTIVE TERM
+                            </div>
+                            <div class="righttext">
+                              <strong>{{currenDate+' '+ '-' +' '+ effectivedateendDate}}</strong>
+                            </div>
+                          </li>
+                          <li *ngIf="cart?.step7?.title">
+                            <div class="lefttext">
+                              NAME OF THE PLAN
+                            </div>
+                            <div class="righttext">
+                              <strong>{{cart?.step7?.title}}</strong>
+                            </div>
+                          </li>
+
+                          <li *ngIf="cart?.totaladdeditem">
+                            <div class="lefttext">
+                              Total Covered Items
+                            </div>
+                            <div class="righttext">
+                              <strong>{{cart?.totaladdeditem}}</strong>
+                            </div>
+                          </li>
+
+                          <li *ngIf="cart?.total_coverage">
+                            <div class="lefttext">
+                              Total Coverage Limit
+                            </div>
+                            <div class="righttext">
+                              <strong>${{cart?.total_coverage | number: '2.0'}}</strong>
+                            </div>
+                          </li>
+
+                          <li *ngIf="cart.step11.service_fee.Price">
+                            <div class="lefttext">
+                              Service Fee
+                            </div>
+                            <div class="righttext">
+                              <strong>{{cart?.step11.service_fee.Price ? '$' + cart?.step11.service_fee.Price : ''}}</strong>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="lefttext">
+                              Customer Name
+                            </div>
+                            <div class="righttext">
+                              <strong>{{cart?.first_name +' '+cart?.last_name}}</strong>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="lefttext">
+                              Home Address
+                            </div>
+                            <div class="righttext">
+                              <strong>{{cart.property_street_address.split(',')[0]}},
+                                {{cart.property_street_address.split(',')[1]}} {{cart?.property_zip_code}}</strong>
+                            </div>
+                          </li>
+
+                          <li *ngIf="cart?.step5.propertyType_name">
+                            <div class="lefttext">
+                              Property Type
+                            </div>
+                            <div class="righttext">
+                              <strong>{{cart?.step5.propertyType_name}}</strong>
+                            </div>
+                          </li>
+
+                          <li *ngIf="cart?.step6.propertySize_name">
+                            <div class="lefttext">
+                              Property Size
+                            </div>
+                            <div class="righttext">
+                              <strong>{{cart?.step6.propertySize_name}}</strong>
+                            </div>
+                          </li>
+
+                          <li *ngIf="cart?.step7?.price">
+                            <div class="lefttext">
+                              PLAN COST
+                            </div>
+                            <div class="righttext">
+                              <strong>${{cart?.step7?.price}}</strong>
+                            </div>
+                          </li>
+
+                          <li *ngIf="cart?.step13?.state_data?.surcharge">
+                            <div class="lefttext">
+                              SURCHARGED
+                            </div>
+                            <div class="righttext">
+                              <strong>${{cart?.surcharge}}</strong>
+                            </div>
+                          </li>
+
+                          <li *ngIf="cart?.step13?.state_data?.salex_tax">
+                            <div class="lefttext">
+                              SALES TAX
+                            </div>
+                            <div class="righttext">
+                              <strong>${{cart?.salestax}}</strong>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="lefttext">
+                              Total Cost
+                            </div>
+                            <div class="righttext">
+                              <strong class="big">${{cart?.totalcost | number: '2.0'}}</strong>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="greenhead"
+                        *ngIf="cart?.step8?.covered_item_list && cart?.step8?.covered_item_list?.length > 0">
+                        <h4>COVERED APPLIANCES</h4>
+                      </div>
+                      <div class="datacart datacartcollapse">
+                        <mat-accordion>
+                          <ng-container *ngFor="let covereditem of cart?.step8?.covered_item_list">
+                            <mat-expansion-panel *ngIf="covereditem?.type === 'appliance'">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  <h4> {{covereditem?.title}} </h4>
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                  <div class="text-right w-100">
+                                    <a>View More</a>
+                                  </div>
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+
+                              <div class="cartlist">
+                                <strong>Qty</strong>
+                                <strong class="rightstrng">
+                                  {{covereditem?.additionalunitdefaultvalue + covereditem?.coveredunit}}
+                                </strong>
+                              </div>
+
+                              <div class="cartlist">
+                                <strong>Maximum coverage</strong>
+                                <strong class="rightstrng">
+                                  {{covereditem?.totalCoverageValue + covereditem?.covrageValue}}
+                                </strong>
+                              </div>
+                            </mat-expansion-panel>
+                          </ng-container>
+                        </mat-accordion>
+                      </div>
+
+                      <div class="greenhead"
+                        *ngIf="cart?.step8?.covered_item_list && cart?.step8?.covered_item_list?.length > 0">
+                        <h4>COVERED SYSTEMS</h4>
+                      </div>
+
+                      <div class="datacart datacartcollapse">
+                        <ng-container *ngFor="let covereditem of cart?.step8?.covered_item_list">
+                          <mat-accordion
+                            *ngIf="covereditem?.type === 'appliance'&& covereditem?.additionalunitdefaultvalue > 0">
+                            <mat-expansion-panel>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  <h4>{{covereditem?.title}}</h4>
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                  <div class="text-right w-100">
+                                    <a>View More</a>
+                                  </div>
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+
+                              <div class="cartlist">
+                                <strong>Qty</strong>
+                                <strong class="rightstrng">{{covereditem?.additionalunitdefaultvalue}}</strong>
+                              </div>
+
+                              <div class="cartlist">
+                                <strong>Maximum coverage</strong>
+                                <strong class="rightstrng">{{covereditem?.totalCoverageValue}}</strong>
+                              </div>
+
+                            </mat-expansion-panel>
+                          </mat-accordion>
+                        </ng-container>
+                      </div>
+
+                      <div class="greenhead" *ngIf="cart?.step9?.optional_item.length > 0">
+                        <h4>COVERED OPTIONAL ITEMS</h4>
+                      </div>
+
+                      <div class="datacart datacartcollapse">
+                        <ng-container *ngFor="let optionalitem of cart?.step9?.optional_item">
+                          <mat-accordion>
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  <h4> {{optionalitem?.title}} </h4>
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                  <div class="text-right w-100">
+                                    <a>View More </a>
+                                  </div>
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+                              <div class="cartlist">
+                                <strong>Qty</strong>
+                                <strong class="rightstrng">{{optionalitem?.additionalunitdefaultvalue}}</strong>
+                              </div>
+                              <div class="cartlist">
+                                <strong>Maximum coverage</strong>
+                                <strong class="rightstrng">{{optionalitem?.totalCoverageValue}}</strong>
+                              </div>
+                            </mat-expansion-panel>
+                          </mat-accordion>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <hr>
+              </div>
+            </ng-container>
+
+            <div class="carttable" *ngIf="cartlist">
+              <div id="blankscroll"></div>
+              <div id="dynamic__btn">
+                <div class="row justify-content-end">
+                  <div class="col-lg-6 ">
+                    <table>
+                      <thead>
+                        <th>TOTAL QUOTES </th>
+                        <th>TOTAL COST</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{chckoutitemlist?.length}}</td>
+                          <td>${{totalcost}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row justify-content-between mt-5 btncart">
+                  <div class="col-md-6 order-md-12 mb-3">
+                    <button class="darkgrnbtn">CONTINUE TO CHECKOUT</button>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <button class="lightgrnbtn" [routerLink]="['/buy-home-warranties']">START A NEW QUOTE</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <div class="emptysec text-center" *ngIf="!cartlist && !verificatonrequired && !linkAnotherNumber">
+            <h3>Your cart is empty</h3>
+            <p>BREAKDOWNS ARE INEVITABLE</p>
+            <a [routerLink]="['/buy-home-warranties']">GET A PLAN</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- <mat-expansion-panel-header>
+ <mat-panel-title>
+ <h6> Selected plan: </h6>
+  </mat-panel-title>
+   <mat-panel-description>
+ <div class="text-right w-100">
+ <a>  {{panelOpenState ? 'Close' : 'View More'}}</a>
+</div>
+     </mat-panel-description> 
+  </mat-expansion-panel-header> -->
+<!-- <div class="totalcart mt-5">
+                                <div class="totalleft">
+                                    <mat-checkbox class="example-margin">Add to Checkout</mat-checkbox>
+                                </div>
+                                <div class="totalright text-right">
+                                    <button>CLOSE DETAILS</button>
+                                    <button>EDIT</button>
+                                </div>
+                            </div> -->
+<!-- <div class="mobnone">
+                            <table >
+                                <thead>
+                                    <th>QUOTE NUMBER </th>
+                                    <th>NAME OF THE PLAN</th>
+                                    <th>Customer Name</th>
+                                    <th>Home Address</th>
+                                    <th>Total Cost</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>12341</td>
+                                        <td>Plan</td>
+                                        <td>Stiven Spilberg</td>
+                                        <td>Manchester, Kentucky <br>
+                                            39495</td>
+                                        <td>
+                                            <span>$5.900</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> -->
+<!-- <div class="desknone carttablemobile">
+                                <div class="carttablemobile-head">
+                                    <div class="cart-lft">QUOTE NUMBER</div>
+                                    <div class="cart-right">12341</div>
+                                </div>
+    
+                                <div class="carttablemobile-body">
+                                 <div class="cart-lft">Name of the Plan</div>
+                                 <div class="cart-right"><span> Name of Plan </span></div>
+                             </div>
+    
+                             <div class="carttablemobile-body">
+                                 <div class="cart-lft">Customer Name</div>
+                                 <div class="cart-right"><span> Stiven Spilberg </span></div>
+                             </div>
+    
+                             <div class="carttablemobile-body">
+                                 <div class="cart-lft">Home Address</div>
+                                 <div class="cart-right"><span> Manchester, Kentucky 39495 </span></div>
+                             </div>
+    
+                             <div class="carttablemobile-body">
+                                 <div class="cart-lft">Total Cost</div>
+                                 <div class="cart-right"><span class="big"> $5.900 </span></div>
+                             </div>
+                            
+                             </div>
+                            <div class="totalcart">
+                                <div class="totalleft">
+                                    <mat-checkbox class="example-margin">Add to Checkout</mat-checkbox>
+                                </div>
+                                <div class="totalright text-right">
+                                    <button>VIEW DETAILS</button>
+                                    <button>EDIT</button>
+                                </div>
+                            </div> -->

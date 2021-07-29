@@ -1,0 +1,40 @@
+<div class="feedbackfrm">
+  <div class="container">
+    <div class="top-header">
+
+      <div class="feedformsec text-center">
+        <div class="feedfrm">
+          <form [formGroup]="feedbackform">
+            <input type="text" placeholder="Enter Email Address" formControlName="email"
+              (keyup)="restrictSpace($event)">
+            <mat-error *ngIf="feedbackform.controls.email.touched && feedbackform.controls.email.hasError('required')">
+              This field is required.</mat-error>
+            <mat-error
+              *ngIf="feedbackform.controls.email.value !== '' && feedbackform.controls.email.hasError('pattern')">
+              Email is invalid.</mat-error>
+            <div class="contact-select">
+              <mat-form-field appearance="outline">
+                <mat-label>Select type of feedback</mat-label>
+                <mat-select formControlName="feedback_type">
+                  <mat-option value="option">Website</mat-option>
+                  <mat-option value="option">Product</mat-option>
+                  <mat-option value="option">Customer Support</mat-option>
+                  <mat-option value="option">Sales</mat-option>
+                  <mat-option value="option">Claims and Service</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <textarea name="" id="" cols="30" rows="5"
+              placeholder="Please tell us the most important thing we can do to improve your experince"
+              formControlName="message"></textarea>
+            <p class="text-center"><small>**Your respnse will be used in accordance with our privacy policy</small></p>
+            <button class="greenbtn" (click)="send()"><span> SEND </span></button>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

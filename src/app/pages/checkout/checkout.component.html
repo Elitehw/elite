@@ -1,0 +1,984 @@
+<div class="checkoutpage stepthree" *ngIf="stepProcess.stepOne">
+  <div class="rightcheckout" style="width: 85%;">
+    <div class="vrifycontent" *ngIf="!isAvailablemsg">
+      <h3>Let’s get your home covered</h3>
+      <p>Elite Home Warranty provided home warranty plans that set a new standered of home
+        warranties and
+        boosts protection for what's important to today's homeowner.
+      </p>
+    </div>
+    <div class="row justify-content-center" *ngIf="isAvailablemsg">
+      <div class="col-sm-10">
+        <div class="contentborder text-center vrifycontent mt-2 mb-3">
+          <p class="p-0"> At the moment, we do not offer coverage to any homes located in
+            {{stepFiveformGroup.controls.state.value}}. We will notify
+            you as soon as we extend our services to your area.</p>
+          <div class="d-flex justify-content-center">
+            <button class="linedbutton mr-3" style="width: 250px !important;"
+              [routerLink]="['/home-warranty-coverage-map']" routerLinkActive="router-link-active">
+              <span>SEE WHERE WE ARE AVAILABLE</span>
+            </button>
+            <button class="linedbutton mr-3" style="width: 250px !important;" (click)="isAvailablemsg = false">
+              <span>BACK</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form [formGroup]="stepOneGroup" *ngIf="!isAvailablemsg">
+      <div class="row" style="max-width: 595px; margin: 0 auto;">
+        <div class="col-lg-6">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name" (keyup)="restrictSpace($event)"
+              (keypress)="allowAlphabate($event)">
+            <mat-error
+              *ngIf="stepOneGroup?.controls?.first_name.touched && stepOneGroup?.controls?.first_name.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name" (keyup)="restrictSpace($event)"
+              (keypress)="allowAlphabate($event)">
+            <mat-error
+              *ngIf="stepOneGroup?.controls?.last_name.touched && stepOneGroup?.controls?.last_name.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter Phone Number</mat-label>
+            <input matInput mask="(000) 000-0000" formControlName="mobile_number">
+            <mat-error
+              *ngIf="stepOneGroup?.controls?.mobile_number.touched && stepOneGroup?.controls?.mobile_number.hasError('required')">
+              This is required
+            </mat-error>
+            <mat-error *ngIf="stepOneGroup.controls['mobile_number'].errors?.minlength">
+              Phone number must be at least 10 digit long.
+            </mat-error>
+          </mat-form-field>
+          <!-- <mat-icon style="position: absolute;top: 20px;right: -16px;"
+            *ngIf="phoneType && phoneType === 'FIXED_LINE_OR_MOBILE'">
+            phone_iphone</mat-icon>
+          <mat-icon style="position: absolute;top: 20px;right: -16px;"
+            *ngIf="phoneType && phoneType !== 'FIXED_LINE_OR_MOBILE'">call
+          </mat-icon> -->
+        </div>
+        <div class="col-lg-6 " style="margin-top: 2px;">
+          <div class="mobile-border pt-3">
+            <mat-radio-group aria-label="Select an option" class="mt-4" formControlName="mobile_number_type">
+              <mat-radio-button value="mobile">Mobile </mat-radio-button>
+              <mat-radio-button value="landline">Landline</mat-radio-button>
+              <mat-error
+                *ngIf="stepOneGroup?.controls?.mobile_number_type.touched && stepOneGroup?.controls?.mobile_number_type.hasError('required')">
+                This is required
+              </mat-error>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter Email Address</mat-label>
+            <input matInput formControlName="email" (keyup)="restrictSpace($event)">
+            <mat-error
+              *ngIf="stepOneGroup?.controls?.email.touched && stepOneGroup?.controls?.email.hasError('required')">
+              This is required
+            </mat-error>
+            <mat-error
+              *ngIf="stepOneGroup?.controls?.email.value !== '' && stepOneGroup?.controls?.email.hasError('pattern')">
+              Email is not valid
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter Home Address</mat-label>
+            <input matInput #address formControlName="property_street_address" disabled
+              (keyup)="updatelocation('address')">
+            <mat-error
+              *ngIf="stepOneGroup?.controls?.property_street_address.touched && stepOneGroup?.controls?.property_street_address.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+          <ng-container
+            *ngIf="stepOneGroup.controls.property_street_address.touched && !stepOneGroup.controls.property_street_address.hasError('required')">
+            <mat-error *ngIf="!addressSeldcted">
+              Please select any address from the list.
+            </mat-error>
+            <ng-container
+              *ngIf="stepFiveformGroup.controls.streetAddress.touched && stepFiveformGroup.controls.streetAddress.hasError('required')">
+              <mat-error
+                *ngIf="stepFiveformGroup.controls.state.touched && stepFiveformGroup.controls.state.hasError('required')">
+                Address must contains any state.
+              </mat-error>
+              <mat-error
+                *ngIf="stepFiveformGroup.controls.city.touched && stepFiveformGroup.controls.city.hasError('required')">
+                Address must contains any city.
+              </mat-error>
+              <mat-error
+                *ngIf="stepFiveformGroup.controls.zip_code.touched && stepFiveformGroup.controls.zip_code.hasError('required')">
+                Address must contains any zipcode.
+              </mat-error>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div class="text-center col-lg-12">
+          <button class="linedbutton" (click)="editOrNewProcess('stepTwo', 'stepOne', 'stepOneGroup')"
+            style="width: 180px !important;">
+            <span>Continue</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="checkoutpage stepthree" *ngIf="stepProcess.stepTwo">
+  <div class="rightcheckout" style="width: 85%;">
+    <div class="vrifycontent">
+      <h3>Let’s get your home covered</h3>
+      <p>Please verify the phone number listed below. We will send you a message with a verification code in order to
+        complete our verification process.</p>
+    </div>
+    <div class="row" style="max-width: 595px; margin: 0 auto;">
+      <div class="col-sm-12 vrifycontent">
+        <h5>{{formateNum(stepOneGroup?.value?.mobile_number)}}</h5>
+        <button class="vrifybtn" (click)="sendOtp('stepThree', 'stepTwo', 'send')">
+          <span> send verfication code </span>
+        </button> <br>
+
+      </div>
+      <div class="col-sm-6">
+        <button class="linedbutton greenclr" (click)="back('stepOne', 'stepTwo')"
+          style="width: 180px !important;"><span>Back</span></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="checkoutpage stepthree" *ngIf="stepProcess.stepThree">
+  <div class="rightcheckout">
+    <div class="row">
+      <div class="col-sm-12 vrifycontent">
+        <p>
+          Please enter the 4 digits verification code
+        </p>
+      </div>
+      <div class="col-lg-12">
+        <mat-form-field appearance="outline">
+          <mat-label>4 digit code</mat-label>
+          <input matInput mask="0000" [formControl]="varificationCode">
+          <mat-error *ngIf="varificationCode.touched && varificationCode.hasError('required')">
+            This is required
+          </mat-error>
+          <mat-error *ngIf="varificationCode?.errors?.minlength">
+            Code must be 4 digit long.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-6">
+        <button id="myButton" class="linedbutton greenclr"
+          (click)="back('stepTwo', 'stepThree')"><span>Back</span></button>
+      </div>
+
+      <div class="col-lg-6">
+        <button class="linedbutton" (click)="verify('stepFour','stepThree')"><span>Continue</span></button>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="phonebgsc">
+          <img src="assets/images/mobileimg.png" alt="" height="250" class="roundmobile">
+          <div class="roundform">
+            <div class="roundinner">
+              <div class="formitem text-left">
+                <img src="assets/images/mailfly.png" alt="" height="32" />
+                <br> <br>
+              </div>
+              <div class="formitem text-left">
+                <p>Please check your phone
+                  for 4-digit verification code</p> <br>
+              </div>
+              <div class="formitemin text-left">
+                <button class="vrifybtn" (click)="sendOtp('stepThree', 'stepTwo', '')">
+                  <span> resend code </span>
+                </button> <br>
+                <button class="linedbutton gbefore" style="width: 170px !important;" *ngIf="!numbercorrection"
+                  (click)="numbercorrection = true"><span>correct my <br>
+                    number</span></button>
+                <ng-container *ngIf="numbercorrection">
+                  <div class="formitemin formiteminfull text-center" style="right: 60px;">
+                    <span>
+                      <mat-form-field appearance="legacy">
+                        <mat-label>Enter phone number</mat-label>
+                        <input matInput type="text" mask="(000) 000-0000" />
+                      </mat-form-field>
+                    </span>
+                  </div>
+                  <button class="vrifybtn" style="width: 60%;" (click)="sendOtp('stepThree', 'stepTwo', 'correctnum')">
+                    <span> Save </span>
+                  </button>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="checkoutpage stepfour" *ngIf="stepProcess.stepFour">
+  <div class="rightcheckout w-75 overflow-hidden">
+    <div class="row">
+      <div class="col-sm-12 vrifycontent">
+        <h3>Which of the following best describes you</h3>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="customradiobtn ">
+          <input type="radio" id="a25" name="amount" value="HOMEOWNER" [formControl]="decribeYou" />
+          <label for="a25" class="animate-cus ts-5">homeowner</label>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="customradiobtn">
+          <input type="radio" id="a26" name="amount" value="RENTER" [formControl]="decribeYou" />
+          <label for="a26" class="animate-cus ts-6">renter</label>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="customradiobtn">
+          <input type="radio" id="a27" name="amount" value="HOME BUYER" [formControl]="decribeYou" />
+          <label for="a27" class="animate-cus ts-7">home buyer</label>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="customradiobtn">
+          <input type="radio" id="a28" name="amount" value="HOME SELLER" [formControl]="decribeYou" />
+          <label for="a28" class="animate-cus ts-8">home seller</label>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6">
+        <div class="customradiobtn">
+          <input type="radio" id="a29" name="amount" value="REAL ESTATE PROFESSIONAL" [formControl]="decribeYou" />
+          <label for="a29" class="animate-cus ts-9">Real Estate<br>Professional</label>
+        </div>
+        <mat-error *ngIf="decribeYou.touched && decribeYou.hasError('required')">
+          Please choose any one option
+        </mat-error>
+      </div>
+      <div class="col-sm-6">
+        <div class="customradiobtn">
+          <input type="radio" id="a30" name="amount" value="TITLE AGENT" [formControl]="decribeYou" />
+          <label for="a30" class="animate-cus ts-10">Title Agent</label>
+        </div>
+      </div>
+
+      <div class="col-sm-6 text-left pl-0">
+        <button class="linedbutton greenclr" (click)="stepfourBack('stepFour')"><span>Back</span></button>
+      </div>
+      <div class="col-sm-6 text-right pr-0">
+        <button class="linedbutton"
+          (click)="chooseuserType('stepFive', 'stepFour', 'decribeYou')"><span>Continue</span></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="checkoutpage stepfive" *ngIf="stepProcess.stepFive && !checkOutProcessStart">
+  <div class="rightcheckout w-75">
+    <form [formGroup]="stepFiveformGroup">
+      <div class="row"
+        *ngIf="decribeYou?.value.toLowerCase() === 'homeowner' || decribeYou?.value.toLowerCase() === 'renter'">
+        <div class="col-sm-12 vrifycontent">
+          <h3>{{decribeYou?.value}}</h3>
+          <p>Please confirm the address of the home you would like to cover..</p>
+        </div>
+        <div class="col-lg-12 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Please enter the street address </mat-label>
+            <input matInput #search formControlName="streetAddress" readonly>
+            <!-- (keyup)="updatelocation('search')" -->
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.streetAddress.touched && stepFiveformGroup?.controls?.streetAddress.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+          <ng-container
+            *ngIf="stepFiveformGroup.controls.streetAddress.touched && !stepFiveformGroup.controls.streetAddress.hasError('required')">
+            <!-- <mat-error *ngIf="!addressSeldcted">
+              Please select any address from the list.
+            </mat-error> -->
+            <mat-error *ngIf="stepFiveformGroup.controls.state.hasError('required') && addressSeldcted">
+              Address must contains any state.
+            </mat-error>
+            <mat-error *ngIf="stepFiveformGroup.controls.city.hasError('required') && addressSeldcted">
+              Address must contains any city.
+            </mat-error>
+            <mat-error *ngIf="stepFiveformGroup.controls.zip_code.hasError('required') && addressSeldcted">
+              Address must contains any zipcode.
+            </mat-error>
+          </ng-container>
+        </div>
+        <div class="col-lg-8 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Apartment or Unit number </mat-label>
+            <input matInput formControlName="apt_number">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.apt_number.touched && stepFiveformGroup?.controls?.apt_number.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Zip code</mat-label>
+            <input matInput readonly formControlName="zip_code" readonly>
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.zip_code.touched && stepFiveformGroup?.controls?.zip_code.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-8 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput readonly formControlName="city">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.city.touched && stepFiveformGroup?.controls?.city.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <input matInput readonly formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 text-left pl-0">
+          <button class="linedbutton greenclr" (click)="back('stepFour', 'stepFive')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right pr-0">
+          <button class="linedbutton"
+            (click)="chooseuserType('stepFive', 'stepFour', 'stepFiveformGroup')"><span>Continue</span></button>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="decribeYou?.value.toLowerCase() === 'home buyer'">
+        <div class="col-sm-12 vrifycontent">
+          <h3>Congratulations on purchasing a new home!</h3>
+          <p>Are you purchasing the coverage yourself or getting a proforma invoice for closing?</p>
+        </div>
+
+        <div class="col-md-4">
+          <div class="customradiobtn">
+            <input id="a25" name="amount" type="radio" value="buyingthePlan" [formControl]="purchasinghome">
+            <label for="a25" class="animate-cus ts-5">I’m paying for the plan</label>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="customradiobtn">
+            <input id="a26" name="amount" type="radio" value="needInvoice" [formControl]="purchasinghome">
+            <label for="a26" class="animate-cus ts-6">I Need an Invoice</label>
+          </div>
+        </div>
+        <div class="col-sm-6 text-left pl-0">
+          <button class="linedbutton greenclr" (click)="back('stepFour', 'stepFive')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right pr-0">
+          <button class="linedbutton"
+            (click)="continue('stepSix', 'stepFive', 'purchasinghome')"><span>Continue</span></button>
+        </div>
+      </div>
+      <div class="row" *ngIf="decribeYou?.value.toLowerCase() === 'home seller'">
+        <div class="col-sm-12 vrifycontent">
+          <h3>Congratulations on selling your home!</h3>
+          <p>Are you purchasing the
+            coverage yourself or getting a proforma invoice for closing?</p>
+        </div>
+
+        <div class="col-md-4">
+          <div class="customradiobtn">
+            <input id="a25" name="amount" type="radio" value="buyingthePlan" [formControl]="purchasinghome">
+            <label for="a25">I’m paying for the plan</label>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="customradiobtn">
+            <input id="a26" name="amount" type="radio" value="needInvoice" [formControl]="purchasinghome">
+            <label for="a26">I Need an Invoice</label>
+          </div>
+        </div>
+        <div class="col-sm-6 text-left pl-0">
+          <button class="linedbutton greenclr" (click)="back('stepFour', 'stepFive')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right pr-0">
+          <button class="linedbutton"
+            (click)="continue('stepSix', 'stepFive', 'purchasinghome')"><span>Continue</span></button>
+        </div>
+      </div>
+      <div class="row"
+        *ngIf="decribeYou?.value.toLowerCase() === 'real estate professional' || decribeYou?.value.toLowerCase() === 'title agent'">
+        <div class="col-sm-12 vrifycontent">
+          <h3>Congratulations on your closing!</h3>
+          <p>Are you paying for the plan now or are you getting a proforma invoice that will be paid at closing?</p>
+        </div>
+
+        <div class="col-md-4">
+          <div class="customradiobtn">
+            <input id="a25" name="amount" type="radio" value="buyingthePlan" [formControl]="purchasinghome">
+            <label for="a25">I’m paying for the plan</label>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="customradiobtn">
+            <input id="a26" name="amount" type="radio" value="needInvoice" [formControl]="purchasinghome">
+            <label for="a26">I Need an Invoice</label>
+          </div>
+        </div>
+        <div class="col-sm-6 text-left pl-0">
+          <button class="linedbutton greenclr" (click)="back('stepFour', 'stepFive')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right pr-0">
+          <button class="linedbutton"
+            (click)="continue('stepSix', 'stepFive', 'purchasinghome')"><span>Continue</span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="checkoutpage stepfive" *ngIf="stepProcess.stepSix">
+  <div class="rightcheckout w-75">
+    <form [formGroup]="stepFiveformGroup">
+      <div class="row">
+        <div class="col-sm-12 vrifycontent">
+          <p>Please confirm the address of the home you would like to cover.</p>
+        </div>
+        <div class="col-lg-12 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Please enter the street address </mat-label>
+            <input matInput #search2 formControlName="streetAddress" disabled (keyup)="updatelocation('search2')">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.streetAddress.touched && stepFiveformGroup?.controls?.streetAddress.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+          <ng-container
+            *ngIf="stepFiveformGroup.controls.streetAddress.touched && !stepFiveformGroup.controls.streetAddress.hasError('required')">
+            <mat-error *ngIf="!addressSeldcted">
+              Please select any address from the list.
+            </mat-error>
+            <mat-error *ngIf="stepFiveformGroup.controls.state.hasError('required') && addressSeldcted">
+              Address must contains any state.
+            </mat-error>
+            <mat-error *ngIf="stepFiveformGroup.controls.city.hasError('required') && addressSeldcted">
+              Address must contains any city.
+            </mat-error>
+            <mat-error *ngIf="stepFiveformGroup.controls.zip_code.hasError('required') && addressSeldcted">
+              Address must contains any zipcode.
+            </mat-error>
+          </ng-container>
+        </div>
+        <div class="col-lg-8 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Apartment or Unit number </mat-label>
+            <input matInput formControlName="apt_number">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.apt_number.touched && stepFiveformGroup?.controls?.apt_number.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Zip code</mat-label>
+            <input matInput formControlName="zip_code" readonly>
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.zip_code.touched && stepFiveformGroup?.controls?.zip_code.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-8 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.city.touched && stepFiveformGroup?.controls?.city.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 text-left pl-0">
+          <button class="linedbutton greenclr" (click)="back('stepFive', 'stepSix')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right pr-0">
+          <button class="linedbutton"
+            (click)="continue('stepSeven', 'stepSix', 'stepFiveformGroup')"><span>Continue</span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="checkoutpage stepfive" *ngIf="stepProcess.stepSeven">
+  <div class="rightcheckout w-75">
+    <form>
+      <div class="row">
+        <div class="col-sm-12 vrifycontent">
+          <p>Please provide the estimated closing date?</p>
+        </div>
+
+        <div class="col-lg-4 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [min]="minDate" [formControl]="closingDate" readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="closingDate.errors?.matDatepickerMin">
+              Please select a valid date.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 text-left pl-0">
+          <button class="linedbutton greenclr" (click)="back('stepSix', 'stepSeven')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right pr-0">
+          <button class="linedbutton"
+            (click)="continue((decribeYou.value.toLowerCase() === 'home buyer' ? 'stepNine' : 'stepEight'), ('stepSeven'), ('closingDate'))"><span>Continue</span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="checkoutpage stepfive" *ngIf="stepProcess.stepEight">
+  <div class="rightcheckout w-75">
+    <form [formGroup]="invoiceaddress">
+      <div class="row">
+        <div class="col-sm-12 vrifycontent">
+          <p>Please provide us with the new buyer information</p>
+        </div>
+
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter First name</mat-label>
+            <input matInput formControlName="first_name" (keyup)="restrictSpace($event)">
+            <mat-error
+              *ngIf="invoiceaddress?.controls?.first_name.touched && invoiceaddress?.controls?.first_name.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter Last name</mat-label>
+            <input matInput formControlName="last_name" (keyup)="restrictSpace($event)">
+            <mat-error
+              *ngIf="invoiceaddress?.controls?.last_name.touched && invoiceaddress?.controls?.last_name.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>email address</mat-label>
+            <input matInput formControlName="email" (keyup)="restrictSpace($event)">
+            <mat-error
+              *ngIf="invoiceaddress?.controls?.email.touched && invoiceaddress?.controls?.email.hasError('required')">
+              This is required
+            </mat-error>
+            <mat-error
+              *ngIf="invoiceaddress?.controls?.email?.value !== '' && invoiceaddress.controls.email.hasError('pattern')">
+              Email is invalid.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input matInput mask="(000) 000-0000" formControlName="mobile_number">
+            <mat-error
+              *ngIf="invoiceaddress?.controls?.mobile_number.touched && invoiceaddress?.controls?.mobile_number.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 text-left pl-0">
+          <button class="linedbutton greenclr" (click)="back('stepSeven', 'stepEight')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right pr-0">
+          <button class="linedbutton"
+            (click)="continue('stepNine', 'stepEight', 'invoiceaddress')"><span>Continue</span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="checkoutpage stepfive" *ngIf="stepProcess.stepNine">
+  <div class="rightcheckout w-75">
+    <form>
+      <div class="row justify-content-center">
+        <div class="col-sm-12 vrifycontent"
+          *ngIf="decribeYou?.value.toLowerCase() !== 'real estate professional' && decribeYou?.value.toLowerCase() !== 'title agent'">
+          <p>
+            Would you like to share the invoice with your real estate agent or anyone else?</p>
+        </div>
+        <div class="col-sm-12 vrifycontent"
+          *ngIf="decribeYou?.value.toLowerCase() === 'real estate professional' || decribeYou?.value.toLowerCase() === 'title agent'">
+          <p>
+            Would you like to share the invoice with anyone else.</p>
+        </div>
+
+        <div class="col-md-3">
+          <div class="customradiobtn ">
+            <input id="a25" name="amount" type="radio" value="yes" [formControl]="wanttoshareinvoice">
+            <label for="a25" class="animate-cus ts-5">Yes</label></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="customradiobtn">
+            <input id="a26" name="amount" type="radio" value="no" [formControl]="wanttoshareinvoice">
+            <label for="a26" class="animate-cus ts-5">No</label></div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-sm-6 text-left pl-0">
+          <button class="linedbutton greenclr"
+            (click)="back((decribeYou.value.toLowerCase() === 'home buyer' ? 'stepSeven' : 'stepEight'), ('stepNine'))"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right pr-0">
+          <button class="linedbutton"
+            (click)="continue('stepTen', 'stepNine', 'wanttoshareinvoice')"><span>Continue</span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="checkoutpage stepfive" *ngIf="stepProcess.stepTen">
+  <div class="rightcheckout w-75">
+    <form [formGroup]="forInvoiceForm">
+      <ng-container formArrayName="invoiceGroup">
+        <div class="col-sm-12 vrifycontent">
+          <p>Please provide the following contact information of the person you would like to share the invoice
+            with.
+          </p>
+        </div>
+        <div class="row position-relative"
+          [ngClass]="{'invoice': invoiceArr.controls.length > 1, 'cusinvoice' : invoiceindex === 0 }"
+          *ngFor="let invoiceIndex of invoiceArr.controls; let invoiceindex = index">
+          <ng-container [formGroupName]="invoiceindex">
+            <div class="text-right closeBtn position-absolute" style="right: 20px;cursor: pointer;"
+              *ngIf="invoiceArr.controls.length > 1 && invoiceindex !== 0" (click)="removeAddress(invoiceindex)">
+              <img src="assets/images/closeNew.png" alt="">
+            </div>
+            <div class="col-lg-7 mb-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Enter First name</mat-label>
+                <input matInput formControlName="first_name" (keyup)="restrictSpace($event)">
+                <mat-error
+                  *ngIf="invoiceIndex['controls'].first_name.touched && invoiceIndex['controls'].first_name.hasError('required')">
+                  This is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-7 mb-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Enter Last name</mat-label>
+                <input matInput formControlName="last_name" (keyup)="restrictSpace($event)">
+                <mat-error
+                  *ngIf="invoiceIndex['controls'].last_name.touched && invoiceIndex['controls'].last_name.hasError('required')">
+                  This is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-7 mb-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Email address</mat-label>
+                <input matInput formControlName="email" (keyup)="restrictSpace($event)">
+                <mat-error
+                  *ngIf="invoiceIndex['controls'].email.touched && invoiceIndex['controls'].email.hasError('required')">
+                  This is required
+                </mat-error>
+                <mat-error
+                  *ngIf="invoiceIndex['controls'].email?.value !== '' && invoiceIndex['controls'].email.hasError('pattern')">
+                  Email is invalid.</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-7 mb-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Phone number</mat-label>
+                <input matInput mask="(000) 000-0000" formControlName="mobile_number">
+                <mat-error
+                  *ngIf="invoiceIndex['controls'].mobile_number.touched && invoiceIndex['controls'].mobile_number.hasError('required')">
+                  This is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <div class="row mt-4">
+        <div class="col-sm-4 text-left pl-0">
+          <button class="linedbutton greenclr" (click)="back('stepNine', 'stepTen')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-4 text-center pl-0">
+          <button class="linedbutton greenclr" (click)="addAddressField()"><span>Add address</span></button>
+        </div>
+        <div class="col-sm-4 text-right pr-0">
+          <button class="linedbutton"
+            (click)="continueTofinalstep('stepFinal', 'stepEight', 'forInvoiceForm')"><span>Continue</span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-buyitems (backtojoinourclubemit)="backfromcheckoutpage($event)" [quoteId]="quoteId"
+  [cartEditdata]="cartValuetoedit" *ngIf="checkOutProcessStart">
+</app-buyitems>
+<!-- <div class="checkoutpage stepfive">
+  <div class="rightcheckout w-90">
+    <form [formGroup]="stepFiveformGroup">
+      <div class="row">
+        <div class="col-sm-12 vrifycontent">
+          <p>5. Please provide us with the new buyer information</p>
+        </div>
+
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>your First name</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>your Last name</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>email address</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile number</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 vrifycontent">
+          <p>7. Let us know where to send the invoice to ?</p>
+        </div>
+
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>your First name</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>your Last name</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>email address</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-7 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile number</mat-label>
+            <input matInput formControlName="state">
+            <mat-error
+              *ngIf="stepFiveformGroup?.controls?.state.touched && stepFiveformGroup?.controls?.state.hasError('required')">
+              This is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-6 text-left">
+          <button class="linedbutton greenclr" (click)="back('stepFour','stepFive')"><span>Back</span></button>
+        </div>
+        <div class="col-sm-6 text-right">
+          <button class="linedbutton" (click)="finalStep()"><span>Continue</span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+
+
+
+
+<!-- <form [formGroup]="realStateAgentaddress"
+        *ngIf="decribeYou?.value.toLowerCase() !== 'real estate professional' && decribeYou?.value.toLowerCase() !== 'title agent'">
+        <div class="row">
+          <div class="col-lg-12 mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Please enter the street address </mat-label>
+              <input matInput #search3 formControlName="streetAddress" disabled (keyup)="updatelocation('search3')">
+              <mat-error
+                *ngIf="realStateAgentaddress?.controls?.streetAddress.touched && realStateAgentaddress?.controls?.streetAddress.hasError('required')">
+                This is required
+              </mat-error>
+            </mat-form-field>
+            <ng-container
+              *ngIf="realStateAgentaddress.controls.streetAddress.touched && !realStateAgentaddress.controls.streetAddress.hasError('required')">
+              <mat-error *ngIf="!addressSeldcted">
+                Please select any address from the list.
+              </mat-error>
+              <mat-error *ngIf="realStateAgentaddress.controls.state.hasError('required') && addressSeldcted">
+                Address must contains any state.
+              </mat-error>
+              <mat-error *ngIf="realStateAgentaddress.controls.city.hasError('required') && addressSeldcted">
+                Address must contains any city.
+              </mat-error>
+              <mat-error *ngIf="realStateAgentaddress.controls.zip_code.hasError('required') && addressSeldcted">
+                Address must contains any zipcode.
+              </mat-error>
+            </ng-container>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Apartment or Unit number </mat-label>
+              <input matInput formControlName="apt_number">
+              <mat-error
+                *ngIf="realStateAgentaddress?.controls?.apt_number.touched && realStateAgentaddress?.controls?.apt_number.hasError('required')">
+                This is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Zip code</mat-label>
+              <input matInput formControlName="zip_code" readonly>
+              <mat-error
+                *ngIf="realStateAgentaddress?.controls?.zip_code.touched && realStateAgentaddress?.controls?.zip_code.hasError('required')">
+                This is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-8 mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input matInput formControlName="city">
+              <mat-error
+                *ngIf="realStateAgentaddress?.controls?.city.touched && realStateAgentaddress?.controls?.city.hasError('required')">
+                This is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <input matInput formControlName="state">
+              <mat-error
+                *ngIf="realStateAgentaddress?.controls?.state.touched && realStateAgentaddress?.controls?.state.hasError('required')">
+                This is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-7 mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Mobile number</mat-label>
+              <input matInput mask="(000) 000-0000" formControlName="mobile_number">
+              <mat-error
+                *ngIf="realStateAgentaddress?.controls?.mobile_number.touched && realStateAgentaddress?.controls?.mobile_number.hasError('required')">
+                This is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </form> -->

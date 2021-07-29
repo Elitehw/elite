@@ -1,0 +1,286 @@
+.homeowner__header{
+  h2{
+    font-size: 50px;
+    background: linear-gradient(#394c45 10%, #6e7a78 60%, #394c45 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+  }
+
+  h3{
+    font-size: 40px;
+    background: linear-gradient(#394c45 10%, #6e7a78 60%, #394c45 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    span{
+      font-size: 40px;
+      background: linear-gradient(#CF937B 30%, #F5D0B3 50%, #CF937B 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+  }
+  }
+  .homeowner__content{
+    display: flex;
+    justify-content: flex-end;
+    p{
+      width: 50%;
+      font-size: 22px;
+      color: #384641;
+    }
+    .custom__paragraph{
+      width: 65%;
+      letter-spacing: 1px;
+      margin-top: 60px;
+      border-bottom: 9px solid #d2dace;
+      span{
+        text-transform: uppercase;
+        font-family: "EuroseWide";
+      }
+    }
+  
+  }
+  .w-60{
+    max-width: 60% !important;
+    width: 60% !important;
+  }
+  .w-65{
+    max-width: 65% !important;
+    width: 65% !important;
+  }
+  
+  .w-70{
+    max-width: 70% !important;
+    width: 70% !important;
+  }
+  .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+    font-family: "Euro Technic Extended";
+    font-size: 16px;
+    font-weight: bold;
+    color: #384641;
+  }
+  .homeowner__content .mat-accordion p{
+  width: 100%;
+  font-family: "Euro Technic Extended";
+  font-size: 14px;
+  color: #384641;
+  }
+  .homeowner__content .mat-expansion-panel{
+    box-shadow: none;
+    border-bottom: 1px solid #dbdbdb;
+  }
+  .homeowner__content .mat-expansion-panel-spacing{
+    margin: 10px 0;
+  }
+  .homeowner__header  {
+    h4{
+      font-family: "EuroseWide";
+  font-size: 20px;
+  color: #384641;
+  font-weight: bold;
+  border-bottom: 10px solid #d2dace ;
+  margin: 20px 0;
+  text-transform: uppercase;
+  padding: 10px;
+    }
+  }
+  .homeowner__content{
+    ol{
+      padding: 0; 
+      display: flex;
+      flex-wrap: wrap;
+      width: 70%;
+      @media (max-width:991px){
+        width: 100%;
+      }
+      li{
+        min-width: 50%;
+        max-width: 50%;
+        padding-right: 15px;
+        counter-increment: my-awesome-counter;
+        list-style: none;
+        font-family: "EuroseWide";
+        margin-bottom: 30px;
+        color: #384641;
+        p{
+          width: 100%;
+        }
+        &::marker{
+          font-size: 20px;
+          color: #384641;
+        }
+        &::before{
+          content: "0" counter(my-awesome-counter);
+          font-weight: bold;
+          font-size: 28px;
+          margin-right: 0.5rem;
+          color: #dae2d2;
+          line-height: 1;
+          font-family: "Euro Technic Extended";
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  
+  .actionControl{
+  background: linear-gradient(to right, #cf937b, #f5d0b3, #cf937b);
+  padding: 8px;
+  position: relative;
+  height: 60px;
+  transition: 0.5s all ease-in-out 0s;
+  width: 220px;
+  float: left;
+  .submit-btn {
+    border: 0;
+    // position: absolute;
+    // left: 8px;
+    // right: 8px;
+    // bottom: 8px;
+    // top: 8px;
+    background-color: #fff;
+    width: 205px;
+    height: 45px;
+    outline: 0 !important;
+    transition: 0.5s all ease-in-out 0s;
+    span {
+        font-size: 20px;
+        font-family: "EuroseWide";
+        background: linear-gradient(#394c45 50%, #6e7a78 60%, #394c45 70%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        @media (max-width: 479px) {
+            font-size: 14px;
+        }
+    }
+  
+  
+  }
+  &::before{
+   content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 9px;
+    background: #fff;
+    transition: 0.5s all ease-in-out 0s;
+  }
+  
+  &::after{
+    content: "";
+     position: absolute;
+     right: 0;
+     bottom: 0;
+     width: 60px;
+     height: 9px;
+     background: #fff;
+     transition: 0.5s all ease-in-out 0s;
+   }
+   &:hover {
+    background: linear-gradient(to right, #f5d0b3, #cf937b);
+    .submit-btn {
+        transition: 0.5s all ease-in-out 0s;
+        background: linear-gradient(to right, #f5d0b3, #cf937b);
+    }
+    &:after,
+    &:before {
+        width: 0;
+    }
+  }
+  }
+  .grey-box{
+    background: #dbdbdb;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+  }
+  
+  .flex-none{
+    display: block !important;
+    .w-70{
+    margin-bottom: 60px;
+    float: right;
+  }
+  }
+  
+  .abt-frm{
+    border: 2px solid #384641;
+    position: relative;
+    margin-bottom: 15px;
+    text-align: center;
+    input{
+      border: none;
+      text-align: center;
+      &::placeholder{
+        color: #cf937b;
+      }
+    }
+    &::before{
+      content: '';
+      width: 60px;
+      height: 2px;
+      right: 10px;
+      top: -2px;
+      background: #fff;
+      position: absolute;
+    }
+  
+    &::after{
+      content: '';
+      width: 60px;
+      height: 2px;
+      left: 10px;
+      bottom: -2px;
+      background: #fff;
+      position: absolute;
+    }
+  }
+  
+  .ps-section{
+    display: flex;
+    .ps{
+      color: #dae2d2;
+      font-size: 70px;
+      padding: 10px;
+      width: 20%;
+      text-align: center;
+    }
+    h2{
+      font-size: 40px;
+      color: #384641;
+      text-transform: uppercase; 
+      padding-top: 50px;
+    }
+  }
+  
+  
+  .greenline{
+    border-top: 10px solid #d2dace;
+  }
+  
+  
+  @media (max-width:991px){
+    .inner-container{
+      .w-100, .w-65, .w-60, .w-70{
+        width: 100% !important;
+        max-width: 100% !important;
+      } 
+      p{ 
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 14px !important;
+      }
+      .homeowner__header{
+        h2{
+          font-size: 30px;
+        }
+        h3{
+            font-size: 30px;
+          }
+        }
+    }
+  }
+  
